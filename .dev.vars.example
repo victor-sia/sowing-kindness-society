@@ -1,21 +1,17 @@
 # Copy this file to .dev.vars for local development (never commit .dev.vars)
 # Set these same variables in Cloudflare Pages dashboard → Settings → Environment Variables
 
-# ── Airtable ──────────────────────────────────────────────────
-AIRTABLE_API_KEY=your_airtable_personal_access_token
-AIRTABLE_BASE_ID=appXXXXXXXXXXXXXX
-AIRTABLE_TABLE_NAME=Submissions
+# ── Google Sheets (via Apps Script) ──────────────────────────
+GOOGLE_SHEET_URL=https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec
 
 # ── Resend (email) ────────────────────────────────────────────
 RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxx
-FROM_EMAIL=hello@sowingkindness.org.sg
+FROM_EMAIL=sowingkindnesssocietysg@gmail.com
 NOTIFY_EMAIL=sowingkindnesssocietysg@gmail.com
 
 # ── Cloudflare R2 (video storage) ────────────────────────────
-# Get these from: Cloudflare dashboard → R2 → Manage R2 API tokens
 R2_ACCOUNT_ID=your_cloudflare_account_id
 R2_ACCESS_KEY_ID=your_r2_access_key_id
 R2_SECRET_ACCESS_KEY=your_r2_secret_access_key
 R2_BUCKET_NAME=sks-videos
-# Optional: public URL if bucket has a custom domain
 # R2_PUBLIC_URL=https://videos.sowingkindness.org.sg

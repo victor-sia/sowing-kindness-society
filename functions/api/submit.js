@@ -1,11 +1,9 @@
 // Cloudflare Pages Function — POST /api/submit
 // Required environment variables (set in Cloudflare Pages dashboard):
-//   AIRTABLE_API_KEY      — Airtable personal access token
-//   AIRTABLE_BASE_ID      — e.g. appXXXXXXXXXXXXXX
-//   AIRTABLE_TABLE_NAME   — e.g. Submissions
-//   RESEND_API_KEY        — Resend API key
-//   FROM_EMAIL            — e.g. hello@sowingkindness.org.sg
-//   NOTIFY_EMAIL          — organiser email, e.g. contact@sowingkindnesssocietysg.org.sg
+//   GOOGLE_SHEET_URL — Google Apps Script Web App URL (writes rows to Google Sheet)
+//   RESEND_API_KEY   — Resend API key
+//   FROM_EMAIL       — e.g. hello@sowingkindness.org.sg
+//   NOTIFY_EMAIL     — organiser email, e.g. sowingkindnesssocietysg@gmail.com
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -23,48 +21,17 @@ export async function onRequestPost({ request, env }) {
       return json({ ok: false, error: `Missing fields: ${missing.join(', ')}` }, 400);
     }
 
-    // ── 1. Save to Airtable ───────────────────────────────────
-    const atRes = await fetch(
-      `https://api.airtable.com/v0/${env.AIRTABLE_BASE_ID}/${encodeURIComponent(env.AIRTABLE_TABLE_NAME)}`,
-      {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${env.AIRTABLE_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          fields: {
-            'Child Name':              data.childName,
-            'Age':                     Number(data.age) || 0,
-            'Age Category':            data.ageGroup === '3-4' ? 'Category A (Age 3–4)' : 'Category B (Age 5–6)',
-            'Language':                data.language,
-            'School / Centre':         data.school || '',
-            'Story Title':             data.storyTitle || '',
-            'Synopsis':                data.synopsis || '',
-            'Video Link':              data.videoLink || '',
-            'Video Source':            data.videoSource === 'upload' ? 'Direct upload (R2)' : 'External link',
-            'Parent Name':             data.parentName,
-            'Parent Email':            data.parentEmail,
-            'Parent Mobile':           data.parentMobile || '',
-            'Consent - Participation': Boolean(data.consentParticipation),
-            'Consent - Video Judging': Boolean(data.consentJudging),
-            'Consent - Social Media':  Boolean(data.consentSocial),
-            'Consent - Popularity':    Boolean(data.consentPopularity),
-            'Consent - Photography':   Boolean(data.consentPhoto),
-            'Consent - Photo Usage':   Boolean(data.consentPhotoUse),
-            'Consent - Name Pub':      Boolean(data.consentNamePub),
-            'Consent - PDPA':          Boolean(data.consentPDPA),
-            'Digital Signature':       data.signature || '',
-            'Status':                  'Submitted',
-            'Submission Date':         new Date().toISOString().split('T')[0],
-          },
-        }),
-      }
-    );
+    // ── 1. Save to Google Sheet via Apps Script ───────────────
+    const gsRes = await fetch(env.GOOGLE_SHEET_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+      redirect: 'follow',
+    });
 
-    if (!atRes.ok) {
-      const err = await atRes.text();
-      console.error('Airtable error:', err);
+    const gsJson = await gsRes.json().catch(() => ({ ok: false }));
+    if (!gsJson.ok) {
+      console.error('Google Sheets error:', gsJson);
       return json({ ok: false, error: 'Could not save your submission. Please try again.' }, 500);
     }
 
