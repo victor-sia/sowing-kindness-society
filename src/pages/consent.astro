@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Parental Consent Form | Sowing Kindness Society" description="Parental and guardian consent form for the 2026 Inter-Centres Storytelling Competition. Read and agree before registering your child.">
+
+<section class="page-header">
+  <div class="container">
+    <div class="page-header__crumbs"><span>Consent</span><span class="dot"></span><span>Parental &amp; Guardian Consent Form</span></div>
+    <h1 style="font:700 clamp(32px,5vw,64px)/1.06 var(--serif);letter-spacing:-.02em;margin:0 0 14px">
+      <span style="color:var(--ink-900)">Parental &amp; Guardian </span><span style="color:var(--forest-800)">Consent Form</span>
+    </h1>
+    <p style="font:400 17px/1.6 var(--sans);color:var(--ink-700);max-width:600px;margin:0 0 16px">For the Inter-Centres Storytelling Competition 2026. Please read carefully before registering your child.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="/submit/" class="btn btn-primary">Register Your Child <span class="chev">›</span></a>
+      <a href="/rules/" class="btn btn-outline">Read the Official Rules</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:40px">
+  <div class="container" style="max-width:860px;margin:0 auto">
+
+    <!-- Introduction -->
+    <div class="card card--quiet" style="padding:28px 32px;margin-bottom:36px;background:var(--sage-50)">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px">
+        <span style="font-size:28px">📋</span>
+        <div style="font:700 20px var(--serif);color:var(--forest-800)">About this consent form</div>
+      </div>
+      <p style="font:400 15px/1.7 var(--sans);color:var(--ink-700);margin:0">This form is required for all entrants. By registering your child, you confirm that you have read and agree to all sections below. Sowing Kindness Society complies with Singapore's Personal Data Protection Act (PDPA 2012).</p>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="consent-section" style="margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+        <span style="width:36px;height:36px;border-radius:999px;background:var(--forest-800);color:#fff;font:700 16px var(--serif);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">1</span>
+        <h2 style="font:700 22px var(--serif);color:var(--forest-800);margin:0">Eligibility &amp; registration</h2>
+      </div>
+      <ul style="list-style:none;padding:0;margin:0;display:grid;gap:12px;font:400 15px/1.6 var(--sans);color:var(--ink-700)">
+        {[
+          'My child is aged 3 to 6 years as at 20 September 2026.',
+          'My child is currently enrolled at a preschool, kindergarten, childcare centre, tuition centre or enrichment centre in Singapore.',
+          'My child will perform a solo storytelling entry — no group submissions.',
+          'Only one entry per child will be accepted. Duplicate entries may be disqualified.',
+          'Registration is free. No fees are charged at any stage of the competition.',
+        ].map(item => (
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="color:var(--fern-600);flex-shrink:0;margin-top:2px">✓</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="consent-section" style="margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+        <span style="width:36px;height:36px;border-radius:999px;background:var(--forest-800);color:#fff;font:700 16px var(--serif);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">2</span>
+        <h2 style="font:700 22px var(--serif);color:var(--forest-800);margin:0">Video submission (Round 1)</h2>
+      </div>
+      <ul style="list-style:none;padding:0;margin:0;display:grid;gap:12px;font:400 15px/1.6 var(--sans);color:var(--ink-700)">
+        {[
+          'The storytelling video must be recorded by the deadline of 20 September 2026, 11.59 PM (Singapore time).',
+          'The video must feature only the registered child. Other people should not appear on camera unless they are providing minimal off-camera support for Category A (ages 3–4).',
+          'Category A (ages 3–4): performance duration up to 3 minutes. Category B (ages 5–6): up to 5 minutes. Over-length videos may be penalised.',
+          'Acceptable formats: MP4 or MOV. Landscape orientation is preferred. Phone recordings are welcome.',
+          'The child must be clearly visible and audible throughout. Background music must not overpower the child\'s voice.',
+          'Props, costumes, drawings, puppets and soft toys are permitted and encouraged. All props must be safe and appropriate for children.',
+          'I confirm that any background music used is either original, royalty-free, or properly licensed.',
+        ].map(item => (
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="color:var(--fern-600);flex-shrink:0;margin-top:2px">✓</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="consent-section" style="margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+        <span style="width:36px;height:36px;border-radius:999px;background:var(--forest-800);color:#fff;font:700 16px var(--serif);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">3</span>
+        <h2 style="font:700 22px var(--serif);color:var(--forest-800);margin:0">Grand Final (Round 2) — if selected</h2>
+      </div>
+      <ul style="list-style:none;padding:0;margin:0;display:grid;gap:12px;font:400 15px/1.6 var(--sans);color:var(--ink-700)">
+        {[
+          'Six finalists from each group (English/Chinese × Category A/B) will be invited to perform live at the Grand Final on 7 or 8 November 2026 (tentative), Toa Payoh North, Singapore.',
+          'Finalists must perform the same story submitted in Round 1, though minor modifications are acceptable.',
+          'A parent or guardian must accompany the child to the Grand Final.',
+          'Finalists who cannot attend the Grand Final will forfeit their finalist status. Please contact us immediately if circumstances change.',
+          'A panel of six judges (three per language segment) will evaluate live performances on the same four criteria as Round 1.',
+        ].map(item => (
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="color:var(--fern-600);flex-shrink:0;margin-top:2px">✓</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Section 4: PDPA -->
+    <div class="consent-section" style="margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+        <span style="width:36px;height:36px;border-radius:999px;background:var(--orange-600);color:#fff;font:700 16px var(--serif);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">4</span>
+        <h2 style="font:700 22px var(--serif);color:var(--forest-800);margin:0">Personal data &amp; publicity (PDPA)</h2>
+      </div>
+      <p style="font:400 15px/1.7 var(--sans);color:var(--ink-700);margin:0 0 14px">In accordance with Singapore's Personal Data Protection Act 2012, I consent to the following:</p>
+      <ul style="list-style:none;padding:0;margin:0;display:grid;gap:12px;font:400 15px/1.6 var(--sans);color:var(--ink-700)">
+        {[
+          'Sowing Kindness Society may collect and use my child\'s name, performance video, and photographs taken at the competition to administer the competition, announce results, and fulfil prize obligations.',
+          'Videos and photos may be published on Sowing Kindness Society\'s website, social media channels (including GanjingWorld, Facebook, Instagram) and press releases to promote the competition and our kindness mission.',
+          'Personal data will not be sold or shared with third parties for commercial purposes.',
+          'I may withdraw this consent at any time by contacting contact@sowingkindness.org.sg. Upon withdrawal, Sowing Kindness Society will remove the content from its channels within a reasonable timeframe.',
+          'I confirm that I am the parent or legal guardian of the child, and have the authority to provide this consent.',
+        ].map(item => (
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="color:var(--orange-600);flex-shrink:0;margin-top:2px">✓</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Section 5: Prizes -->
+    <div class="consent-section" style="margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+        <span style="width:36px;height:36px;border-radius:999px;background:var(--forest-800);color:#fff;font:700 16px var(--serif);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">5</span>
+        <h2 style="font:700 22px var(--serif);color:var(--forest-800);margin:0">Prizes &amp; decisions</h2>
+      </div>
+      <ul style="list-style:none;padding:0;margin:0;display:grid;gap:12px;font:400 15px/1.6 var(--sans);color:var(--ink-700)">
+        {[
+          'Prizes are awarded in each of four groups: English / Chinese, Category A / Category B.',
+          'Winner: Popular gift voucher (S$150) + Trophy + Certificate of Achievement.',
+          '1st Runner-Up: Popular gift voucher (S$100) + Trophy + Certificate of Achievement.',
+          '2nd Runner-Up: Popular gift voucher (S$50) + Trophy + Certificate of Achievement.',
+          'All finalists receive a Certificate of Achievement. All other participants receive an e-Certificate of Participation.',
+          'Additional special awards (Best Popularity, Best Costume & Prop, Consolation Prizes) are still being finalised and subject to change.',
+          'All judging decisions are final. Sowing Kindness Society reserves the right to disqualify any entry that violates these terms.',
+        ].map(item => (
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="color:var(--fern-600);flex-shrink:0;margin-top:2px">✓</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Signature block -->
+    <div class="card" style="padding:32px;background:var(--cream-200)">
+      <h2 style="font:700 22px var(--serif);color:var(--forest-800);margin:0 0 6px">Declaration</h2>
+      <div class="heart-divider" style="margin-bottom:16px"><span class="line"></span><span style="color:var(--heart)">♥</span><span class="line"></span></div>
+      <p style="font:500 15px/1.7 var(--sans);color:var(--ink-700);margin:0 0 24px">By registering your child through the submission form, you confirm that you have read and agree to all the terms above, and that all information provided is accurate and complete.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px" class="submit-2col">
+        {[
+          ['Parent / Guardian Name', 'Full legal name'],
+          ['NRIC / FIN (last 4 characters)', 'e.g. 123A'],
+          ['Contact Number', '+65'],
+          ['Date of Agreement', 'DD / MM / YYYY'],
+        ].map(([label, ph]) => (
+          <div>
+            <div style="font:600 13px var(--sans);color:var(--forest-800);margin-bottom:6px">{label}</div>
+            <div style="height:36px;border-bottom:1.5px dashed var(--border-strong, rgba(31,77,31,.2));display:flex;align-items:flex-end;padding-bottom:4px;font:400 13px var(--sans);color:var(--ink-300)">{ph}</div>
+          </div>
+        ))}
+      </div>
+      <p style="font:400 13px/1.5 var(--sans);color:var(--ink-500);margin:0 0 20px">For digital registration, the submission form serves as your agreement. If you require a physical copy, please print this page and bring it to any Sowing Kindness Society event.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="/submit/" class="btn btn-primary">Proceed to Registration <span class="chev">›</span></a>
+        <button onclick="window.print()" class="btn btn-outline">Print This Form</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+@media(max-width:639px){
+  .submit-2col{grid-template-columns:1fr!important}
+}
+@media print{
+  .nav,.footer,.page-header .btn,.section .btn{display:none!important}
+  .page-header{padding:20px 0!important}
+  .section{padding:16px 0!important}
+}
+</style>

@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ARTICLES } from '../../lib/articles';
+import { renderSection } from '../../lib/renderArticle';
+
+export function getStaticPaths() {
+  return ARTICLES.map(a => ({ params: { slug: a.slug }, props: { article: a } }));
+}
+
+const { article } = Astro.props;
+const related = ARTICLES.filter(a => article.relatedSlugs.includes(a.slug));
+const bodyHtml = article.body.map(renderSection).join('');
+const initials = article.author.split(' ').map((w: string) => w[0]).join('');
+---
+<BaseLayout title={article.metaTitle} description={article.metaDescription}>
+
+<section style="background:linear-gradient(180deg,var(--cream-100),var(--cream-200) 60%,var(--cream-100));padding:56px 0 0;overflow:hidden">
+  <div class="container">
+    <div class="page-header__crumbs">
+      <a href="/stories/" style="color:var(--fern-600)">Stories</a>
+      <span class="dot"></span>
+      <span style="color:var(--ink-500)">{article.tag}</span>
+    </div>
+    <div class="grid-2col" style="margin-top:20px">
+      <div id="article-hero-content">
+        <span class="pill pill--sage" style="margin-bottom:18px;display:inline-flex">{article.tag}</span>
+        <h1 style="font:700 clamp(26px,4vw,52px)/1.08 var(--serif);color:var(--ink-900);letter-spacing:-.02em;margin:0 0 18px">{article.title}</h1>
+        <p style="font:400 18px/1.6 var(--sans);color:var(--ink-700);margin:0 0 24px;max-width:540px">{article.intro}</p>
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:40px;height:40px;border-radius:999px;background:var(--sage-200);color:var(--forest-800);font:700 15px var(--serif);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">{initials}</div>
+            <div>
+              <div style="font:700 14px var(--sans);color:var(--forest-800)">{article.author}</div>
+              <div style="font:400 12px var(--sans);color:var(--ink-500)">{article.authorRole}</div>
+            </div>
+          </div>
+          <span style="width:1px;height:28px;background:var(--sage-200);display:inline-block"></span>
+          <span style="font:500 13px var(--sans);color:var(--ink-500)">{article.date}</span>
+          <span style="width:1px;height:28px;background:var(--sage-200);display:inline-block"></span>
+          <span style="font:500 13px var(--sans);color:var(--ink-500)">{article.readTime}</span>
+        </div>
+      </div>
+      <div id="article-hero-img" style="border-radius:24px;overflow:hidden;position:relative">
+        <img src={article.image} alt={article.title} style="width:100%;height:auto;display:block" loading="eager" />
+      </div>
+    </div>
+  </div>
+  <div style="height:40px"></div>
+</section>
+
+<section class="section" style="padding-top:56px">
+  <div class="container article-layout">
+    <div style="padding-right:32px" class="hide-tablet">
+      <div style="position:sticky;top:120px;display:flex;flex-direction:column;align-items:flex-end;gap:12px">
+        <div style="font:600 11px var(--sans);color:var(--ink-300);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px">Share</div>
+        <button id="copy-link" title="Copy link"
+          style="width:40px;height:40px;border-radius:999px;background:var(--paper);border:1.5px solid var(--border);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;color:var(--forest-800)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <article id="article-body">
+      <div set:html={bodyHtml} />
+      <div style="margin-top:44px;padding-top:26px;border-top:1px solid var(--border)">
+        <div style="font:600 12px var(--sans);color:var(--ink-300);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px">Topics</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          {article.keywords.map((k: string) => <span class="pill pill--sage">{k}</span>)}
+        </div>
+      </div>
+      <div style="margin-top:32px;padding:22px 26px;border-radius:18px;background:var(--sage-50);display:flex;gap:16px;align-items:flex-start">
+        <div style="width:52px;height:52px;border-radius:999px;background:var(--sage-200);color:var(--forest-800);font:700 18px var(--serif);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">{initials}</div>
+        <div>
+          <div style="font:700 17px var(--serif);color:var(--forest-800);margin-bottom:3px">{article.author}</div>
+          <div style="font:500 12px var(--sans);color:var(--fern-600);margin-bottom:8px">{article.authorRole}</div>
+          <p style="font:400 14px/1.6 var(--sans);color:var(--ink-700);margin:0">A contributor to the Sowing Kindness Society reading room, writing about kindness, family life and raising kind children in Singapore.</p>
+        </div>
+      </div>
+      <div style="margin-top:32px">
+        <a href="/stories/" style="display:inline-flex;align-items:center;gap:8px;font:600 15px var(--sans);color:var(--forest-800)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M15 18l-6-6 6-6"/></svg>
+          Back to all stories
+        </a>
+      </div>
+    </article>
+    <div></div>
+  </div>
+</section>
+
+{related.length > 0 && (
+  <section class="section section--cream" style="padding-top:56px;padding-bottom:72px">
+    <div class="container">
+      <h2 data-fade style="font:700 clamp(22px,3.2vw,40px)/1.1 var(--serif);margin:0 0 32px">
+        <span style="color:var(--ink-900)">Keep </span><span style="color:var(--forest-800)">reading.</span>
+      </h2>
+      <div class="grid-2col-sm" data-stagger>
+        {related.map(r => (
+          <a href={`/stories/${r.slug}/`} style="display:block;text-decoration:none;color:inherit">
+            <article class="card" style="overflow:hidden">
+              <div style="position:relative;height:200px">
+                <img src={r.image} alt={r.title} style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" />
+                <span class="pill pill--paper" style="position:absolute;left:16px;bottom:14px">{r.tag}</span>
+              </div>
+              <div style="padding:18px 22px 22px">
+                <div style="font:500 12px var(--sans);color:var(--ink-500);margin-bottom:8px">{r.date} &middot; {r.readTime}</div>
+                <div style="font:700 20px/1.3 var(--serif);color:var(--ink-900);margin-bottom:8px">{r.title}</div>
+                <span class="link-arrow">Read story &rsaquo;</span>
+              </div>
+            </article>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<section style="background:var(--forest-900);padding:52px 0">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+    <div>
+      <div style="font:700 22px/1.2 var(--serif);color:#fff;margin-bottom:8px">Does your child have a kindness story to tell?</div>
+      <p style="font:400 15px var(--sans);color:rgba(255,255,255,.75);margin:0;max-width:460px">Free to enter. Submissions close 20 September 2026.</p>
+    </div>
+    <a href="/submit/" class="btn btn-primary" style="flex-shrink:0">Register Now <span class="chev">&rsaquo;</span></a>
+  </div>
+</section>
+
+</BaseLayout>
+
+<script>
+import { gsap } from 'gsap';
+document.getElementById('copy-link')?.addEventListener('click', () => {
+  navigator.clipboard?.writeText(window.location.href);
+});
+const heroContent = document.querySelectorAll('#article-hero-content > *');
+const heroImg = document.getElementById('article-hero-img');
+if (heroContent.length) gsap.from(heroContent, { y: 28, stagger: 0.08, duration: 0.65, ease: 'power3.out', clearProps: 'transform' });
+if (heroImg) gsap.from(heroImg, { y: 18, duration: 0.8, ease: 'power3.out', delay: 0.1, clearProps: 'transform' });
+</script>

@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ARTICLES } from '../../lib/articles';
+---
+<BaseLayout title="Stories | Sowing Kindness Society" description="Articles, reflections and gentle ideas for parents, educators and anyone who tells stories to small humans.">
+
+<section class="page-header">
+  <div class="container">
+    <div class="page-header__crumbs"><span>Stories</span><span class="dot"></span><span>Reading Room</span></div>
+    <h1 data-fade style="font:700 clamp(36px,5.5vw,72px)/1.06 var(--serif);letter-spacing:-.02em;margin:0 0 16px">
+      <span style="color:var(--ink-900)">Quiet stories for </span><span style="color:var(--forest-800)">growing </span><span style="color:var(--orange-500)">families.</span>
+    </h1>
+    <p data-fade style="font:400 18px/1.6 var(--sans);color:var(--ink-700);max-width:620px;margin:0">Articles, reflections and gentle ideas for parents, educators and anyone who tells stories to small humans. New writing every other week.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:16px">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px" data-stagger>
+      {ARTICLES.map((a, i) => (
+        <a href={`/stories/${a.slug}/`} style="display:flex;text-decoration:none;color:inherit">
+          <article class="card story-card" style="overflow:hidden;display:flex;flex-direction:column;width:100%">
+            <div class="story-card__img" style="position:relative;height:240px;flex-shrink:0">
+              <img src={a.image} alt={a.title} style="width:100%;height:100%;object-fit:cover;display:block" loading={i === 0 ? 'eager' : 'lazy'} />
+              <span class="pill pill--paper" style="position:absolute;left:16px;bottom:14px">{a.tag}</span>
+              {a.withPlay && <span style="position:absolute;right:16px;top:14px;width:36px;height:36px;border-radius:999px;background:rgba(255,255,255,.92);display:inline-flex;align-items:center;justify-content:center;color:var(--forest-800)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>}
+            </div>
+            <div class="story-card__body" style="padding:24px 26px 28px;display:flex;flex-direction:column;flex:1">
+              <div style="display:flex;align-items:center;gap:8px;font:500 13px var(--sans);color:var(--ink-500);margin-bottom:10px">
+                <span>{a.date}</span><span style="width:3px;height:3px;border-radius:999px;background:var(--sage-500);display:inline-block"></span><span>{a.author}</span><span style="width:3px;height:3px;border-radius:999px;background:var(--sage-500);display:inline-block"></span><span>{a.readTime}</span>
+              </div>
+              <div style="font:700 22px/1.3 var(--serif);color:var(--ink-900);margin-bottom:10px">{a.title}</div>
+              <div class="heart-divider"><span class="line" style="width:20px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:20px"></span></div>
+              <p style="font:400 14px/1.65 var(--sans);color:var(--ink-700);margin:12px 0 0;flex:1">{a.intro}</p>
+              <span class="link-arrow" style="margin-top:16px">Read story <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></span>
+            </div>
+          </article>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

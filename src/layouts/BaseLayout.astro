@@ -1,0 +1,88 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = 'Sowing Kindness Society — Storytelling Competition 2026',
+  description = 'A bilingual storytelling competition for children aged 3–6 in Singapore. Sow kindness, watch it grow.',
+  image = '/logo/sks-logo.png',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://sowingkindness.org.sg');
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={image} />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href={canonicalURL} />
+  
+  
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito+Sans:ital,wght@0,300..900;1,300..900&display=swap" />
+  <link rel="icon" type="image/png" href="/logo/sks-logomark.png" />
+  <title>{title}</title>
+</head>
+<body>
+  <Nav currentPath={Astro.url.pathname} />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+
+  <!-- GSAP global init -->
+  <script>
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Nav scroll shadow
+    const nav = document.querySelector('.nav') as HTMLElement;
+    if (nav) {
+      ScrollTrigger.create({
+        start: 'top -20',
+        onUpdate: (self) => nav.classList.toggle('scrolled', self.scroll() > 20),
+      });
+      // Nav entrance
+      gsap.from(nav, { y: -80, duration: 0.7, ease: 'power3.out', delay: 0.05 });
+    }
+
+    // Scroll-triggered slide-up for [data-fade] — y only, no opacity (avoids invisible content)
+    document.querySelectorAll('[data-fade]').forEach((el) => {
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 88%',
+        once: true,
+        onEnter: () => gsap.from(el, { y: 30, duration: 0.7, ease: 'power3.out', clearProps: 'transform' }),
+      });
+    });
+
+    // Staggered groups: [data-stagger] children animate in sequence — y only
+    document.querySelectorAll('[data-stagger]').forEach((parent) => {
+      const children = parent.querySelectorAll(':scope > *');
+      ScrollTrigger.create({
+        trigger: parent,
+        start: 'top 86%',
+        once: true,
+        onEnter: () => gsap.from(children, {
+          y: 30, stagger: 0.09, duration: 0.65, ease: 'power3.out', clearProps: 'transform',
+        }),
+      });
+    });
+  </script>
+</body>
+</html>

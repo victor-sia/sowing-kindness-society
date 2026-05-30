@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const VIDEOS = [
+  { featured:true, series:'Storytime', duration:'4:18', href:'https://www.ganjingworld.com/video/1ia1t1d4ree7wM4nzoEMtbywH1tp1c', img:'https://image1-ap-japan.cloudokyo.cloud/image/v3/6a/96/b2/6a96b2af-9920-4522-ae99-a6307771ad1c/1280.webp', title:"Lion and Mouse Friends — A Kindness Story Song", body:"A heartwarming animated song retelling the classic tale. Kindness and friendship can make even the smallest friend a hero.", tag:'Storytime' },
+  { featured:false, series:'Storytime', duration:'5:42', href:'https://www.ganjingworld.com/video/1ii0isdhvq42ypAN5bs9Fs9sp1of1c', img:'https://image1-ap-japan.cloudokyo.cloud/image/v14/b2/45/af/b245af9b-1785-4520-a705-6627c1d75254/1280.webp', title:"The Forgotten Swing", body:"Two children notice a lonely old man — and discover how small acts of care can change a life.", tag:'Storytime' },
+  { featured:false, series:'Read-Alouds', duration:'3:55', href:'https://www.ganjingworld.com/video/1g859k3l56b7kIcVYNot1b5rg1v91c', img:'https://image4-us-west.cloudokyo.cloud/image/v1/1d/0c/64/1d0c64c1-bab7-438b-99d5-c74ea8f2842b/1280.webp', title:"Little Listeners: When I'm Feeling Kind", body:"A gentle story-time reading of Trace Moroney's picture book on what it feels like to be kind.", tag:'Read-Alouds' },
+  { featured:false, series:'Read-Alouds', duration:'4:30', href:'https://www.ganjingworld.com/video/1icvovrk7pd6F44gZOc2jvmiO1mf1c', img:'https://image1-us-east.cloudokyo.cloud/image/v14/50/32/90/5032906e-26c4-4954-821b-285b18538e0c/1280.webp', title:"Chinese Traditional Story: A Kind Man and the Plum Tree", body:"A story about Shushan Han, a wealthy man known for his honesty, courtesy and kindness.", tag:'Read-Alouds' },
+];
+---
+<BaseLayout title="Watch | Sowing Kindness Society" description="Watch kindness stories and picture-book readings on our official GanjingWorld channel. Safe, ad-free, and gentle.">
+
+<section class="page-header">
+  <div class="container">
+    <div class="page-header__crumbs"><span>Watch</span><span class="dot"></span><span>GanjingWorld Channel</span></div>
+    <h1 style="font:700 clamp(36px,5.5vw,72px)/1.06 var(--serif);letter-spacing:-.02em;margin:0 0 16px">
+      <span style="color:var(--ink-900)">Stories you can </span><span style="color:var(--forest-800)">curl up </span><span style="color:var(--orange-500)">and watch.</span>
+    </h1>
+    <p style="font:400 18px/1.6 var(--sans);color:var(--ink-700);max-width:620px;margin:0">Picture-book readings, kindness songs, and short films — all on our official GanjingWorld channel. Safe, ad-free, and gentle.</p>
+  </div>
+</section>
+
+<!-- Channel banner -->
+<section style="padding:0 0 28px">
+  <div class="container">
+    <div class="card card--quiet" style="padding:22px 28px;display:flex;flex-wrap:wrap;gap:20px;align-items:center">
+      <img src="/logo/sks-logomark.png" alt="" width="56" height="56" style="height:56px;width:auto;flex-shrink:0" />
+      <div style="flex:1 1 280px;min-width:0">
+        <div style="font:700 20px var(--serif);color:var(--forest-800)">Sowing Kindness Society Channel</div>
+        <div style="font:400 14px var(--sans);color:var(--ink-500);margin-top:4px">Picture-book readings, kindness songs, and short films — on GanjingWorld.</div>
+      </div>
+      <a href="https://www.ganjingworld.com/@sowingkindness" target="_blank" rel="noopener" class="btn btn-primary" style="flex-shrink:0">Follow Channel <span class="chev">›</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Video grid -->
+<section class="section" style="padding-top:0;padding-bottom:64px">
+  <div class="container">
+    <div class="grid-3col" data-stagger>
+      {VIDEOS.map(v => (
+        <a href={v.href} target="_blank" rel="noopener" class="card" style="display:block;overflow:hidden;text-decoration:none;color:inherit">
+          <div style="position:relative;height:220px">
+            <img src={v.img} alt={v.title} style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" />
+            <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+              <span style="width:56px;height:56px;border-radius:999px;background:rgba(255,255,255,.92);display:inline-flex;align-items:center;justify-content:center;color:var(--forest-800)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </span>
+            </span>
+            {v.duration && <span style="position:absolute;right:12px;bottom:12px;padding:4px 10px;border-radius:6px;background:rgba(20,40,20,.78);color:#fff;font:600 12px var(--sans)">{v.duration}</span>}
+            <span class="pill pill--paper" style="position:absolute;left:14px;top:14px">{v.tag}</span>
+          </div>
+          <div style="padding:20px 22px 24px">
+            <div style="font:700 18px/1.3 var(--serif);color:var(--forest-800);margin-bottom:8px">{v.title}</div>
+            <div class="heart-divider" style="margin-bottom:10px"><span class="line" style="width:16px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:16px"></span></div>
+            <p style="font:400 14px/1.6 var(--sans);color:var(--ink-700);margin:0 0 12px">{v.body}</p>
+            <span class="link-arrow">Watch on GanjingWorld <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section section--cream" style="text-align:center;padding-top:60px;padding-bottom:60px">
+  <div class="container" style="max-width:600px;margin:0 auto">
+    <h2 data-fade style="font:700 clamp(24px,3.5vw,44px)/1.1 var(--serif);margin:0 0 12px">
+      <span style="color:var(--ink-900)">Want more kindness </span><span style="color:var(--forest-800)">stories?</span>
+    </h2>
+    <p data-fade style="font:400 17px/1.7 var(--sans);color:var(--ink-700);margin:0 0 24px">Follow our official channel on GanjingWorld for new uploads every week — picture-book readings, kindness songs, and storytelling tips for families.</p>
+    <a data-fade href="https://www.ganjingworld.com/@sowingkindness" target="_blank" rel="noopener" class="btn btn-secondary">Follow on GanjingWorld <span class="chev">›</span></a>
+  </div>
+</section>
+
+</BaseLayout>

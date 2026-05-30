@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Contact | Sowing Kindness Society" description="Get in touch with Sowing Kindness Society — questions, partnerships, volunteering or just a small kindness to share.">
+
+<section class="page-header">
+  <div class="container">
+    <div class="page-header__crumbs"><span>Contact</span><span class="dot"></span><span>Get in Touch</span></div>
+    <h1 style="font:700 clamp(36px,5.5vw,72px)/1.06 var(--serif);letter-spacing:-.02em;margin:0 0 14px">
+      <span style="color:var(--ink-900)">We'd love to </span><span style="color:var(--forest-800)">hear </span><span style="color:var(--orange-500)">from you.</span>
+    </h1>
+    <p style="font:400 18px/1.6 var(--sans);color:var(--ink-700);max-width:620px;margin:0 0 14px">Have a question, an idea, or a partnership in mind? Send us a note — we respond within two business days.</p>
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="width:32px;height:1.5px;background:var(--sage-500);display:inline-block"></span>
+      <span style="font:600 16px var(--serif);color:var(--fern-600)">Let's grow kindness together.</span>
+      <span style="color:var(--heart)">♥</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:40px">
+  <div class="container grid-asym">
+
+    <!-- Contact info -->
+    <div>
+      <div class="card" style="padding:8px 22px 16px;margin-bottom:20px;overflow:hidden">
+        {[
+          { icon:'M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z', label:'Visit', value:'Sowing Kindness Society', sub:'Singapore (community spaces — by appointment)' },
+          { icon:'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z', label:'Email', value:'contact@sowingkindness.org.sg', sub:'General enquiries — the fastest way to reach us.' },
+          { icon:'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064', label:'Web', value:'www.sowingkindness.org.sg', sub:undefined },
+        ].map((r, i) => (
+          <div style={`display:flex;align-items:flex-start;gap:14px;padding:16px 4px;border-bottom:${i<2 ? '1px solid rgba(31,77,31,.08)' : 'none'}`}>
+            <span style="width:40px;height:40px;border-radius:999px;background:var(--sage-200);color:var(--forest-800);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d={r.icon}/></svg>
+            </span>
+            <div style="min-width:0;overflow:hidden">
+              <div style="font:600 12px var(--sans);color:var(--ink-500);letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px">{r.label}</div>
+              <div style="font:500 14px var(--sans);color:var(--ink-900);word-break:break-all">{r.value}</div>
+              {r.sub && <div style="font:400 12px var(--sans);color:var(--ink-500);margin-top:2px">{r.sub}</div>}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div style="margin-bottom:18px">
+        <div style="font:700 13px var(--sans);color:var(--forest-800);letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px">Find us elsewhere</div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px">
+          {[
+            { icon:'M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01M7.5 21h9a3 3 0 003-3V6a3 3 0 00-3-3h-9a3 3 0 00-3 3v12a3 3 0 003 3z', label:'Instagram', handle:'@sowingkindnesssg' },
+            { icon:'M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z', label:'Facebook', handle:'/sowingkindnesssg' },
+            { icon:'M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z', label:'WhatsApp', handle:'Family update group' },
+            { icon:'M10 8l6 4-6 4V8z', label:'GanjingWorld', handle:'@sowingkindness' },
+          ].map(s => (
+            <div class="card card--flat" style="padding:12px 14px;display:flex;align-items:center;gap:10px;overflow:hidden;min-width:0">
+              <span style="width:34px;height:34px;border-radius:999px;background:var(--orange-100);color:var(--orange-600);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d={s.icon}/></svg>
+              </span>
+              <div style="min-width:0;overflow:hidden">
+                <div style="font:700 13px var(--sans);color:var(--forest-800);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{s.label}</div>
+                <div style="font:400 11px var(--sans);color:var(--ink-500);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{s.handle}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="card card--quiet" style="padding:18px 22px;background:var(--sage-50)">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest-800)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div style="font:700 15px var(--sans);color:var(--forest-800)">Response time</div>
+        </div>
+        <p style="font:400 14px/1.6 var(--sans);color:var(--ink-700);margin:0">We read every message ourselves — no bots, no auto-replies. Most notes get a personal reply within 2 working days.</p>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="card" style="padding:32px">
+      <h2 style="font:700 28px var(--serif);color:var(--forest-800);margin:0 0 6px">Send us a note</h2>
+      <div class="heart-divider" style="margin-bottom:16px"><span class="line"></span><span style="color:var(--heart)">♥</span><span class="line"></span></div>
+      <p style="font:400 14px var(--sans);color:var(--ink-500);margin:0 0 20px">The more you tell us, the better we can help.</p>
+      <form id="contact-form" style="display:grid;gap:14px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+          <label style="display:block"><span class="field-label">Your name</span><input class="field-input" type="text" placeholder="Aiyana Tan" required /></label>
+          <label style="display:block"><span class="field-label">Email</span><input class="field-input" type="email" placeholder="you@email.com" required /></label>
+        </div>
+        <label style="display:block">
+          <span class="field-label">What's this about?</span>
+          <select class="field-input">
+            <option>General enquiry</option>
+            <option>Competition question</option>
+            <option>Partner / sponsor with us</option>
+            <option>School programme</option>
+            <option>Volunteer with us</option>
+            <option>Press &amp; media</option>
+          </select>
+        </label>
+        <label style="display:block"><span class="field-label">Your message</span><textarea class="field-input" rows="4" placeholder="Tell us a little about how we can help…" required></textarea></label>
+        <label style="display:flex;align-items:flex-start;gap:12px;padding:12px;border-radius:12px;background:var(--cream-100);cursor:pointer">
+          <input type="checkbox" checked style="margin-top:4px;flex-shrink:0" />
+          <span style="font:400 14px/1.5 var(--sans);color:var(--ink-700)">Send me the gentle monthly newsletter — one email a month, story-shaped.</span>
+        </label>
+        <div>
+          <button type="submit" class="btn btn-primary" style="width:100%">Send Message <span class="chev">›</span></button>
+          <p style="font:400 13px var(--sans);color:var(--ink-500);text-align:center;margin:10px 0 0">We'll never share your details.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Closing image -->
+<section style="padding:0;overflow:hidden;position:relative;height:420px">
+  <img
+    src="/images/girl-dandelion.jpg"
+    alt="A young girl blowing a dandelion in a sunlit garden"
+    style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block"
+    loading="lazy"
+  />
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom, transparent 50%, rgba(31,77,31,0.55) 100%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:40px">
+    <p style="font:600 18px/1.5 var(--serif);color:#fff;text-align:center;margin:0;text-shadow:0 2px 8px rgba(0,0,0,.25);letter-spacing:.01em">
+      Sow kindness — and watch it grow. 🌱
+    </p>
+  </div>
+</section>
+
+</BaseLayout>
+<script>
+document.getElementById('contact-form')?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  alert('Thank you! Your message has been sent. We\'ll reply within 2 working days.');
+});
+</script>

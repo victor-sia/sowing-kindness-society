@@ -1,0 +1,276 @@
+---
+interface Props { currentPath: string; }
+const { currentPath } = Astro.props;
+
+const links = [
+  { label: 'Home',    href: '/' },
+  { label: 'About',   href: '/about/' },
+  { label: 'Contact', href: '/contact/' },
+];
+
+const storiesDropdown = [
+  { label: 'Read',  href: '/stories/' },
+  { label: 'Watch', href: '/watch/' },
+];
+
+const eventsDropdown = [
+  { label: 'Upcoming Events', href: '/events/upcoming/' },
+  { label: 'Past Events',     href: '/events/past/' },
+];
+
+const compDropdown = [
+  { label: 'Competition',   href: '/competition/' },
+  { label: 'Official Rules',href: '/rules/' },
+  { label: 'Consent Form',  href: '/consent/' },
+  { label: 'Submit a Video',href: '/submit/' },
+];
+
+function isActive(href: string) {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+}
+const compActive   = compDropdown.some(d => currentPath.startsWith(d.href));
+const eventsActive   = eventsDropdown.some(d => currentPath.startsWith(d.href));
+const storiesActive  = storiesDropdown.some(d => currentPath.startsWith(d.href));
+---
+
+<header class="nav" id="site-nav">
+  <div class="container nav__inner">
+    <a href="/" class="nav__logo">
+      <img src="/logo/sks-logo-transparent.png" alt="Sowing Kindness Society" width="200" height="62" />
+    </a>
+
+    <nav class="nav__links">
+      <a href="/" class={`nav__link${currentPath === '/' ? ' active' : ''}`}>Home</a>
+      <a href="/about/" class={`nav__link${isActive('/about/') ? ' active' : ''}`}>About</a>
+
+      <!-- Competition dropdown -->
+      <div class={`nav__drop-wrap${compActive ? ' active' : ''}`}>
+        <a href="/competition/" class={`nav__link nav__link--drop${compActive ? ' active' : ''}`}>
+          Competition
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="nav__caret"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav__dropdown">
+          {compDropdown.map(d => (
+            <a href={d.href} class={`nav__dropdown-item${currentPath.startsWith(d.href) ? ' active' : ''}`}>
+              {d.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Events dropdown -->
+      <div class={`nav__drop-wrap${eventsActive ? ' active' : ''}`}>
+        <a href="/events/upcoming/" class={`nav__link nav__link--drop${eventsActive ? ' active' : ''}`}>
+          Events
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="nav__caret"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav__dropdown">
+          {eventsDropdown.map(d => (
+            <a href={d.href} class={`nav__dropdown-item${currentPath.startsWith(d.href) ? ' active' : ''}`}>
+              {d.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Stories dropdown -->
+      <div class={`nav__drop-wrap${storiesActive ? ' active' : ''}`}>
+        <a href="/stories/" class={`nav__link nav__link--drop${storiesActive ? ' active' : ''}`}>
+          Inspire Stories
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="nav__caret"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="nav__dropdown">
+          {storiesDropdown.map(d => (
+            <a href={d.href} class={`nav__dropdown-item${currentPath.startsWith(d.href) ? ' active' : ''}`}>
+              {d.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {links.slice(2).map(l => (
+        <a href={l.href} class={`nav__link${isActive(l.href) ? ' active' : ''}`}>{l.label}</a>
+      ))}
+    </nav>
+
+    <div class="nav__cta">
+      <a href="/about/" class="btn btn-outline">Learn More</a>
+      <a href="/submit/" class="btn btn-primary">Register Now <span class="chev">›</span></a>
+    </div>
+
+    <button class="nav__burger" id="nav-burger" aria-label="Open menu">
+      <svg id="icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+      <svg id="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="nav__drawer" id="nav-drawer">
+  <nav>
+    <a href="/" class={`nav__link${currentPath === '/' ? ' active' : ''}`}>Home</a>
+    <a href="/about/" class={`nav__link${isActive('/about/') ? ' active' : ''}`}>About</a>
+    <!-- Competition group in mobile -->
+    <div class="nav__drawer-group">
+      <div class="nav__drawer-group-label">Competition</div>
+      {compDropdown.map(d => (
+        <a href={d.href} class={`nav__link nav__link--sub${currentPath.startsWith(d.href) ? ' active' : ''}`}>{d.label}</a>
+      ))}
+    </div>
+    <!-- Events group in mobile -->
+    <div class="nav__drawer-group">
+      <div class="nav__drawer-group-label">Events</div>
+      {eventsDropdown.map(d => (
+        <a href={d.href} class={`nav__link nav__link--sub${currentPath.startsWith(d.href) ? ' active' : ''}`}>{d.label}</a>
+      ))}
+    </div>
+    <!-- Stories group in mobile -->
+    <div class="nav__drawer-group">
+      <div class="nav__drawer-group-label">Inspire Stories</div>
+      {storiesDropdown.map(d => (
+        <a href={d.href} class={`nav__link nav__link--sub${currentPath.startsWith(d.href) ? ' active' : ''}`}>{d.label}</a>
+      ))}
+    </div>
+    {links.slice(2).map(l => (
+      <a href={l.href} class={`nav__link${isActive(l.href) ? ' active' : ''}`}>{l.label}</a>
+    ))}
+  </nav>
+  <div class="nav__drawer-cta">
+    <a href="/about/" class="btn btn-outline">Learn More</a>
+    <a href="/submit/" class="btn btn-primary">Register Now <span class="chev">›</span></a>
+  </div>
+  <div style="margin-top:32px;padding:16px 0;border-top:1px solid rgba(31,77,31,.08);font:400 13px var(--sans);color:var(--ink-500)">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+      <span style="color:var(--heart)">♥</span>
+      <span style="font:600 14px var(--serif);color:var(--forest-800)">Sow Kindness, Watch It Grow</span>
+    </div>
+    <div>contact@sowingkindness.org.sg</div>
+  </div>
+</div>
+
+<style>
+/* ── Dropdown wrapper ── */
+.nav__drop-wrap {
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+}
+.nav__link--drop {
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+}
+.nav__caret {
+  transition:transform .2s;
+  flex-shrink:0;
+}
+
+/* Dropdown panel — opacity/visibility so hover delay works correctly */
+.nav__dropdown {
+  position:absolute;
+  top:100%;          /* flush to the link — no gap */
+  left:50%;
+  transform:translateX(-50%);
+  min-width:180px;
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 8px 28px rgba(31,77,31,.12),0 2px 6px rgba(31,77,31,.06);
+  padding:16px 8px 8px; /* 16px top padding acts as the visual gap */
+  z-index:200;
+  border:1px solid rgba(31,77,31,.07);
+  /* Hidden state — delay hiding by 120ms so mouse can travel to panel */
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .15s .12s, visibility .15s .12s, transform .15s .12s;
+  transform:translateX(-50%) translateY(-4px);
+}
+/* Arrow pointer */
+.nav__dropdown::before {
+  content:'';
+  position:absolute;
+  top:9px;
+  left:50%;
+  transform:translateX(-50%) rotate(45deg);
+  width:11px;height:11px;
+  background:#fff;
+  border-left:1px solid rgba(31,77,31,.07);
+  border-top:1px solid rgba(31,77,31,.07);
+}
+/* Transparent bridge — fills the space between link bottom and dropdown top */
+.nav__dropdown::after {
+  content:'';
+  position:absolute;
+  bottom:100%;
+  left:0;right:0;
+  height:16px;
+  background:transparent;
+}
+.nav__dropdown-item {
+  display:block;
+  padding:9px 14px;
+  font:500 13.5px var(--sans);
+  color:var(--ink-700);
+  border-radius:8px;
+  white-space:nowrap;
+  transition:background .12s,color .12s;
+}
+.nav__dropdown-item:hover,
+.nav__dropdown-item.active {
+  background:var(--sage-50);
+  color:var(--forest-800);
+  font-weight:700;
+}
+
+/* Show on hover — instant appear, delayed hide */
+.nav__drop-wrap:hover .nav__dropdown {
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
+  transition:opacity .12s 0s, visibility .12s 0s, transform .12s 0s;
+}
+.nav__drop-wrap:hover .nav__caret { transform:rotate(180deg) }
+
+/* Mobile drawer group */
+.nav__drawer-group { padding:6px 0 2px;margin:4px 0 }
+.nav__drawer-group-label {
+  font:700 11px var(--sans);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--fern-600);
+  padding:8px 4px 6px;
+}
+.nav__link--sub {
+  padding-left:18px !important;
+  font-size:16px !important;
+  color:var(--ink-700) !important;
+}
+.nav__link--sub.active { color:var(--forest-800) !important; font-weight:700 !important }
+</style>
+
+<script>
+  const burger = document.getElementById('nav-burger')!;
+  const drawer = document.getElementById('nav-drawer')!;
+  const iconMenu = document.getElementById('icon-menu')!;
+  const iconClose = document.getElementById('icon-close')!;
+
+  burger.addEventListener('click', () => {
+    const open = drawer.classList.toggle('open');
+    iconMenu.style.display = open ? 'none' : '';
+    iconClose.style.display = open ? '' : 'none';
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    drawer.classList.remove('open');
+    iconMenu.style.display = '';
+    iconClose.style.display = 'none';
+    document.body.style.overflow = '';
+  }));
+</script>

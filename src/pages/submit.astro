@@ -1,0 +1,449 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Submit Your Video | Sowing Kindness Society" description="Submit your child's storytelling video to the 2026 competition. Free to enter. Deadline 20 September 2026.">
+
+<section class="page-header">
+  <div class="container">
+    <div class="page-header__crumbs"><span>Submit</span><span class="dot"></span><span>Your Video</span></div>
+    <h1 style="font:700 clamp(36px,5.5vw,72px)/1.06 var(--serif);letter-spacing:-.02em;margin:0 0 14px">
+      <span style="color:var(--ink-900)">Share your </span><span style="color:var(--forest-800)">child's </span><span style="color:var(--orange-500)">story.</span>
+    </h1>
+    <p style="font:400 18px/1.6 var(--sans);color:var(--ink-700);max-width:620px;margin:0">Registration is completely free. Deadline: <strong>20 September 2026.</strong></p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:28px;padding-bottom:80px">
+  <div class="container sf-layout">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sf-sidebar" id="sf-sidebar">
+      <!-- Step badge -->
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px">
+        <span id="sf-badge" style="width:36px;height:36px;border-radius:999px;background:var(--sage-200);color:var(--forest-800);font:700 15px var(--sans);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">1</span>
+        <span id="sf-badge-label" style="font:600 16px var(--sans);color:var(--forest-800);border-bottom:2px solid var(--forest-800);padding-bottom:2px">Step 1 of 4</span>
+      </div>
+
+      <!-- Timeline -->
+      <div style="position:relative;padding-left:48px">
+        <!-- Vertical line -->
+        <div style="position:absolute;left:15px;top:14px;bottom:14px;width:2px;background:var(--sage-200);border-radius:2px"></div>
+
+        {[
+          { n:1, title:'About the storyteller', sub:'Name, age and story language.' },
+          { n:2, title:'About the story',        sub:'A title, a short synopsis, and the video.' },
+          { n:3, title:'Parent or guardian',     sub:'Your contact details.' },
+          { n:4, title:'Consent & declaration',  sub:'Parental / guardian consent form.' },
+        ].map(s => (
+          <div class="sf-step-item" id={`sf-si-${s.n}`} style="position:relative;margin-bottom:32px">
+            <!-- No inline background — CSS class controls colour -->
+            <span class={`sf-step-circle ${s.n === 1 ? 'sf-sc-current' : 'sf-sc-future'}`}
+              id={`sf-sc-${s.n}`}
+              style="position:absolute;left:-48px;top:2px;width:30px;height:30px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .3s,box-shadow .3s">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" style="pointer-events:none"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <div class={`sf-step-title ${s.n === 1 ? 'sf-st-current' : 'sf-st-future'}`}
+              id={`sf-st-${s.n}`}
+              style="font:700 16px/1.2 var(--serif);margin-bottom:4px;transition:color .3s">{s.title}</div>
+            <div style="font:400 13px var(--sans);color:var(--ink-400,#9aaa94)">{s.sub}</div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Safety card -->
+      <div style="background:var(--sage-50);border-radius:16px;padding:18px 18px;margin-top:8px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--fern-600)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span style="font:700 15px var(--sans);color:var(--forest-800)">Your information is safe</span>
+        </div>
+        <p style="font:400 13px/1.55 var(--sans);color:var(--ink-700);margin:0">We only use your details to run the competition and share results. We never sell or share your data.</p>
+      </div>
+    </aside>
+
+    <!-- ── FORM CARD ── -->
+    <div class="card" style="padding:40px 44px" id="submit-card">
+
+      <!-- ── STEP 1: About the storyteller ── -->
+      <div class="sf-step" id="sf-step-1">
+        <h2 class="sf-heading">About the storyteller</h2>
+        <div class="heart-divider" style="margin-bottom:14px"><span class="line" style="width:24px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:24px"></span></div>
+        <p class="sf-sub">Tell us a little about your young storyteller.</p>
+
+        <div class="sf-field">
+          <label class="sf-label">Storyteller's name</label>
+          <input id="f-name" class="field-input" type="text" placeholder="e.g. Mei Lin" autocomplete="off" />
+        </div>
+
+        <div class="sf-row">
+          <div class="sf-field">
+            <label class="sf-label">Age</label>
+            <select id="f-age" class="field-input">
+              <option value="">Select age</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </div>
+          <div class="sf-field">
+            <label class="sf-label">Story language</label>
+            <select id="f-lang" class="field-input">
+              <option value="English">English</option>
+              <option value="Chinese">Chinese (Mandarin)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="sf-row">
+          <div class="sf-field">
+            <label class="sf-label">Preschool or primary school <span class="sf-optional">(optional)</span></label>
+            <input id="f-school" class="field-input" type="text" placeholder="e.g. Little Skool-House" />
+          </div>
+          <div class="sf-field">
+            <label class="sf-label">Age group</label>
+            <select id="f-agegroup" class="field-input">
+              <option value="">Select age first</option>
+              <option value="3-4">Age 3 – 4</option>
+              <option value="5-6">Age 5 – 6</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STEP 2: About the story ── -->
+      <div class="sf-step sf-hidden" id="sf-step-2">
+        <h2 class="sf-heading">About the story</h2>
+        <div class="heart-divider" style="margin-bottom:14px"><span class="line" style="width:24px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:24px"></span></div>
+        <p class="sf-sub">Tell us what your story is about — and share the video.</p>
+
+        <div class="sf-field">
+          <label class="sf-label">Story title</label>
+          <input id="f-title" class="field-input" type="text" placeholder="A small act of kindness" />
+        </div>
+
+        <div class="sf-field">
+          <label class="sf-label">Synopsis</label>
+          <textarea id="f-synopsis" class="field-input" rows="4" placeholder="Tell us in 1–2 sentences what your story is about." style="resize:vertical"></textarea>
+        </div>
+
+        <div class="sf-field">
+          <div id="sf-dropzone" class="sf-dropzone">
+            <input id="f-video" type="file" accept="video/mp4,video/quicktime,.mov" style="display:none" />
+            <div id="sf-drop-prompt">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--forest-800)" stroke-width="1.5" stroke-linecap="round" style="margin-bottom:10px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+              <div style="font:600 16px var(--sans);color:var(--forest-800);margin-bottom:4px">Drop your video here or <span style="text-decoration:underline;cursor:pointer" id="sf-browse-link">click to browse</span></div>
+              <div style="font:400 13px var(--sans);color:var(--ink-500)">MP4 / MOV up to 200MB &middot; 3 min (ages 3–4) or 5 min (ages 5–6)</div>
+            </div>
+            <div id="sf-drop-selected" class="sf-hidden" style="display:flex;align-items:center;gap:12px">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--fern-600)" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span id="sf-filename" style="font:500 15px var(--sans);color:var(--forest-800)"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STEP 3: Parent or guardian ── -->
+      <div class="sf-step sf-hidden" id="sf-step-3">
+        <h2 class="sf-heading">Parent or guardian</h2>
+        <div class="heart-divider" style="margin-bottom:14px"><span class="line" style="width:24px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:24px"></span></div>
+        <p class="sf-sub">We'll send all updates to you.</p>
+
+        <div class="sf-field">
+          <label class="sf-label">Your name</label>
+          <input id="f-pname" class="field-input" type="text" placeholder="Full name of parent / guardian" />
+        </div>
+
+        <div class="sf-field">
+          <label class="sf-label">Email</label>
+          <input id="f-email" class="field-input" type="email" placeholder="you@email.com" />
+        </div>
+
+        <div class="sf-field">
+          <label class="sf-label">Mobile <span class="sf-optional">(optional)</span></label>
+          <input id="f-mobile" class="field-input" type="tel" placeholder="+65 8123 4567" />
+        </div>
+      </div>
+
+      <!-- ── STEP 4: Consent & declaration ── -->
+      <div class="sf-step sf-hidden" id="sf-step-4">
+        <h2 class="sf-heading">Consent &amp; declaration</h2>
+        <div class="heart-divider" style="margin-bottom:14px"><span class="line" style="width:24px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:24px"></span></div>
+        <p class="sf-sub">This is the Parental / Guardian Consent Form. Items marked <span style="color:var(--orange-600);font-weight:700">*</span> are required to take part. You can read the full version on the <a href="/consent/" style="color:var(--fern-600);font-weight:600">Consent Form</a> page.</p>
+
+        <!-- Participation -->
+        <div class="sf-consent-group">
+          <div class="sf-consent-label">PARTICIPATION</div>
+          <label class="sf-checkbox-row">
+            <input type="checkbox" id="c-participation" class="sf-cb sf-required" />
+            <span>I am the parent / legal guardian of this child. I have read and agree to the <a href="/rules/" style="color:var(--fern-600);font-weight:600">Official Competition Rules</a>, will accompany my child at the Grand Final if selected, accept that the organisers are not liable for any injury, loss or damage, and accept that the judges' decisions are final. <span class="sf-req-star">*</span></span>
+          </label>
+        </div>
+
+        <!-- Video recording -->
+        <div class="sf-consent-group">
+          <div class="sf-consent-label">VIDEO RECORDING &amp; SUBMISSION</div>
+          <label class="sf-checkbox-row">
+            <input type="checkbox" id="c-judging" class="sf-cb sf-required" />
+            <span>I consent to my child's video being viewed and evaluated by the judging panel for the competition. <span class="sf-req-star">*</span></span>
+          </label>
+          <label class="sf-checkbox-row">
+            <input type="checkbox" id="c-social" class="sf-cb" />
+            <span>I consent to the video being featured on the Sowing Kindness Society website and social media for competition publicity.</span>
+          </label>
+          <label class="sf-checkbox-row">
+            <input type="checkbox" id="c-popularity" class="sf-cb" />
+            <span>I consent to the video being used for Best Popularity Award voting, which may involve public viewing on the competition website.</span>
+          </label>
+        </div>
+
+        <!-- Photography -->
+        <div class="sf-consent-group">
+          <div class="sf-consent-label">PHOTOGRAPHY &amp; USE OF IMAGES</div>
+          <label class="sf-checkbox-row">
+            <input type="checkbox" id="c-photo" class="sf-cb" />
+            <span>I consent to photographs / videos of my child being taken during the Grand Final by the official photographer.</span>
+          </label>
+          <label class="sf-checkbox-row">
+            <input type="checkbox" id="c-photo-use" class="sf-cb" />
+            <span>I consent to those photographs / videos being used for event reporting, publicity, social media, and future promotional materials.</span>
+          </label>
+          <label class="sf-checkbox-row">
+            <input type="checkbox" id="c-name-pub" class="sf-cb" />
+            <span>I consent to my child's name and school / centre name being published alongside photographs or videos.</span>
+          </label>
+        </div>
+
+        <!-- PDPA -->
+        <div class="sf-consent-group">
+          <div class="sf-consent-label">DATA PROTECTION (PDPA)</div>
+          <label class="sf-checkbox-row">
+            <input type="checkbox" id="c-pdpa" class="sf-cb sf-required" />
+            <span>I understand my personal data is used only to administer this competition, is not shared with third parties without consent except as required by law, and that I may withdraw consent or request access / correction by emailing contact@sowingkindness.org.sg. <span class="sf-req-star">*</span></span>
+          </label>
+        </div>
+
+        <!-- Signature -->
+        <div class="sf-consent-group" style="border-bottom:none;padding-bottom:0">
+          <div class="sf-consent-label">DECLARATION &amp; SIGNATURE</div>
+          <p style="font:400 13px/1.5 var(--sans);color:var(--ink-700);margin:0 0 12px">Type your full name below as your digital signature. By submitting, you confirm everything above is true.</p>
+          <div class="sf-field">
+            <label class="sf-label">Full name (digital signature) <span class="sf-req-star">*</span></label>
+            <input id="f-signature" class="field-input" type="text" placeholder="Full name of parent / guardian" />
+          </div>
+          <div style="font:500 13px var(--sans);color:var(--ink-700);margin-top:8px">Date: <strong id="sf-date"></strong></div>
+          <div id="sf-validation-msg" class="sf-hidden" style="font:500 13px var(--sans);color:var(--orange-600);margin-top:12px">
+            Please complete the required items ( <span class="sf-req-star">*</span> ) to submit.
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Navigation ── -->
+      <div class="sf-nav">
+        <div class="sf-dots">
+          <span class="sf-dot sf-dot--active" id="sf-dot-1"></span>
+          <span class="sf-dot" id="sf-dot-2"></span>
+          <span class="sf-dot" id="sf-dot-3"></span>
+          <span class="sf-dot" id="sf-dot-4"></span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <button class="btn btn-outline sf-hidden" id="sf-btn-back">Back</button>
+          <button class="btn btn-primary" id="sf-btn-next">Continue <span class="chev">›</span></button>
+          <button class="btn btn-primary sf-hidden" id="sf-btn-submit" style="opacity:.6" disabled>Submit Entry <span class="chev">›</span></button>
+        </div>
+      </div>
+
+      <!-- Success message -->
+      <div id="sf-success" class="sf-hidden" style="text-align:center;padding:48px 20px">
+        <div style="width:64px;height:64px;border-radius:999px;background:var(--sage-200);display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;color:var(--fern-600)">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3 style="font:700 26px var(--serif);color:var(--forest-800);margin:0 0 10px">Registration received!</h3>
+        <p style="font:400 16px/1.6 var(--sans);color:var(--ink-700);margin:0 0 24px;max-width:440px;margin-inline:auto">Thank you for entering. We'll send a confirmation to your email within 3 working days. We can't wait to hear your child's story! ♥</p>
+        <a href="/" class="btn btn-secondary">Back to Home <span class="chev">›</span></a>
+      </div>
+
+    </div><!-- /submit-card -->
+  </div><!-- /sf-layout -->
+</section>
+
+</BaseLayout>
+
+<style>
+/* Sidebar layout */
+.sf-layout { display:grid;grid-template-columns:260px 1fr;gap:40px;align-items:start;max-width:1020px }
+.sf-sidebar { position:sticky;top:100px }
+
+@media(max-width:1023px){
+  .sf-layout { grid-template-columns:1fr }
+  .sf-sidebar { display:none }
+}
+
+/* Step form layout */
+.sf-heading { font:700 clamp(22px,3.5vw,32px)/1.15 var(--serif);color:var(--forest-800);margin:0 0 10px }
+.sf-sub { font:400 15px/1.55 var(--sans);color:var(--ink-500);margin:0 0 28px }
+.sf-optional { font-weight:400;color:var(--ink-500) }
+.sf-label { display:block;font:600 14px var(--sans);color:var(--forest-800);margin-bottom:7px }
+.sf-field { display:flex;flex-direction:column;margin-bottom:18px }
+.sf-row { display:grid;grid-template-columns:1fr 1fr;gap:16px }
+.sf-hidden { display:none!important }
+.sf-req-star { color:var(--orange-600);font-weight:700 }
+
+/* Dropzone */
+.sf-dropzone {
+  border:2px dashed rgba(31,77,31,.2);border-radius:16px;
+  padding:36px 24px;text-align:center;
+  background:var(--cream-100);cursor:pointer;
+  transition:border-color .2s,background .2s;
+}
+.sf-dropzone.drag-over { border-color:var(--fern-600);background:var(--sage-50) }
+
+/* Consent groups */
+.sf-consent-group { border-bottom:1px solid var(--border);padding-bottom:18px;margin-bottom:18px }
+.sf-consent-label { font:700 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--fern-600);margin-bottom:12px }
+.sf-checkbox-row {
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 16px;border-radius:12px;
+  background:var(--cream-100);border:1.5px solid rgba(31,77,31,.10);
+  cursor:pointer;margin-bottom:8px;font:400 14px/1.5 var(--sans);color:var(--ink-700)
+}
+.sf-checkbox-row:last-child { margin-bottom:0 }
+.sf-checkbox-row input[type="checkbox"] { flex-shrink:0;width:18px;height:18px;margin-top:2px;accent-color:var(--forest-800);cursor:pointer }
+
+/* Navigation bar */
+.sf-nav { display:flex;align-items:center;justify-content:space-between;margin-top:36px;padding-top:24px;border-top:1px solid var(--border) }
+.sf-dots { display:flex;gap:8px;align-items:center }
+.sf-dot { width:11px;height:11px;border-radius:999px;background:var(--sage-200);transition:background .2s }
+.sf-dot--active { background:var(--forest-800) }
+
+/* Sidebar step circle states */
+.sf-step-circle { position:absolute;left:-48px;top:2px;width:30px;height:30px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .3s,box-shadow .3s }
+.sf-sc-done    { background:var(--forest-800) }
+.sf-sc-current { background:var(--orange-500);box-shadow:0 0 0 5px rgba(237,159,79,.2) }
+.sf-sc-future  { background:var(--sage-200) }
+/* Sidebar step title states */
+.sf-step-title { font:700 16px/1.2 var(--serif);margin-bottom:4px;transition:color .3s }
+.sf-st-done    { color:var(--forest-800) }
+.sf-st-current { color:var(--orange-600) }
+.sf-st-future  { color:var(--ink-500) }
+/* SVG stroke driven by class — no inline stroke needed */
+.sf-sc-done    svg { stroke:var(--paper,#fff) }
+.sf-sc-current svg { stroke:var(--paper,#fff) }
+.sf-sc-future  svg { stroke:rgba(44,107,44,.3) }
+
+@media(max-width:639px){
+  #submit-card { padding:28px 20px }
+  .sf-row { grid-template-columns:1fr }
+}
+</style>
+
+<script>
+// ── State ──
+let step = 1;
+const TOTAL = 4;
+
+// ── Elements ──
+const steps    = [1,2,3,4].map(n => document.getElementById(`sf-step-${n}`)!);
+const dots     = [1,2,3,4].map(n => document.getElementById(`sf-dot-${n}`)!);
+const btnBack  = document.getElementById('sf-btn-back')!;
+const btnNext  = document.getElementById('sf-btn-next')!;
+const btnSub   = document.getElementById('sf-btn-submit')!;
+const success  = document.getElementById('sf-success')!;
+const card     = document.getElementById('submit-card')!;
+const nav      = card.querySelector('.sf-nav')!;
+
+// Date
+const d = new Date();
+(document.getElementById('sf-date') as HTMLElement).textContent =
+  d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+
+// ── Age → Age group auto-fill ──
+(document.getElementById('f-age') as HTMLSelectElement).addEventListener('change', function(){
+  const ag = document.getElementById('f-agegroup') as HTMLSelectElement;
+  const v = +this.value;
+  if (v === 3 || v === 4) ag.value = '3-4';
+  else if (v === 5 || v === 6) ag.value = '5-6';
+  else ag.value = '';
+});
+
+// ── Video drop zone ──
+const dropzone    = document.getElementById('sf-dropzone')!;
+const fileInput   = document.getElementById('f-video') as HTMLInputElement;
+const dropPrompt  = document.getElementById('sf-drop-prompt')!;
+const dropSelected= document.getElementById('sf-drop-selected')!;
+const filenameEl  = document.getElementById('sf-filename')!;
+
+function showFile(name: string){
+  dropPrompt.classList.add('sf-hidden');
+  dropSelected.classList.remove('sf-hidden');
+  filenameEl.textContent = name;
+}
+document.getElementById('sf-browse-link')!.addEventListener('click', e => { e.stopPropagation(); fileInput.click(); });
+dropzone.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', () => { if(fileInput.files?.[0]) showFile(fileInput.files[0].name); });
+dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('drag-over'); });
+dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag-over'));
+dropzone.addEventListener('drop', e => {
+  e.preventDefault(); dropzone.classList.remove('drag-over');
+  const f = e.dataTransfer?.files[0];
+  if(f) showFile(f.name);
+});
+
+// ── Submit button enable/disable ──
+const requiredCBs = document.querySelectorAll<HTMLInputElement>('.sf-cb.sf-required');
+const signature   = document.getElementById('f-signature') as HTMLInputElement;
+function checkSubmit(){
+  const allChecked = [...requiredCBs].every(cb => cb.checked);
+  const hasSig = signature.value.trim().length > 0;
+  const ok = allChecked && hasSig;
+  btnSub.disabled = !ok;
+  (btnSub as HTMLButtonElement).style.opacity = ok ? '1' : '.6';
+}
+requiredCBs.forEach(cb => cb.addEventListener('change', checkSubmit));
+signature.addEventListener('input', checkSubmit);
+
+// ── Sidebar sync ──
+function syncSidebar(n: number){
+  const badge = document.getElementById('sf-badge');
+  const label = document.getElementById('sf-badge-label');
+  if(badge) badge.textContent = String(n);
+  if(label) label.textContent = 'Step ' + n + ' of 4';
+  for(let i = 1; i <= TOTAL; i++){
+    const circ  = document.getElementById('sf-sc-' + i);
+    const title = document.getElementById('sf-st-' + i);
+    if(!circ || !title) continue;
+    const state = i < n ? 'done' : i === n ? 'current' : 'future';
+    circ.className  = 'sf-step-circle sf-sc-' + state;
+    title.className = 'sf-step-title sf-st-' + state;
+  }
+}
+
+// ── Show step ──
+function showStep(n: number){
+  steps.forEach((s, i) => s.classList.toggle('sf-hidden', i + 1 !== n));
+  dots.forEach((d, i) => d.classList.toggle('sf-dot--active', i < n));
+  btnBack.classList.toggle('sf-hidden', n === 1);
+  btnNext.classList.toggle('sf-hidden', n === TOTAL);
+  btnSub.classList.toggle('sf-hidden',  n !== TOTAL);
+  step = n;
+  syncSidebar(n);
+  window.scrollTo({ top: (document.getElementById('submit-card') as HTMLElement).getBoundingClientRect().top + window.scrollY - 100, behavior:'smooth' });
+}
+
+btnNext.addEventListener('click', () => { if(step < TOTAL) showStep(step + 1); });
+btnBack.addEventListener('click', () => { if(step > 1) showStep(step - 1); });
+
+btnSub.addEventListener('click', () => {
+  const allChecked = [...requiredCBs].every(cb => cb.checked);
+  const hasSig = signature.value.trim().length > 0;
+  if(!allChecked || !hasSig){
+    document.getElementById('sf-validation-msg')!.classList.remove('sf-hidden');
+    return;
+  }
+  steps.forEach(s => s.classList.add('sf-hidden'));
+  nav.classList.add('sf-hidden');
+  success.classList.remove('sf-hidden');
+});
+
+// ── Init sidebar on load ──
+syncSidebar(1);
+</script>

@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const EVENTS = [
+  { featured:true, tag:'Competition', date:'20 Sep 2026', time:'11.59 PM — submission deadline', title:'Storytelling Competition 2026', body:"Our annual bilingual storytelling competition for children aged 4 to 12. Share a story from the heart — in English or Chinese — and inspire others with kindness.", img:'/illustrations/storytellers-mic.png' },
+  { tag:'Family', date:'21 Jun 2026', time:'All day', location:'Community booth', title:"Father's Day Celebration", body:'Art & craft activities where children create heartfelt keepsakes for the dads and father-figures they love.' },
+  { tag:'Family', date:'25 Sep 2026', time:'Evening', location:'To be confirmed', title:'Mid-Autumn Festival', body:'Lantern-making activities for the whole family, celebrating togetherness, light and the warmth of community.' },
+  { tag:'Family', date:'Early Dec 2026', time:'Date to be confirmed', title:'Christmas Programme', body:"Fill 'gift boxes' with kindness promises and decorate paper ornaments for our community Christmas tree." },
+];
+---
+<BaseLayout title="Upcoming Events | Sowing Kindness Society" description="Family storytimes, school programmes, community days and the annual competition — gentle moments to take part in throughout the year.">
+
+<section class="page-header">
+  <div class="container">
+    <div class="page-header__crumbs"><span>Events</span><span class="dot"></span><span>Upcoming</span></div>
+    <h1 style="font:700 clamp(36px,5.5vw,72px)/1.06 var(--serif);letter-spacing:-.02em;margin:0 0 16px">
+      <span style="color:var(--ink-900)">Join us — there's </span><span style="color:var(--forest-800)">always </span><span style="color:var(--orange-500)">something growing.</span>
+    </h1>
+    <p style="font:400 18px/1.6 var(--sans);color:var(--ink-700);max-width:620px;margin:0">Family storytimes, school programmes, community days and the annual competition — gentle moments to take part in throughout the year.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:40px">
+  <div class="container">
+    <div style="display:grid;gap:24px" data-stagger>
+      {EVENTS.map(e => (
+        <div class={`card ${e.img ? 'event-card-grid' : ''}`} style={`overflow:hidden;display:grid;grid-template-columns:${e.img ? '1.3fr 1fr' : '1fr'}`}>
+          {e.img && (
+            <div style="position:relative;min-height:280px">
+              <img src={e.img} alt={e.title} style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" />
+              <span class="pill pill--paper" style="position:absolute;left:16px;top:16px">{e.tag}</span>
+              {e.featured && <span style="position:absolute;left:16px;bottom:16px;padding:8px 14px;border-radius:999px;background:var(--orange-600);color:#fff;font:700 12px var(--sans);letter-spacing:.06em;text-transform:uppercase">Flagship event</span>}
+            </div>
+          )}
+          <div style={`padding:${e.featured ? '32px 28px' : '24px 26px 28px'}`}>
+            {!e.img && <span class="pill pill--sage" style="margin-bottom:14px;display:inline-flex">{e.tag}</span>}
+            <div style="display:flex;align-items:center;gap:12px;color:var(--forest-800);margin-bottom:12px;flex-wrap:wrap;font:600 14px var(--sans)">
+              <span>{e.date}</span>
+              {e.time && <span style="color:var(--ink-500)">{e.time}</span>}
+              {e.location && <span style="color:var(--ink-500)">{e.location}</span>}
+            </div>
+            <div style={`font:700 ${e.featured ? 30 : 22}px/1.25 var(--serif);color:var(--ink-900);margin-bottom:10px`}>{e.title}</div>
+            <div class="heart-divider" style="margin-bottom:14px"><span class="line" style="width:20px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:20px"></span></div>
+            <p style={`font:400 ${e.featured ? 16 : 15}px/1.65 var(--sans);color:var(--ink-700);margin:0 0 18px`}>{e.body}</p>
+            <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+              <a href="/submit/" class="btn btn-secondary">Register <span class="chev">›</span></a>
+              <a href="/contact/" class="link-arrow">Add to Calendar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
