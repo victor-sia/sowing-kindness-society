@@ -126,24 +126,59 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <textarea id="f-synopsis" class="field-input" rows="4" placeholder="Tell us in 1–2 sentences what your story is about." style="resize:vertical"></textarea>
         </div>
 
+        <!-- Video: toggle between Upload and Paste link -->
         <div class="sf-field">
-          <label class="sf-label">Video link <span class="sf-req-star">*</span></label>
-          <input id="f-videolink" class="field-input" type="url" placeholder="Google Drive, YouTube (Unlisted) or WeTransfer link" />
-          <span style="font:400 12px var(--sans);color:var(--ink-500);margin-top:6px;display:block">Upload your video to Google Drive or YouTube (set to Unlisted), then paste the link here.</span>
-        </div>
+          <label class="sf-label">Your video <span class="sf-req-star">*</span></label>
 
-        <div class="sf-field">
-          <div id="sf-dropzone" class="sf-dropzone">
-            <input id="f-video" type="file" accept="video/mp4,video/quicktime,.mov" style="display:none" />
-            <div id="sf-drop-prompt">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--forest-800)" stroke-width="1.5" stroke-linecap="round" style="margin-bottom:10px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-              <div style="font:600 16px var(--sans);color:var(--forest-800);margin-bottom:4px">Drop your video here or <span style="text-decoration:underline;cursor:pointer" id="sf-browse-link">click to browse</span></div>
-              <div style="font:400 13px var(--sans);color:var(--ink-500)">MP4 / MOV up to 200MB &middot; 3 min (ages 3–4) or 5 min (ages 5–6)</div>
+          <!-- Toggle buttons -->
+          <div class="sf-video-toggle">
+            <button type="button" class="sf-vtab sf-vtab--active" id="sf-tab-upload">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+              Upload file
+            </button>
+            <button type="button" class="sf-vtab" id="sf-tab-link">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+              Paste a link
+            </button>
+          </div>
+
+          <!-- Upload panel -->
+          <div id="sf-panel-upload">
+            <div id="sf-dropzone" class="sf-dropzone">
+              <input id="f-video" type="file" accept="video/mp4,video/quicktime,.mov" style="display:none" />
+              <!-- Idle state -->
+              <div id="sf-drop-idle">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--forest-800)" stroke-width="1.5" stroke-linecap="round" style="margin-bottom:10px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                <div style="font:600 15px var(--sans);color:var(--forest-800);margin-bottom:4px">Drop your video here or <span style="text-decoration:underline;cursor:pointer" id="sf-browse-link">click to browse</span></div>
+                <div style="font:400 12px var(--sans);color:var(--ink-500)">MP4 / MOV &middot; max 500 MB &middot; 3 min (ages 3–4) or 5 min (ages 5–6)</div>
+              </div>
+              <!-- Uploading state -->
+              <div id="sf-drop-uploading" class="sf-hidden">
+                <div style="font:600 14px var(--sans);color:var(--forest-800);margin-bottom:10px" id="sf-upload-name"></div>
+                <div class="sf-progress-track"><div class="sf-progress-bar" id="sf-progress-bar"></div></div>
+                <div style="font:500 12px var(--sans);color:var(--ink-500);margin-top:8px" id="sf-upload-pct">0%</div>
+              </div>
+              <!-- Done state -->
+              <div id="sf-drop-done" class="sf-hidden" style="display:flex;align-items:center;gap:12px">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--fern-600)" stroke-width="2.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <div>
+                  <div style="font:600 14px var(--sans);color:var(--forest-800)" id="sf-done-name"></div>
+                  <div style="font:400 12px var(--sans);color:var(--fern-600)">Uploaded successfully</div>
+                </div>
+                <button type="button" id="sf-remove-video" style="margin-left:auto;font:500 12px var(--sans);color:var(--ink-500);background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:6px">Remove</button>
+              </div>
+              <!-- Error state -->
+              <div id="sf-drop-error" class="sf-hidden" style="text-align:center">
+                <div style="font:600 14px var(--sans);color:var(--orange-600);margin-bottom:6px" id="sf-upload-error-msg">Upload failed</div>
+                <button type="button" id="sf-retry-btn" class="btn btn-outline" style="padding:8px 18px;font-size:13px">Try again</button>
+              </div>
             </div>
-            <div id="sf-drop-selected" class="sf-hidden" style="display:flex;align-items:center;gap:12px">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--fern-600)" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              <span id="sf-filename" style="font:500 15px var(--sans);color:var(--forest-800)"></span>
-            </div>
+          </div>
+
+          <!-- Link panel -->
+          <div id="sf-panel-link" class="sf-hidden">
+            <input id="f-videolink" class="field-input" type="url" placeholder="Google Drive, YouTube (Unlisted) or WeTransfer link" />
+            <span style="font:400 12px var(--sans);color:var(--ink-500);margin-top:6px;display:block">Upload your video to Google Drive or YouTube (Unlisted), then paste the link here.</span>
           </div>
         </div>
       </div>
@@ -336,6 +371,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 .sf-sc-current svg { stroke:var(--paper,#fff) }
 .sf-sc-future  svg { stroke:rgba(44,107,44,.3) }
 
+/* Video toggle tabs */
+.sf-video-toggle { display:flex;gap:0;margin-bottom:12px;border:1.5px solid rgba(31,77,31,.15);border-radius:10px;overflow:hidden }
+.sf-vtab { flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 16px;font:600 13px var(--sans);color:var(--ink-500);background:#fff;border:none;cursor:pointer;transition:background .15s,color .15s }
+.sf-vtab--active { background:var(--sage-50);color:var(--forest-800) }
+.sf-vtab:hover:not(.sf-vtab--active) { background:var(--cream-100) }
+
+/* Progress bar */
+.sf-progress-track { width:100%;height:6px;background:var(--sage-200);border-radius:999px;overflow:hidden }
+.sf-progress-bar { height:100%;background:var(--forest-800);border-radius:999px;width:0%;transition:width .2s }
+
 @media(max-width:639px){
   #submit-card { padding:28px 20px }
   .sf-row { grid-template-columns:1fr }
@@ -371,27 +416,129 @@ const d = new Date();
   else ag.value = '';
 });
 
-// ── Video drop zone ──
+// ── Video — toggle tabs ──
+let videoMode: 'upload' | 'link' = 'upload';
+let uploadedVideoUrl = '';   // set after successful R2 upload
+
+const tabUpload   = document.getElementById('sf-tab-upload')!;
+const tabLink     = document.getElementById('sf-tab-link')!;
+const panelUpload = document.getElementById('sf-panel-upload')!;
+const panelLink   = document.getElementById('sf-panel-link')!;
+
+function setVideoMode(mode: 'upload' | 'link') {
+  videoMode = mode;
+  tabUpload.classList.toggle('sf-vtab--active', mode === 'upload');
+  tabLink.classList.toggle('sf-vtab--active',   mode === 'link');
+  panelUpload.classList.toggle('sf-hidden', mode !== 'upload');
+  panelLink.classList.toggle('sf-hidden',   mode !== 'link');
+}
+tabUpload.addEventListener('click', () => setVideoMode('upload'));
+tabLink.addEventListener('click',   () => setVideoMode('link'));
+
+// ── Video — upload states ──
+type UploadState = 'idle' | 'uploading' | 'done' | 'error';
 const dropzone    = document.getElementById('sf-dropzone')!;
 const fileInput   = document.getElementById('f-video') as HTMLInputElement;
-const dropPrompt  = document.getElementById('sf-drop-prompt')!;
-const dropSelected= document.getElementById('sf-drop-selected')!;
-const filenameEl  = document.getElementById('sf-filename')!;
+const stateIdle   = document.getElementById('sf-drop-idle')!;
+const stateUp     = document.getElementById('sf-drop-uploading')!;
+const stateDone   = document.getElementById('sf-drop-done')!;
+const stateErr    = document.getElementById('sf-drop-error')!;
+const uploadName  = document.getElementById('sf-upload-name')!;
+const progressBar = document.getElementById('sf-progress-bar') as HTMLElement;
+const progressPct = document.getElementById('sf-upload-pct')!;
+const doneName    = document.getElementById('sf-done-name')!;
+const errMsg      = document.getElementById('sf-upload-error-msg')!;
 
-function showFile(name: string){
-  dropPrompt.classList.add('sf-hidden');
-  dropSelected.classList.remove('sf-hidden');
-  filenameEl.textContent = name;
+function setUploadState(s: UploadState) {
+  stateIdle.classList.toggle('sf-hidden', s !== 'idle');
+  stateUp.classList.toggle('sf-hidden',   s !== 'uploading');
+  stateDone.classList.toggle('sf-hidden', s !== 'done');
+  stateErr.classList.toggle('sf-hidden',  s !== 'error');
 }
+
+async function handleFile(file: File) {
+  const MAX = 500 * 1024 * 1024; // 500 MB
+  if (file.size > MAX) {
+    setUploadState('error');
+    errMsg.textContent = 'File too large. Maximum size is 500 MB.';
+    return;
+  }
+  if (!file.type.startsWith('video/')) {
+    setUploadState('error');
+    errMsg.textContent = 'Please upload a video file (MP4 or MOV).';
+    return;
+  }
+
+  uploadName.textContent = file.name;
+  setUploadState('uploading');
+  progressBar.style.width = '0%';
+  progressPct.textContent = '0%';
+
+  try {
+    // 1 — get presigned URL
+    const res = await fetch('/api/upload-url', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ filename: file.name, contentType: file.type }),
+    });
+    const { ok, uploadUrl, videoUrl, error } = await res.json() as any;
+    if (!ok) throw new Error(error || 'Could not get upload URL');
+
+    // 2 — upload directly to R2 using XHR (so we get progress events)
+    await new Promise<void>((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('PUT', uploadUrl);
+      xhr.setRequestHeader('Content-Type', file.type);
+      xhr.upload.onprogress = (e) => {
+        if (e.lengthComputable) {
+          const pct = Math.round((e.loaded / e.total) * 100);
+          progressBar.style.width = pct + '%';
+          progressPct.textContent = pct + '%';
+        }
+      };
+      xhr.onload  = () => xhr.status < 300 ? resolve() : reject(new Error(`Upload failed: ${xhr.status}`));
+      xhr.onerror = () => reject(new Error('Network error during upload'));
+      xhr.send(file);
+    });
+
+    uploadedVideoUrl = videoUrl;
+    doneName.textContent = file.name;
+    setUploadState('done');
+
+  } catch (err: any) {
+    setUploadState('error');
+    errMsg.textContent = err.message || 'Upload failed. Please try again.';
+  }
+}
+
+// Browse link
 document.getElementById('sf-browse-link')!.addEventListener('click', e => { e.stopPropagation(); fileInput.click(); });
-dropzone.addEventListener('click', () => fileInput.click());
-fileInput.addEventListener('change', () => { if(fileInput.files?.[0]) showFile(fileInput.files[0].name); });
+dropzone.addEventListener('click', (e) => {
+  if ((e.target as HTMLElement).closest('#sf-remove-video, #sf-retry-btn')) return;
+  if (stateIdle.classList.contains('sf-hidden') === false) fileInput.click();
+});
+fileInput.addEventListener('change', () => { if(fileInput.files?.[0]) handleFile(fileInput.files[0]); });
+
+// Drag and drop
 dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('drag-over'); });
 dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag-over'));
 dropzone.addEventListener('drop', e => {
   e.preventDefault(); dropzone.classList.remove('drag-over');
   const f = e.dataTransfer?.files[0];
-  if(f) showFile(f.name);
+  if (f) handleFile(f);
+});
+
+// Remove uploaded video
+document.getElementById('sf-remove-video')!.addEventListener('click', () => {
+  uploadedVideoUrl = '';
+  fileInput.value = '';
+  setUploadState('idle');
+});
+
+// Retry
+document.getElementById('sf-retry-btn')!.addEventListener('click', () => {
+  setUploadState('idle');
+  fileInput.click();
 });
 
 // ── Submit button enable/disable ──
@@ -455,7 +602,10 @@ btnSub.addEventListener('click', async () => {
     school:             (document.getElementById('f-school')    as HTMLInputElement).value.trim(),
     storyTitle:         (document.getElementById('f-title')     as HTMLInputElement).value.trim(),
     synopsis:           (document.getElementById('f-synopsis')  as HTMLTextAreaElement).value.trim(),
-    videoLink:          (document.getElementById('f-videolink') as HTMLInputElement).value.trim(),
+    videoSource:        videoMode,
+    videoLink:          videoMode === 'link'
+                          ? (document.getElementById('f-videolink') as HTMLInputElement).value.trim()
+                          : uploadedVideoUrl,
     parentName:         (document.getElementById('f-pname')     as HTMLInputElement).value.trim(),
     parentEmail:        (document.getElementById('f-email')     as HTMLInputElement).value.trim(),
     parentMobile:       (document.getElementById('f-mobile')    as HTMLInputElement).value.trim(),

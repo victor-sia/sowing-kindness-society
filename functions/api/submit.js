@@ -42,6 +42,7 @@ export async function onRequestPost({ request, env }) {
             'Story Title':             data.storyTitle || '',
             'Synopsis':                data.synopsis || '',
             'Video Link':              data.videoLink || '',
+            'Video Source':            data.videoSource === 'upload' ? 'Direct upload (R2)' : 'External link',
             'Parent Name':             data.parentName,
             'Parent Email':            data.parentEmail,
             'Parent Mobile':           data.parentMobile || '',
