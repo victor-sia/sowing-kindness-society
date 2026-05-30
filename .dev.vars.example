@@ -1,0 +1,9 @@
+# Copy this file to .dev.vars for local development (never commit .dev.vars)
+# Set these same variables in Cloudflare Pages dashboard → Settings → Environment Variables
+
+AIRTABLE_API_KEY=your_airtable_personal_access_token
+AIRTABLE_BASE_ID=appXXXXXXXXXXXXXX
+AIRTABLE_TABLE_NAME=Submissions
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxx
+FROM_EMAIL=hello@sowingkindness.org.sg
+NOTIFY_EMAIL=contact@sowingkindnesssocietysg.gmail.com

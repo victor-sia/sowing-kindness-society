@@ -127,6 +127,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
 
         <div class="sf-field">
+          <label class="sf-label">Video link <span class="sf-req-star">*</span></label>
+          <input id="f-videolink" class="field-input" type="url" placeholder="Google Drive, YouTube (Unlisted) or WeTransfer link" />
+          <span style="font:400 12px var(--sans);color:var(--ink-500);margin-top:6px;display:block">Upload your video to Google Drive or YouTube (set to Unlisted), then paste the link here.</span>
+        </div>
+
+        <div class="sf-field">
           <div id="sf-dropzone" class="sf-dropzone">
             <input id="f-video" type="file" accept="video/mp4,video/quicktime,.mov" style="display:none" />
             <div id="sf-drop-prompt">
@@ -432,16 +438,64 @@ function showStep(n: number){
 btnNext.addEventListener('click', () => { if(step < TOTAL) showStep(step + 1); });
 btnBack.addEventListener('click', () => { if(step > 1) showStep(step - 1); });
 
-btnSub.addEventListener('click', () => {
+btnSub.addEventListener('click', async () => {
   const allChecked = [...requiredCBs].every(cb => cb.checked);
   const hasSig = signature.value.trim().length > 0;
   if(!allChecked || !hasSig){
     document.getElementById('sf-validation-msg')!.classList.remove('sf-hidden');
     return;
   }
-  steps.forEach(s => s.classList.add('sf-hidden'));
-  nav.classList.add('sf-hidden');
-  success.classList.remove('sf-hidden');
+
+  // Collect all form values
+  const payload = {
+    childName:          (document.getElementById('f-name')      as HTMLInputElement).value.trim(),
+    age:                (document.getElementById('f-age')       as HTMLSelectElement).value,
+    language:           (document.getElementById('f-lang')      as HTMLSelectElement).value,
+    ageGroup:           (document.getElementById('f-agegroup')  as HTMLSelectElement).value,
+    school:             (document.getElementById('f-school')    as HTMLInputElement).value.trim(),
+    storyTitle:         (document.getElementById('f-title')     as HTMLInputElement).value.trim(),
+    synopsis:           (document.getElementById('f-synopsis')  as HTMLTextAreaElement).value.trim(),
+    videoLink:          (document.getElementById('f-videolink') as HTMLInputElement).value.trim(),
+    parentName:         (document.getElementById('f-pname')     as HTMLInputElement).value.trim(),
+    parentEmail:        (document.getElementById('f-email')     as HTMLInputElement).value.trim(),
+    parentMobile:       (document.getElementById('f-mobile')    as HTMLInputElement).value.trim(),
+    consentParticipation:(document.getElementById('c-participation') as HTMLInputElement).checked,
+    consentJudging:     (document.getElementById('c-judging')   as HTMLInputElement).checked,
+    consentSocial:      (document.getElementById('c-social')    as HTMLInputElement).checked,
+    consentPopularity:  (document.getElementById('c-popularity') as HTMLInputElement).checked,
+    consentPhoto:       (document.getElementById('c-photo')     as HTMLInputElement).checked,
+    consentPhotoUse:    (document.getElementById('c-photo-use') as HTMLInputElement).checked,
+    consentNamePub:     (document.getElementById('c-name-pub')  as HTMLInputElement).checked,
+    consentPDPA:        (document.getElementById('c-pdpa')      as HTMLInputElement).checked,
+    signature:          signature.value.trim(),
+  };
+
+  // Disable button and show loading state
+  (btnSub as HTMLButtonElement).disabled = true;
+  btnSub.textContent = 'Submitting…';
+
+  try {
+    const res = await fetch('/api/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const json = await res.json() as { ok: boolean; error?: string };
+
+    if (json.ok) {
+      steps.forEach(s => s.classList.add('sf-hidden'));
+      nav.classList.add('sf-hidden');
+      success.classList.remove('sf-hidden');
+    } else {
+      btnSub.textContent = 'Submit Entry ›';
+      (btnSub as HTMLButtonElement).disabled = false;
+      alert('Something went wrong: ' + (json.error || 'Please try again.'));
+    }
+  } catch {
+    btnSub.textContent = 'Submit Entry ›';
+    (btnSub as HTMLButtonElement).disabled = false;
+    alert('Network error. Please check your connection and try again.');
+  }
 });
 
 // ── Init sidebar on load ──
