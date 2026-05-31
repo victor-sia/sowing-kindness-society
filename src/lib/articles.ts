@@ -35,7 +35,7 @@ export const ARTICLES: Article[] = [
     metaTitle: 'How Storytelling Helps Children Learn Kindness | Sowing Kindness Society',
     metaDescription: 'Discover why storytelling is the most powerful tool for teaching kindness, empathy and values to children aged 3–6. Practical tips for Singapore families.',
     keywords: ['storytelling for children', 'teach kindness to kids', 'children empathy development', 'storytelling Singapore', 'bilingual storytelling children', 'kindness values preschool', 'social emotional learning Singapore', 'picture books kindness'],
-    image: '/illustrations/section-5-image-1.png',
+    image: '/illustrations/section-5-image-1.webp',
     intro: 'Why story is the gentlest classroom — and how families can use it to nurture empathy, patience and care in young children.',
     relatedSlugs: ['five-small-kindness-activities-for-your-saturday', 'growing-compassion-through-everyday-moments'],
     body: [
@@ -87,7 +87,7 @@ export const ARTICLES: Article[] = [
     metaTitle: 'Five Kindness Activities for Kids This Weekend | Sowing Kindness Society Singapore',
     metaDescription: 'Easy, no-prep kindness activities for families with children aged 3–6. Try these five simple ideas this Saturday to nurture empathy and compassion at home in Singapore.',
     keywords: ['kindness activities for kids Singapore', 'kindness activities preschoolers', 'teaching kindness children', 'family kindness activities', 'empathy activities young children', 'kindness crafts kids', 'parenting kindness Singapore', 'social emotional learning activities'],
-    image: '/illustrations/section-5-image-2.png',
+    image: '/illustrations/section-5-image-2.webp',
     intro: 'Easy, meaningful ideas you can do together — no preparation, no shopping, no glue gun required.',
     relatedSlugs: ['how-storytelling-helps-children-learn-kindness', 'growing-compassion-through-everyday-moments'],
     body: [
@@ -142,7 +142,7 @@ export const ARTICLES: Article[] = [
     metaTitle: 'Growing Compassion in Children Through Everyday Moments | Sowing Kindness Society',
     metaDescription: 'How small, ordinary moments build lasting compassion in young children. A guide for Singapore parents on raising empathetic, kind children aged 3–6 through daily life.',
     keywords: ['compassion children', 'raising kind children Singapore', 'teaching empathy preschoolers', 'child compassion development', 'empathy activities children Singapore', 'social emotional learning preschool', 'kindness habits children', 'character building young children'],
-    image: '/illustrations/section-5-image-3.png',
+    image: '/illustrations/section-5-image-3.webp',
     intro: 'Small acts, big impact — how daily moments quietly grow kind, caring children.',
     relatedSlugs: ['how-storytelling-helps-children-learn-kindness', 'five-small-kindness-activities-for-your-saturday'],
     body: [
