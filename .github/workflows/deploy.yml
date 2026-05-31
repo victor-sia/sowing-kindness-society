@@ -33,22 +33,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Fix asset paths for GitHub Pages sub-path
-        env:
-          BASE: /sowing-kindness-society
-        run: |
-          find dist -name "*.html" | while read f; do
-            sed -i \
-              -e "s|href=\"/|href=\"${BASE}/|g" \
-              -e "s|src=\"/|src=\"${BASE}/|g" \
-              -e "s|content=\"/|content=\"${BASE}/|g" \
-              -e "s|url(/|url(${BASE}/|g" \
-              "$f"
-          done
-          find dist -name "*.css" | while read f; do
-            sed -i "s|url(/|url(${BASE}/|g" "$f"
-          done
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
