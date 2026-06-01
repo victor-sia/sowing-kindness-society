@@ -11,7 +11,8 @@
 //                         (or leave blank to use R2 endpoint directly)
 
 const CORS = { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' };
-const EXPIRES = 3600; // presigned URL valid for 1 hour
+const UPLOAD_EXPIRES  = 3600;        // presigned PUT valid for 1 hour
+const VIEW_EXPIRES    = 7 * 24 * 3600; // presigned GET valid for 7 days
 
 export async function onRequestPost({ request, env }) {
   const { filename, contentType } = await request.json();
@@ -25,21 +26,28 @@ export async function onRequestPost({ request, env }) {
   const key   = `submissions/${date}/${Date.now()}-${safe}`;
 
   try {
-    const uploadUrl = await presignedPut({
+    // Presigned PUT URL — browser uploads directly to R2
+    const uploadUrl = await presignedRequest({
+      method:          'PUT',
       accountId:       env.R2_ACCOUNT_ID,
       accessKeyId:     env.R2_ACCESS_KEY_ID,
       secretAccessKey: env.R2_SECRET_ACCESS_KEY,
       bucket:          env.R2_BUCKET_NAME,
       key,
       contentType,
-      expiresIn:       EXPIRES,
+      expiresIn:       UPLOAD_EXPIRES,
     });
 
-    // The public URL the client will reference after upload
-    const publicBase = env.R2_PUBLIC_URL
-      ? env.R2_PUBLIC_URL.replace(/\/$/, '')
-      : `https://${env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com/${env.R2_BUCKET_NAME}`;
-    const videoUrl = `${publicBase}/${key}`;
+    // Presigned GET URL — organisers use this to view/download the video (7-day expiry)
+    const videoUrl = await presignedRequest({
+      method:          'GET',
+      accountId:       env.R2_ACCOUNT_ID,
+      accessKeyId:     env.R2_ACCESS_KEY_ID,
+      secretAccessKey: env.R2_SECRET_ACCESS_KEY,
+      bucket:          env.R2_BUCKET_NAME,
+      key,
+      expiresIn:       VIEW_EXPIRES,
+    });
 
     return json({ ok: true, uploadUrl, videoUrl, key });
   } catch (err) {
@@ -64,10 +72,10 @@ function json(body, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: CORS });
 }
 
-// ── AWS Signature V4 presigned PUT URL ────────────────────────
+// ── AWS Signature V4 presigned URL (GET or PUT) ───────────────
 // R2 is S3-compatible; endpoint: https://<accountId>.r2.cloudflarestorage.com
 
-async function presignedPut({ accountId, accessKeyId, secretAccessKey, bucket, key, contentType, expiresIn }) {
+async function presignedRequest({ method, accountId, accessKeyId, secretAccessKey, bucket, key, contentType, expiresIn }) {
   const region  = 'auto';
   const service = 's3';
   const host    = `${accountId}.r2.cloudflarestorage.com`;
@@ -76,10 +84,12 @@ async function presignedPut({ accountId, accessKeyId, secretAccessKey, bucket, k
   const datetime = now.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
   const date     = datetime.slice(0, 8);
 
-  const credential    = `${accessKeyId}/${date}/${region}/${service}/aws4_request`;
-  const signedHeaders = 'content-type;host';
+  const credential = `${accessKeyId}/${date}/${region}/${service}/aws4_request`;
 
-  // 1 ── Canonical query string (params must be sorted)
+  // For GET requests we don't sign content-type
+  const signedHeaders = method === 'PUT' ? 'content-type;host' : 'host';
+
+  // 1 ── Canonical query string
   const params = new URLSearchParams({
     'X-Amz-Algorithm':     'AWS4-HMAC-SHA256',
     'X-Amz-Credential':    credential,
@@ -87,15 +97,16 @@ async function presignedPut({ accountId, accessKeyId, secretAccessKey, bucket, k
     'X-Amz-Expires':       String(expiresIn),
     'X-Amz-SignedHeaders': signedHeaders,
   });
-  // URLSearchParams sorts alphabetically, which is what AWS requires
   const canonicalQuery = params.toString();
 
   // 2 ── Canonical headers
-  const canonicalHeaders = `content-type:${contentType}\nhost:${host}\n`;
+  const canonicalHeaders = method === 'PUT'
+    ? `content-type:${contentType}\nhost:${host}\n`
+    : `host:${host}\n`;
 
   // 3 ── Canonical request
   const canonicalRequest = [
-    'PUT',
+    method,
     `/${bucket}/${key}`,
     canonicalQuery,
     canonicalHeaders,
