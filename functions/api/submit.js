@@ -133,7 +133,7 @@ function confirmationHtml(d) {
 function notificationHtml(d) {
   const cat = d.ageGroup === '3-4' ? 'Category A (Age 3–4)' : 'Category B (Age 5–6)';
   const videoCell = d.videoLink
-    ? `<a href="${d.videoLink}" style="color:#2C6B2C">${d.videoLink}</a>`
+    ? `<a href="${d.videoLink}" style="color:#2C6B2C">Click to view / download video</a><br><span style="font-size:12px;color:#999">Link expires in 7 days</span>`
     : '—';
   const sgTime = new Date().toLocaleString('en-SG', { timeZone: 'Asia/Singapore' });
   return `
