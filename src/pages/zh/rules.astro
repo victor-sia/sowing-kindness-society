@@ -1,0 +1,240 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const JUDGING = [
+  { pct:'30%', title:'内容与相关性', body:'故事与善意主题有实质关联，有清晰的开头、发展和结尾。' },
+  { pct:'30%', title:'表达与表现力', body:'声音清晰、语调、面部表情和肢体语言提升讲故事体验。' },
+  { pct:'20%', title:'创意与原创性', body:'独特的故事选择和富有想象力的道具、服装或呈现方式。' },
+  { pct:'20%', title:'台风与气场', body:'镇定、与镜头的眼神交流，以及吸引观众注意力的能力。' },
+];
+
+const TIMELINE = [
+  { done:true,   active:false, label:'报名开始',     date:'2026年6月' },
+  { done:false,  active:true,  label:'提交截止日',   date:'2026年9月20日，晚11时59分' },
+  { done:false,  active:false, label:'入围选手通知', date:'2026年10月' },
+  { done:false,  active:false, label:'总决赛',       date:'2026年11月' },
+];
+---
+<BaseLayout title="官方规则 | 播种善意协会2026年讲故事比赛" description="2026年跨中心讲故事比赛完整官方规则。包括资格要求、组别、视频要求、评审标准及奖项。">
+
+<section class="page-header">
+  <div class="container">
+    <div class="page-header__crumbs">
+      <a href="/zh/competition/" style="color:var(--fern-600)">比赛</a>
+      <span class="dot"></span>
+      <span>官方规则</span>
+    </div>
+    <h1 data-fade style="font:700 clamp(36px,5.5vw,72px)/1.06 var(--serif);letter-spacing:-.02em;margin:0 0 16px">
+      <span style="color:var(--ink-900)">官方</span><span style="color:var(--forest-800)">比赛</span><span style="color:var(--orange-500)">规则。</span>
+    </h1>
+    <p data-fade style="font:400 18px/1.6 var(--sans);color:var(--ink-700);max-width:640px;margin:0 0 20px">
+      2026年跨中心讲故事比赛——请在报名前仔细阅读。
+    </p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="/zh/submit/" class="btn btn-primary">立即报名 <span class="chev">›</span></a>
+      <a href="/zh/consent/" class="btn btn-outline">查看同意书</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:48px;padding-bottom:80px">
+  <div class="container" style="max-width:820px">
+
+    <div class="card card--quiet rules-summary" style="padding:20px 28px;margin-bottom:52px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center">
+      <div><div style="font:700 20px var(--serif);color:var(--forest-800)">3 – 6 岁</div><div style="font:500 12px var(--sans);color:var(--ink-500);margin-top:2px">年龄范围</div></div>
+      <div><div style="font:700 20px var(--serif);color:var(--forest-800)">英语 / 中文</div><div style="font:500 12px var(--sans);color:var(--ink-500);margin-top:2px">语言</div></div>
+      <div><div style="font:700 20px var(--serif);color:var(--forest-800)">2026年9月20日</div><div style="font:500 12px var(--sans);color:var(--ink-500);margin-top:2px">截止日期</div></div>
+      <div><div style="font:700 20px var(--serif);color:var(--forest-800)">免费</div><div style="font:500 12px var(--sans);color:var(--ink-500);margin-top:2px">参赛费用</div></div>
+    </div>
+
+    <div data-fade style="margin-bottom:48px">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+        <span class="rule-num">1</span>
+        <h2 class="rule-title">关于比赛</h2>
+      </div>
+      <div style="padding-left:52px">
+        <p class="article-p">2026年跨中心讲故事比赛（"本比赛"）由播种善意协会主办，该协会是一家总部位于新加坡的非营利组织。比赛面向就读于新加坡幼儿园、幼稚园、托儿所、补习中心和培训中心的儿童。</p>
+        <p class="article-p">本比赛的目的是通过讲故事艺术，培养幼儿的创意、自信和善意。</p>
+      </div>
+    </div>
+
+    <div data-fade style="margin-bottom:48px">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+        <span class="rule-num">2</span>
+        <h2 class="rule-title">参赛资格</h2>
+      </div>
+      <div style="padding-left:52px">
+        <ul class="article-ul">
+          <li>参赛者在提交截止日期（2026年9月20日）时须年满3至6岁。</li>
+          <li>参赛者须目前就读于新加坡的幼儿园、幼稚园、托儿所、补习中心或培训中心。</li>
+          <li>每名儿童每年只可提交一份参赛作品。</li>
+          <li>每个中心的参赛作品数量不受限制。</li>
+          <li>比赛向新加坡公民、永久居民及就读于符合资格的新加坡中心的外籍人士开放。</li>
+          <li>参赛作品须由家长或法定监护人代表儿童提交。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div data-fade style="margin-bottom:48px">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+        <span class="rule-num">3</span>
+        <h2 class="rule-title">比赛组别</h2>
+      </div>
+      <div style="padding-left:52px">
+        <p class="article-p">共设两个年龄组别：</p>
+        <div class="grid-2col-sm" style="margin:16px 0 24px">
+          <div class="card" style="padding:22px;background:var(--sage-50)">
+            <div style="font:700 13px var(--sans);color:var(--forest-800);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">A组</div>
+            <div style="font:700 24px var(--serif);color:var(--ink-900);margin-bottom:6px">3至4岁</div>
+            <div style="font:600 15px var(--sans);color:var(--fern-600)">3分钟故事</div>
+          </div>
+          <div class="card" style="padding:22px;background:var(--orange-100)">
+            <div style="font:700 13px var(--sans);color:var(--orange-700);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px">B组</div>
+            <div style="font:700 24px var(--serif);color:var(--ink-900);margin-bottom:6px">5至6岁</div>
+            <div style="font:600 15px var(--sans);color:var(--orange-700)">5分钟故事</div>
+          </div>
+        </div>
+        <p class="article-p">儿童的年龄以提交截止日期（2026年9月20日）为准。</p>
+      </div>
+    </div>
+
+    <div data-fade style="margin-bottom:48px">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+        <span class="rule-num">4</span>
+        <h2 class="rule-title">主题</h2>
+      </div>
+      <div style="padding-left:52px">
+        <div class="article-tip"><p><strong>"一个小小的行动，一颗大大的心。"</strong>——邀请孩子们分享一个关于小小善意的故事：他们看到的、做过的，或者希望看到的。一句好话，一次分享，一个帮助的手势。</p></div>
+        <p class="article-p">故事可以是真实的或虚构的，可以使用画作、玩偶、歌曲、毛绒玩具、绘本或道具。我们不是在寻找完美的讲故事者——我们在聆听善良的声音。</p>
+        <p class="article-p">故事可以用英语或华语（普通话）讲述。双语故事（部分用两种语言）也受欢迎。</p>
+      </div>
+    </div>
+
+    <div data-fade style="margin-bottom:48px">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+        <span class="rule-num">5</span>
+        <h2 class="rule-title">视频提交要求</h2>
+      </div>
+      <div style="padding-left:52px">
+        <h3 class="article-h3">格式</h3>
+        <ul class="article-ul">
+          <li>文件格式：MP4或MOV（完全接受手机录制）。</li>
+          <li>方向：首选横向（水平）；接受纵向（垂直）。</li>
+          <li>最低分辨率：720p（1280×720）。首选高清1080p。</li>
+          <li>最大文件大小：500 MB。</li>
+        </ul>
+        <h3 class="article-h3">时长</h3>
+        <ul class="article-ul">
+          <li>A组（3至4岁）：最长3分钟。</li>
+          <li>B组（5至6岁）：最长5分钟。</li>
+          <li>超时的视频将只评审前3或5分钟的内容。</li>
+        </ul>
+        <h3 class="article-h3">内容指引</h3>
+        <ul class="article-ul">
+          <li>整个讲故事过程中，儿童须清晰可见且声音清晰可闻。</li>
+          <li>视频须为单一连续拍摄或儿童讲故事的简单剪辑。</li>
+          <li>允许使用背景音乐，但不得盖过儿童的声音。</li>
+          <li>不鼓励过度后期制作效果；我们重视自然、真实的讲故事。</li>
+          <li>视频不得包含任何冒犯性、暴力性、歧视性或不恰当的内容。</li>
+        </ul>
+        <h3 class="article-h3">如何提交</h3>
+        <ul class="article-ul">
+          <li>将视频上传至Google Drive、YouTube（不公开）或WeTransfer，然后通过<a href="/zh/submit/" style="color:var(--fern-600);font-weight:600">报名表</a>提交链接。</li>
+          <li>或者，将链接发送至<strong>contact@sowingkindness.org.sg</strong>，邮件主题注明孩子姓名和参赛组别。</li>
+          <li>提交链接须至少在2026年12月31日之前保持可访问。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div data-fade style="margin-bottom:48px">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+        <span class="rule-num">6</span>
+        <h2 class="rule-title">评审标准</h2>
+      </div>
+      <div style="padding-left:52px">
+        <p class="article-p">参赛作品将由独立评审团按四项标准进行评审：</p>
+        <div style="display:grid;gap:12px;margin:16px 0 20px">
+          {JUDGING.map(c => (
+            <div style="display:flex;gap:16px;align-items:flex-start;padding:16px 18px;border-radius:14px;background:var(--cream-200)">
+              <span style="font:700 18px var(--serif);color:var(--forest-800);flex-shrink:0;min-width:44px">{c.pct}</span>
+              <div>
+                <div style="font:700 15px var(--sans);color:var(--ink-900);margin-bottom:3px">{c.title}</div>
+                <p style="font:400 14px/1.55 var(--sans);color:var(--ink-700);margin:0">{c.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p class="article-p">评审决定为最终决定，对评分不接受任何申诉。</p>
+      </div>
+    </div>
+
+    <div data-fade style="margin-bottom:48px">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+        <span class="rule-num">7</span>
+        <h2 class="rule-title">重要日期</h2>
+      </div>
+      <div style="padding-left:52px">
+        <div class="timeline" style="margin-top:8px">
+          {TIMELINE.map(t => (
+            <div class={`timeline__item${t.done ? ' done' : ''}${t.active ? ' active' : ''}`}>
+              <div style="font:700 15px var(--sans);color:var(--forest-800)">{t.label}</div>
+              <div style="font:500 13px var(--sans);color:var(--ink-500);margin-top:2px">{t.date}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div data-fade style="margin-bottom:48px">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+        <span class="rule-num">8</span>
+        <h2 class="rule-title">一般条款与条件</h2>
+      </div>
+      <div style="padding-left:52px">
+        <ul class="article-ul">
+          <li>参赛免费，无需购买任何物品。</li>
+          <li>提交参赛作品即表示家长或监护人确认所有信息准确无误，并已阅读并同意本规则及家长同意书。</li>
+          <li>播种善意协会保留取消不符合本规则或包含不当内容的任何参赛作品的资格的权利。</li>
+          <li>个人数据的收集和使用符合新加坡个人数据保护法（PDPA）的规定。</li>
+          <li>主办方对视频上传或提交过程中的技术问题不承担任何责任。</li>
+          <li>本规则可能随时更新。最新版本将始终发布于sowingkindness.org.sg/zh/rules。</li>
+          <li>播种善意协会对比赛所有相关事宜的决定为最终决定。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div data-fade class="card" style="padding:28px 32px;background:var(--sage-50);border-radius:20px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:16px">
+      <div>
+        <div style="font:700 18px var(--serif);color:var(--forest-800);margin-bottom:6px">对规则有疑问？</div>
+        <p style="font:400 14px var(--sans);color:var(--ink-700);margin:0">发邮件至 <strong>contact@sowingkindness.org.sg</strong>——我们会在两个工作日内回复。</p>
+      </div>
+      <a href="/zh/contact/" class="btn btn-secondary" style="flex-shrink:0">联系我们 <span class="chev">›</span></a>
+    </div>
+
+    <div data-fade style="display:flex;gap:12px;flex-wrap:wrap;margin-top:36px">
+      <a href="/zh/submit/" class="btn btn-primary">立即报名 <span class="chev">›</span></a>
+      <a href="/zh/consent/" class="btn btn-outline">查看同意书</a>
+      <a href="/zh/competition/" class="btn btn-outline">返回比赛页面</a>
+    </div>
+
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+.rule-num {
+  width:38px;height:38px;border-radius:999px;
+  background:var(--sage-200);color:var(--forest-800);
+  font:700 16px var(--sans);
+  display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.rule-title {
+  font:700 clamp(18px,2.5vw,26px)/1.2 var(--serif);
+  color:var(--forest-800);margin:0;
+}
+@media(max-width:639px){
+  .rules-summary { grid-template-columns:repeat(2,1fr)!important }
+  [style*="padding-left:52px"] { padding-left:0!important }
+}
+</style>

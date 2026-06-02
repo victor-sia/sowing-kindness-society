@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const VIDEOS = [
+  { featured:true, series:'故事时光', duration:'4:18', href:'https://www.ganjingworld.com/video/1ia1t1d4ree7wM4nzoEMtbywH1tp1c', img:'https://image1-ap-japan.cloudokyo.cloud/image/v3/6a/96/b2/6a96b2af-9920-4522-ae99-a6307771ad1c/1280.webp', title:'狮子与老鼠的友谊——善意故事歌', body:'温暖动人的动画歌曲，重述这个经典故事。善意与友谊能让最小的朋友成为英雄。', tag:'故事时光' },
+  { featured:false, series:'故事时光', duration:'5:42', href:'https://www.ganjingworld.com/video/1ii0isdhvq42ypAN5bs9Fs9sp1of1c', img:'https://image1-ap-japan.cloudokyo.cloud/image/v14/b2/45/af/b245af9b-1785-4520-a705-6627c1d75254/1280.webp', title:'被遗忘的秋千', body:'两个孩子注意到了一位孤独的老人——发现微小的关爱如何改变一个人的生命。', tag:'故事时光' },
+  { featured:false, series:'绘本朗读', duration:'3:55', href:'https://www.ganjingworld.com/video/1g859k3l56b7kIcVYNot1b5rg1v91c', img:'https://image4-us-west.cloudokyo.cloud/image/v1/1d/0c/64/1d0c64c1-bab7-438b-99d5-c74ea8f2842b/1280.webp', title:'小听众：当我心怀善意时', body:'关于善意是什么感觉的温柔绘本朗读。', tag:'绘本朗读' },
+  { featured:false, series:'绘本朗读', duration:'4:30', href:'https://www.ganjingworld.com/video/1icvovrk7pd6F44gZOc2jvmiO1mf1c', img:'https://image1-us-east.cloudokyo.cloud/image/v14/50/32/90/5032906e-26c4-4954-821b-285b18538e0c/1280.webp', title:'中国传统故事：善人与梅树', body:'一个关于韩善山——一位以诚信、礼义和善良著称的富人——的故事。', tag:'绘本朗读' },
+];
+---
+<BaseLayout title="观看 | 播种善意协会" description="在我们的GanjingWorld官方频道观看善意故事和绘本朗读。安全、无广告、温柔。">
+
+<section class="page-header">
+  <div class="container">
+    <div class="page-header__crumbs"><span>观看</span><span class="dot"></span><span>GanjingWorld频道</span></div>
+    <h1 style="font:700 clamp(36px,5.5vw,72px)/1.06 var(--serif);letter-spacing:-.02em;margin:0 0 16px">
+      <span style="color:var(--ink-900)">可以依偎在一起</span><span style="color:var(--forest-800)">观看的</span><span style="color:var(--orange-500)">故事。</span>
+    </h1>
+    <p style="font:400 18px/1.6 var(--sans);color:var(--ink-700);max-width:620px;margin:0">绘本朗读、善意歌曲和短片——全部在我们的GanjingWorld官方频道。安全、无广告、温柔。</p>
+  </div>
+</section>
+
+<section style="padding:0 0 28px">
+  <div class="container">
+    <div class="card card--quiet" style="padding:22px 28px;display:flex;flex-wrap:wrap;gap:20px;align-items:center">
+      <img src="/logo/sks-logomark.webp" alt="" width="56" height="56" style="height:56px;width:auto;flex-shrink:0" />
+      <div style="flex:1 1 280px;min-width:0">
+        <div style="font:700 20px var(--serif);color:var(--forest-800)">播种善意协会频道</div>
+        <div style="font:400 14px var(--sans);color:var(--ink-500);margin-top:4px">绘本朗读、善意歌曲和短片——在GanjingWorld。</div>
+      </div>
+      <a href="https://www.ganjingworld.com/@sowingkindness" target="_blank" rel="noopener" class="btn btn-primary" style="flex-shrink:0">关注频道 <span class="chev">›</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;padding-bottom:64px">
+  <div class="container">
+    <div class="grid-3col" data-stagger>
+      {VIDEOS.map(v => (
+        <a href={v.href} target="_blank" rel="noopener" class="card" style="display:block;overflow:hidden;text-decoration:none;color:inherit">
+          <div style="position:relative;height:220px">
+            <img src={v.img} alt={v.title} style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" />
+            <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+              <span style="width:56px;height:56px;border-radius:999px;background:rgba(255,255,255,.92);display:inline-flex;align-items:center;justify-content:center;color:var(--forest-800)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </span>
+            </span>
+            {v.duration && <span style="position:absolute;right:12px;bottom:12px;padding:4px 10px;border-radius:6px;background:rgba(20,40,20,.78);color:#fff;font:600 12px var(--sans)">{v.duration}</span>}
+            <span class="pill pill--paper" style="position:absolute;left:14px;top:14px">{v.tag}</span>
+          </div>
+          <div style="padding:20px 22px 24px">
+            <div style="font:700 18px/1.3 var(--serif);color:var(--forest-800);margin-bottom:8px">{v.title}</div>
+            <div class="heart-divider" style="margin-bottom:10px"><span class="line" style="width:16px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:16px"></span></div>
+            <p style="font:400 14px/1.6 var(--sans);color:var(--ink-700);margin:0 0 12px">{v.body}</p>
+            <span class="link-arrow">在GanjingWorld观看 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

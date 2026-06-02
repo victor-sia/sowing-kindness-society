@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="家长同意书 | 播种善意协会" description="2026年跨中心讲故事比赛的家长及监护人同意书。为孩子报名前请仔细阅读。">
+
+<section class="page-header">
+  <div class="container">
+    <div class="page-header__crumbs"><span>同意书</span><span class="dot"></span><span>家长及监护人同意书</span></div>
+    <h1 style="font:700 clamp(32px,5vw,64px)/1.06 var(--serif);letter-spacing:-.02em;margin:0 0 14px">
+      <span style="color:var(--ink-900)">家长及监护人</span><span style="color:var(--forest-800)">同意书</span>
+    </h1>
+    <p style="font:400 17px/1.6 var(--sans);color:var(--ink-700);max-width:600px;margin:0 0 16px">适用于2026年跨中心讲故事比赛。为孩子报名前请仔细阅读。</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="/zh/submit/" class="btn btn-primary">为孩子报名 <span class="chev">›</span></a>
+      <a href="/zh/rules/" class="btn btn-outline">阅读官方规则</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:40px">
+  <div class="container" style="max-width:860px;margin:0 auto">
+
+    <div class="card card--quiet" style="padding:28px 32px;margin-bottom:36px;background:var(--sage-50)">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px">
+        <span style="font-size:28px">📋</span>
+        <div style="font:700 20px var(--serif);color:var(--forest-800)">关于本同意书</div>
+      </div>
+      <p style="font:400 15px/1.7 var(--sans);color:var(--ink-700);margin:0">本表格为所有参赛者必须填写的文件。为孩子报名即表示您确认已阅读并同意以下所有条款。播种善意协会遵守新加坡个人数据保护法（PDPA 2012）。</p>
+    </div>
+
+    <div class="consent-section" style="margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+        <span style="width:36px;height:36px;border-radius:999px;background:var(--forest-800);color:#fff;font:700 16px var(--serif);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">1</span>
+        <h2 style="font:700 22px var(--serif);color:var(--forest-800);margin:0">资格与报名</h2>
+      </div>
+      <ul style="list-style:none;padding:0;margin:0;display:grid;gap:12px;font:400 15px/1.6 var(--sans);color:var(--ink-700)">
+        {[
+          '我的孩子在2026年9月20日时年龄为3至6岁。',
+          '我的孩子目前就读于新加坡的幼儿园、幼稚园、托儿所、补习中心或培训中心。',
+          '我的孩子将以个人身份参赛——不接受团体参赛。',
+          '每名儿童只接受一份参赛作品，重复提交的作品可能被取消资格。',
+          '参赛免费，比赛任何阶段均不收取任何费用。',
+        ].map(item => (
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="color:var(--fern-600);flex-shrink:0;margin-top:2px">✓</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="consent-section" style="margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+        <span style="width:36px;height:36px;border-radius:999px;background:var(--forest-800);color:#fff;font:700 16px var(--serif);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">2</span>
+        <h2 style="font:700 22px var(--serif);color:var(--forest-800);margin:0">视频提交（第一轮）</h2>
+      </div>
+      <ul style="list-style:none;padding:0;margin:0;display:grid;gap:12px;font:400 15px/1.6 var(--sans);color:var(--ink-700)">
+        {[
+          '讲故事视频须在截止日期2026年9月20日晚11时59分（新加坡时间）前录制完毕。',
+          '视频须只包含已报名的儿童。A组（3至4岁）可允许其他人在镜头外提供最少的协助。',
+          'A组（3至4岁）：表演时长最长3分钟。B组（5至6岁）：最长5分钟。超时视频可能被扣分。',
+          '可接受格式：MP4或MOV。首选横向拍摄。欢迎手机录制。',
+          '整个过程中，儿童须清晰可见且声音清晰可闻。背景音乐不得盖过儿童的声音。',
+          '允许并鼓励使用道具、服装、画作、玩偶和毛绒玩具。所有道具须安全且适合儿童使用。',
+          '我确认所使用的背景音乐为原创、免版权或已获得适当授权。',
+        ].map(item => (
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="color:var(--fern-600);flex-shrink:0;margin-top:2px">✓</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="consent-section" style="margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+        <span style="width:36px;height:36px;border-radius:999px;background:var(--forest-800);color:#fff;font:700 16px var(--serif);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">3</span>
+        <h2 style="font:700 22px var(--serif);color:var(--forest-800);margin:0">总决赛（第二轮）——如获入围</h2>
+      </div>
+      <ul style="list-style:none;padding:0;margin:0;display:grid;gap:12px;font:400 15px/1.6 var(--sans);color:var(--ink-700)">
+        {[
+          '每个组别（英语/华语 × A组/B组）的六名入围选手将受邀于2026年11月7日或8日（暂定）在新加坡大巴窑北举行的总决赛上现场表演。',
+          '入围选手须表演与第一轮提交相同的故事，允许小幅修改。',
+          '家长或监护人须陪同儿童出席总决赛。',
+          '无法出席总决赛的入围选手将丧失入围资格。如情况有变，请立即联系我们。',
+          '评审团将按与第一轮相同的四项标准评审现场表演。',
+        ].map(item => (
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="color:var(--fern-600);flex-shrink:0;margin-top:2px">✓</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="consent-section" style="margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+        <span style="width:36px;height:36px;border-radius:999px;background:var(--orange-600);color:#fff;font:700 16px var(--serif);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">4</span>
+        <h2 style="font:700 22px var(--serif);color:var(--forest-800);margin:0">个人数据与宣传（PDPA）</h2>
+      </div>
+      <p style="font:400 15px/1.7 var(--sans);color:var(--ink-700);margin:0 0 14px">根据新加坡2012年个人数据保护法，本人同意以下事项：</p>
+      <ul style="list-style:none;padding:0;margin:0;display:grid;gap:12px;font:400 15px/1.6 var(--sans);color:var(--ink-700)">
+        {[
+          '播种善意协会可收集和使用我孩子的姓名、表演视频及比赛中拍摄的照片，用于管理比赛、宣布成绩及履行奖项义务。',
+          '视频和照片可在播种善意协会的网站、社交媒体频道（包括GanjingWorld、Facebook、Instagram）及新闻稿上发布，以推广比赛和我们的善意使命。',
+          '个人数据不会出售或出于商业目的与第三方分享。',
+          '本人可随时通过联系contact@sowingkindness.org.sg撤回此同意。撤回后，播种善意协会将在合理时间内从其频道中删除相关内容。',
+          '本人确认我是该儿童的家长或法定监护人，并有权提供此同意。',
+        ].map(item => (
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="color:var(--orange-600);flex-shrink:0;margin-top:2px">✓</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="consent-section" style="margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+        <span style="width:36px;height:36px;border-radius:999px;background:var(--forest-800);color:#fff;font:700 16px var(--serif);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">5</span>
+        <h2 style="font:700 22px var(--serif);color:var(--forest-800);margin:0">奖项与决定</h2>
+      </div>
+      <ul style="list-style:none;padding:0;margin:0;display:grid;gap:12px;font:400 15px/1.6 var(--sans);color:var(--ink-700)">
+        {[
+          '奖项分设四个组别：英语/华语，A组/B组。',
+          '冠军：Popular礼券（S$150）+ 奖杯 + 成就证书。',
+          '亚军：Popular礼券（S$100）+ 奖杯 + 成就证书。',
+          '季军：Popular礼券（S$50）+ 奖杯 + 成就证书。',
+          '所有总决赛参赛者获得成就证书。所有其他参赛者获得电子参与证书。',
+          '最佳人气奖、最佳服装及道具奖、安慰奖等特别奖项仍在敲定中，可能有所变动。',
+          '所有评审决定为最终决定。播种善意协会保留取消违反本条款的任何参赛作品的资格的权利。',
+        ].map(item => (
+          <li style="display:flex;gap:12px;align-items:flex-start">
+            <span style="color:var(--fern-600);flex-shrink:0;margin-top:2px">✓</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="card" style="padding:32px;background:var(--cream-200)">
+      <h2 style="font:700 22px var(--serif);color:var(--forest-800);margin:0 0 6px">声明</h2>
+      <div class="heart-divider" style="margin-bottom:16px"><span class="line"></span><span style="color:var(--heart)">♥</span><span class="line"></span></div>
+      <p style="font:500 15px/1.7 var(--sans);color:var(--ink-700);margin:0 0 24px">通过提交表格为孩子报名，即表示您确认已阅读并同意上述所有条款，且所提供的所有信息均准确完整。</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px" class="submit-2col">
+        {[
+          ['家长 / 监护人姓名', '全名'],
+          ['身份证 / FIN（后4位字符）', '例：123A'],
+          ['联系电话', '+65'],
+          ['同意日期', 'DD / MM / YYYY'],
+        ].map(([label, ph]) => (
+          <div>
+            <div style="font:600 13px var(--sans);color:var(--forest-800);margin-bottom:6px">{label}</div>
+            <div style="height:36px;border-bottom:1.5px dashed var(--border-strong, rgba(31,77,31,.2));display:flex;align-items:flex-end;padding-bottom:4px;font:400 13px var(--sans);color:var(--ink-300)">{ph}</div>
+          </div>
+        ))}
+      </div>
+      <p style="font:400 13px/1.5 var(--sans);color:var(--ink-500);margin:0 0 20px">数字报名时，提交表格即视为您的同意。如需纸质副本，请打印本页并带至任何播种善意协会活动现场。</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="/zh/submit/" class="btn btn-primary">前往报名 <span class="chev">›</span></a>
+        <button onclick="window.print()" class="btn btn-outline">打印本表格</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+@media(max-width:639px){
+  .submit-2col{grid-template-columns:1fr!important}
+}
+@media print{
+  .nav,.footer,.page-header .btn,.section .btn{display:none!important}
+  .page-header{padding:20px 0!important}
+  .section{padding:16px 0!important}
+}
+</style>

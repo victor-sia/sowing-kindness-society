@@ -2,101 +2,115 @@
 interface Props { currentPath: string; }
 const { currentPath } = Astro.props;
 
-const links = [
-  { label: 'Home',    href: '/' },
-  { label: 'About',   href: '/about/' },
-  { label: 'Contact', href: '/contact/' },
+const isZh = currentPath.startsWith('/zh/') || currentPath === '/zh';
+const base  = isZh ? '/zh' : '';
+
+// Language toggle target URLs
+const enPath = isZh ? (currentPath.replace(/^\/zh/, '') || '/') : currentPath;
+const zhPath = isZh ? currentPath : ('/zh' + (currentPath === '/' ? '/' : currentPath));
+
+// Translated labels
+const T = isZh ? {
+  home:'首页', about:'关于我们', comp:'比赛', rules:'比赛规则',
+  consent:'同意书', submit:'提交视频', events:'活动',
+  upcoming:'即将举行', past:'往届活动', stories:'温情故事',
+  read:'阅读', watch:'观看', contact:'联系我们',
+  learnMore:'了解更多', register:'立即报名',
+} : {
+  home:'Home', about:'About', comp:'Competition', rules:'Official Rules',
+  consent:'Consent Form', submit:'Submit a Video', events:'Events',
+  upcoming:'Upcoming Events', past:'Past Events', stories:'Inspire Stories',
+  read:'Read', watch:'Watch', contact:'Contact',
+  learnMore:'Learn More', register:'Register Now',
+};
+
+const compDropdown = [
+  { label:T.comp,    href:`${base}/competition/` },
+  { label:T.rules,   href:`${base}/rules/` },
+  { label:T.consent, href:`${base}/consent/` },
+  { label:T.submit,  href:`${base}/submit/` },
 ];
 
 const storiesDropdown = [
-  { label: 'Read',  href: '/stories/' },
-  { label: 'Watch', href: '/watch/' },
+  { label:T.read,  href:`${base}/stories/` },
+  { label:T.watch, href:`${base}/watch/` },
 ];
 
 const eventsDropdown = [
-  { label: 'Upcoming Events', href: '/events/upcoming/' },
-  { label: 'Past Events',     href: '/events/past/' },
-];
-
-const compDropdown = [
-  { label: 'Competition',   href: '/competition/' },
-  { label: 'Official Rules',href: '/rules/' },
-  { label: 'Consent Form',  href: '/consent/' },
-  { label: 'Submit a Video',href: '/submit/' },
+  { label:T.upcoming, href:`${base}/events/upcoming/` },
+  { label:T.past,     href:`${base}/events/past/` },
 ];
 
 function isActive(href: string) {
-  if (href === '/') return currentPath === '/';
+  if (href === '/' || href === '/zh/') return currentPath === href;
   return currentPath.startsWith(href);
 }
 const compActive   = compDropdown.some(d => currentPath.startsWith(d.href));
-const eventsActive   = eventsDropdown.some(d => currentPath.startsWith(d.href));
-const storiesActive  = storiesDropdown.some(d => currentPath.startsWith(d.href));
+const eventsActive = eventsDropdown.some(d => currentPath.startsWith(d.href));
+const storiesActive = storiesDropdown.some(d => currentPath.startsWith(d.href));
 ---
 
 <header class="nav" id="site-nav">
   <div class="container nav__inner">
-    <a href="/" class="nav__logo">
+    <a href={isZh ? '/zh/' : '/'} class="nav__logo">
       <img src="/logo/sks-logo-transparent.webp" alt="Sowing Kindness Society" width="200" height="62" />
     </a>
 
     <nav class="nav__links">
-      <a href="/" class={`nav__link${currentPath === '/' ? ' active' : ''}`}>Home</a>
-      <a href="/about/" class={`nav__link${isActive('/about/') ? ' active' : ''}`}>About</a>
+      <a href={isZh ? '/zh/' : '/'} class={`nav__link${isActive(isZh ? '/zh/' : '/') ? ' active' : ''}`}>{T.home}</a>
+      <a href={`${base}/about/`} class={`nav__link${isActive(`${base}/about/`) ? ' active' : ''}`}>{T.about}</a>
 
       <!-- Competition dropdown -->
       <div class={`nav__drop-wrap${compActive ? ' active' : ''}`}>
-        <a href="/competition/" class={`nav__link nav__link--drop${compActive ? ' active' : ''}`}>
-          Competition
+        <a href={`${base}/competition/`} class={`nav__link nav__link--drop${compActive ? ' active' : ''}`}>
+          {T.comp}
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="nav__caret"><polyline points="6 9 12 15 18 9"/></svg>
         </a>
         <div class="nav__dropdown">
           {compDropdown.map(d => (
-            <a href={d.href} class={`nav__dropdown-item${currentPath.startsWith(d.href) ? ' active' : ''}`}>
-              {d.label}
-            </a>
+            <a href={d.href} class={`nav__dropdown-item${currentPath.startsWith(d.href) ? ' active' : ''}`}>{d.label}</a>
           ))}
         </div>
       </div>
 
       <!-- Events dropdown -->
       <div class={`nav__drop-wrap${eventsActive ? ' active' : ''}`}>
-        <a href="/events/upcoming/" class={`nav__link nav__link--drop${eventsActive ? ' active' : ''}`}>
-          Events
+        <a href={`${base}/events/upcoming/`} class={`nav__link nav__link--drop${eventsActive ? ' active' : ''}`}>
+          {T.events}
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="nav__caret"><polyline points="6 9 12 15 18 9"/></svg>
         </a>
         <div class="nav__dropdown">
           {eventsDropdown.map(d => (
-            <a href={d.href} class={`nav__dropdown-item${currentPath.startsWith(d.href) ? ' active' : ''}`}>
-              {d.label}
-            </a>
+            <a href={d.href} class={`nav__dropdown-item${currentPath.startsWith(d.href) ? ' active' : ''}`}>{d.label}</a>
           ))}
         </div>
       </div>
 
       <!-- Stories dropdown -->
       <div class={`nav__drop-wrap${storiesActive ? ' active' : ''}`}>
-        <a href="/stories/" class={`nav__link nav__link--drop${storiesActive ? ' active' : ''}`}>
-          Inspire Stories
+        <a href={`${base}/stories/`} class={`nav__link nav__link--drop${storiesActive ? ' active' : ''}`}>
+          {T.stories}
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" class="nav__caret"><polyline points="6 9 12 15 18 9"/></svg>
         </a>
         <div class="nav__dropdown">
           {storiesDropdown.map(d => (
-            <a href={d.href} class={`nav__dropdown-item${currentPath.startsWith(d.href) ? ' active' : ''}`}>
-              {d.label}
-            </a>
+            <a href={d.href} class={`nav__dropdown-item${currentPath.startsWith(d.href) ? ' active' : ''}`}>{d.label}</a>
           ))}
         </div>
       </div>
 
-      {links.slice(2).map(l => (
-        <a href={l.href} class={`nav__link${isActive(l.href) ? ' active' : ''}`}>{l.label}</a>
-      ))}
+      <a href={`${base}/contact/`} class={`nav__link${isActive(`${base}/contact/`) ? ' active' : ''}`}>{T.contact}</a>
     </nav>
 
     <div class="nav__cta">
-      <a href="/about/" class="btn btn-outline">Learn More</a>
-      <a href="/submit/" class="btn btn-primary">Register Now <span class="chev">›</span></a>
+      <!-- Language toggle -->
+      <div class="lang-toggle">
+        <a href={enPath} class={`lang-btn${!isZh ? ' active' : ''}`}>EN</a>
+        <span class="lang-sep">|</span>
+        <a href={zhPath} class={`lang-btn${isZh ? ' active' : ''}`}>中文</a>
+      </div>
+      <a href={`${base}/about/`} class="btn btn-outline">{T.learnMore}</a>
+      <a href={`${base}/submit/`} class="btn btn-primary">{T.register} <span class="chev">›</span></a>
     </div>
 
     <button class="nav__burger" id="nav-burger" aria-label="Open menu">
@@ -113,47 +127,86 @@ const storiesActive  = storiesDropdown.some(d => currentPath.startsWith(d.href))
 <!-- Mobile drawer -->
 <div class="nav__drawer" id="nav-drawer">
   <nav>
-    <a href="/" class={`nav__link${currentPath === '/' ? ' active' : ''}`}>Home</a>
-    <a href="/about/" class={`nav__link${isActive('/about/') ? ' active' : ''}`}>About</a>
-    <!-- Competition group in mobile -->
+    <a href={isZh ? '/zh/' : '/'} class={`nav__link${isActive(isZh ? '/zh/' : '/') ? ' active' : ''}`}>{T.home}</a>
+    <a href={`${base}/about/`} class={`nav__link${isActive(`${base}/about/`) ? ' active' : ''}`}>{T.about}</a>
     <div class="nav__drawer-group">
-      <div class="nav__drawer-group-label">Competition</div>
+      <div class="nav__drawer-group-label">{T.comp}</div>
       {compDropdown.map(d => (
         <a href={d.href} class={`nav__link nav__link--sub${currentPath.startsWith(d.href) ? ' active' : ''}`}>{d.label}</a>
       ))}
     </div>
-    <!-- Events group in mobile -->
     <div class="nav__drawer-group">
-      <div class="nav__drawer-group-label">Events</div>
+      <div class="nav__drawer-group-label">{T.events}</div>
       {eventsDropdown.map(d => (
         <a href={d.href} class={`nav__link nav__link--sub${currentPath.startsWith(d.href) ? ' active' : ''}`}>{d.label}</a>
       ))}
     </div>
-    <!-- Stories group in mobile -->
     <div class="nav__drawer-group">
-      <div class="nav__drawer-group-label">Inspire Stories</div>
+      <div class="nav__drawer-group-label">{T.stories}</div>
       {storiesDropdown.map(d => (
         <a href={d.href} class={`nav__link nav__link--sub${currentPath.startsWith(d.href) ? ' active' : ''}`}>{d.label}</a>
       ))}
     </div>
-    {links.slice(2).map(l => (
-      <a href={l.href} class={`nav__link${isActive(l.href) ? ' active' : ''}`}>{l.label}</a>
-    ))}
+    <a href={`${base}/contact/`} class={`nav__link${isActive(`${base}/contact/`) ? ' active' : ''}`}>{T.contact}</a>
+    <!-- Language toggle mobile -->
+    <div class="lang-toggle lang-toggle--mobile">
+      <a href={enPath} class={`lang-btn${!isZh ? ' active' : ''}`}>EN — English</a>
+      <a href={zhPath} class={`lang-btn${isZh ? ' active' : ''}`}>中文 — 简体中文</a>
+    </div>
   </nav>
   <div class="nav__drawer-cta">
-    <a href="/about/" class="btn btn-outline">Learn More</a>
-    <a href="/submit/" class="btn btn-primary">Register Now <span class="chev">›</span></a>
+    <a href={`${base}/about/`} class="btn btn-outline">{T.learnMore}</a>
+    <a href={`${base}/submit/`} class="btn btn-primary">{T.register} <span class="chev">›</span></a>
   </div>
   <div style="margin-top:32px;padding:16px 0;border-top:1px solid rgba(31,77,31,.08);font:400 13px var(--sans);color:var(--ink-500)">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
       <span style="color:var(--heart)">♥</span>
-      <span style="font:600 14px var(--serif);color:var(--forest-800)">Sow Kindness, Watch It Grow</span>
+      <span style="font:600 14px var(--serif);color:var(--forest-800)">{isZh ? '播撒善意，静待花开' : 'Sow Kindness, Watch It Grow'}</span>
     </div>
     <div>contact@sowingkindness.org.sg</div>
   </div>
 </div>
 
 <style>
+/* ── Language toggle ── */
+.lang-toggle {
+  display:flex;align-items:center;gap:2px;
+  font:600 13px var(--sans);
+  background:var(--sage-50);
+  border:1.5px solid rgba(31,77,31,.18);
+  border-radius:999px;
+  padding:3px;
+  flex-shrink:0;
+  box-shadow:0 1px 3px rgba(31,77,31,.08);
+}
+.lang-btn {
+  padding:5px 13px;
+  border-radius:999px;
+  color:var(--ink-400);
+  transition:background .15s,color .15s,box-shadow .15s;
+  white-space:nowrap;
+  line-height:1;
+}
+.lang-btn.active {
+  background:#fff;
+  color:var(--forest-800);
+  box-shadow:0 1px 4px rgba(31,77,31,.14);
+}
+.lang-btn:hover:not(.active) { color:var(--ink-700); }
+.lang-sep { display:none; }
+
+.lang-toggle--mobile {
+  display:flex;flex-direction:column;gap:0;
+  border:1.5px solid rgba(31,77,31,.15);
+  border-radius:12px;overflow:hidden;
+  margin:16px 0 4px;
+}
+.lang-toggle--mobile .lang-btn {
+  padding:12px 16px;font-size:15px;
+  border-bottom:1px solid rgba(31,77,31,.08);
+}
+.lang-toggle--mobile .lang-btn:last-child { border-bottom:none; }
+
 /* ── Dropdown wrapper ── */
 .nav__drop-wrap {
   position:relative;
@@ -170,27 +223,24 @@ const storiesActive  = storiesDropdown.some(d => currentPath.startsWith(d.href))
   flex-shrink:0;
 }
 
-/* Dropdown panel — opacity/visibility so hover delay works correctly */
 .nav__dropdown {
   position:absolute;
-  top:100%;          /* flush to the link — no gap */
+  top:100%;
   left:50%;
   transform:translateX(-50%);
   min-width:180px;
   background:#fff;
   border-radius:14px;
   box-shadow:0 8px 28px rgba(31,77,31,.12),0 2px 6px rgba(31,77,31,.06);
-  padding:16px 8px 8px; /* 16px top padding acts as the visual gap */
+  padding:16px 8px 8px;
   z-index:200;
   border:1px solid rgba(31,77,31,.07);
-  /* Hidden state — delay hiding by 120ms so mouse can travel to panel */
   opacity:0;
   visibility:hidden;
   pointer-events:none;
   transition:opacity .15s .12s, visibility .15s .12s, transform .15s .12s;
   transform:translateX(-50%) translateY(-4px);
 }
-/* Arrow pointer */
 .nav__dropdown::before {
   content:'';
   position:absolute;
@@ -202,7 +252,6 @@ const storiesActive  = storiesDropdown.some(d => currentPath.startsWith(d.href))
   border-left:1px solid rgba(31,77,31,.07);
   border-top:1px solid rgba(31,77,31,.07);
 }
-/* Transparent bridge — fills the space between link bottom and dropdown top */
 .nav__dropdown::after {
   content:'';
   position:absolute;
@@ -227,7 +276,6 @@ const storiesActive  = storiesDropdown.some(d => currentPath.startsWith(d.href))
   font-weight:700;
 }
 
-/* Show on hover — instant appear, delayed hide */
 .nav__drop-wrap:hover .nav__dropdown {
   opacity:1;
   visibility:visible;
@@ -237,7 +285,6 @@ const storiesActive  = storiesDropdown.some(d => currentPath.startsWith(d.href))
 }
 .nav__drop-wrap:hover .nav__caret { transform:rotate(180deg) }
 
-/* Mobile drawer group */
 .nav__drawer-group { padding:6px 0 2px;margin:4px 0 }
 .nav__drawer-group-label {
   font:700 11px var(--sans);
@@ -273,4 +320,13 @@ const storiesActive  = storiesDropdown.some(d => currentPath.startsWith(d.href))
     iconClose.style.display = 'none';
     document.body.style.overflow = '';
   }));
+
+  // Set sks_lang cookie when user manually switches language
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href') || '';
+      const lang = href.startsWith('/zh') ? 'zh' : 'en';
+      document.cookie = `sks_lang=${lang}; path=/; max-age=31536000`;
+    });
+  });
 </script>

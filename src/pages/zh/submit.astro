@@ -1,0 +1,565 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="提交视频 | 播种善意协会" description="为您的孩子报名参加2026年比赛，提交讲故事视频。免费参赛，截止日期：2026年9月20日。">
+
+<section class="page-header">
+  <div class="container">
+    <div class="page-header__crumbs"><span>提交</span><span class="dot"></span><span>您的视频</span></div>
+    <h1 style="font:700 clamp(36px,5.5vw,72px)/1.06 var(--serif);letter-spacing:-.02em;margin:0 0 14px">
+      <span style="color:var(--ink-900)">分享您孩子的 </span><span style="color:var(--forest-800)">精彩</span><span style="color:var(--orange-500)">故事。</span>
+    </h1>
+    <p style="font:400 18px/1.6 var(--sans);color:var(--ink-700);max-width:620px;margin:0">报名完全免费。截止日期：<strong>2026年9月20日。</strong></p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:28px;padding-bottom:80px">
+  <div class="container sf-layout">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sf-sidebar" id="sf-sidebar">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px">
+        <span id="sf-badge" style="width:36px;height:36px;border-radius:999px;background:var(--sage-200);color:var(--forest-800);font:700 15px var(--sans);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">1</span>
+        <span id="sf-badge-label" style="font:600 16px var(--sans);color:var(--forest-800);border-bottom:2px solid var(--forest-800);padding-bottom:2px">第1步，共4步</span>
+      </div>
+
+      <div style="position:relative;padding-left:48px">
+        <div style="position:absolute;left:15px;top:14px;bottom:14px;width:2px;background:var(--sage-200);border-radius:2px"></div>
+
+        {[
+          { n:1, title:'关于讲故事者', sub:'姓名、年龄和故事语言。' },
+          { n:2, title:'关于故事',     sub:'标题、简介和视频。' },
+          { n:3, title:'家长或监护人', sub:'您的联系方式。' },
+          { n:4, title:'同意与声明',   sub:'家长/监护人同意书。' },
+        ].map(s => (
+          <div class="sf-step-item" id={`sf-si-${s.n}`} style="position:relative;margin-bottom:32px">
+            <span class={`sf-step-circle ${s.n === 1 ? 'sf-sc-current' : 'sf-sc-future'}`}
+              id={`sf-sc-${s.n}`}
+              style="position:absolute;left:-48px;top:2px;width:30px;height:30px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .3s,box-shadow .3s">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" style="pointer-events:none"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <div class={`sf-step-title ${s.n === 1 ? 'sf-st-current' : 'sf-st-future'}`}
+              id={`sf-st-${s.n}`}
+              style="font:700 16px/1.2 var(--serif);margin-bottom:4px;transition:color .3s">{s.title}</div>
+            <div style="font:400 13px var(--sans);color:var(--ink-400,#9aaa94)">{s.sub}</div>
+          </div>
+        ))}
+      </div>
+
+      <div style="background:var(--sage-50);border-radius:16px;padding:18px 18px;margin-top:8px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--fern-600)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span style="font:700 15px var(--sans);color:var(--forest-800)">您的信息安全有保障</span>
+        </div>
+        <p style="font:400 13px/1.55 var(--sans);color:var(--ink-700);margin:0">我们只使用您的信息来运营比赛和分享结果。我们不会出售或分享您的数据。</p>
+      </div>
+    </aside>
+
+    <!-- ── FORM CARD ── -->
+    <div class="card" style="padding:40px 44px" id="submit-card">
+
+      <!-- ── 第1步：关于讲故事者 ── -->
+      <div class="sf-step" id="sf-step-1">
+        <h2 class="sf-heading">关于讲故事者</h2>
+        <div class="heart-divider" style="margin-bottom:14px"><span class="line" style="width:24px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:24px"></span></div>
+        <p class="sf-sub">请告诉我们您的小小讲故事者的基本信息。</p>
+
+        <div class="sf-field">
+          <label class="sf-label">讲故事者姓名</label>
+          <input id="f-name" class="field-input" type="text" placeholder="例：美玲" autocomplete="off" />
+        </div>
+
+        <div class="sf-row">
+          <div class="sf-field">
+            <label class="sf-label">年龄</label>
+            <select id="f-age" class="field-input">
+              <option value="">请选择年龄</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </div>
+          <div class="sf-field">
+            <label class="sf-label">故事语言</label>
+            <select id="f-lang" class="field-input">
+              <option value="English">英语</option>
+              <option value="Chinese">华语（普通话）</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="sf-row">
+          <div class="sf-field">
+            <label class="sf-label">幼儿园或小学 <span class="sf-optional">（可选）</span></label>
+            <input id="f-school" class="field-input" type="text" placeholder="例：小屋学校" />
+          </div>
+          <div class="sf-field">
+            <label class="sf-label">年龄组别</label>
+            <select id="f-agegroup" class="field-input">
+              <option value="">请先选择年龄</option>
+              <option value="3-4">3至4岁</option>
+              <option value="5-6">5至6岁</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 第2步：关于故事 ── -->
+      <div class="sf-step sf-hidden" id="sf-step-2">
+        <h2 class="sf-heading">关于故事</h2>
+        <div class="heart-divider" style="margin-bottom:14px"><span class="line" style="width:24px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:24px"></span></div>
+        <p class="sf-sub">告诉我们您的故事内容，并分享视频。</p>
+
+        <div class="sf-field">
+          <label class="sf-label">故事标题</label>
+          <input id="f-title" class="field-input" type="text" placeholder="例：一个善意的小行动" />
+        </div>
+
+        <div class="sf-field">
+          <label class="sf-label">故事简介</label>
+          <textarea id="f-synopsis" class="field-input" rows="4" placeholder="用1至2句话告诉我们您的故事内容。" style="resize:vertical"></textarea>
+        </div>
+
+        <!-- Video toggle -->
+        <div class="sf-field">
+          <label class="sf-label">您的视频 <span class="sf-req-star">*</span></label>
+
+          <div class="sf-video-toggle">
+            <button type="button" class="sf-vtab sf-vtab--active" id="sf-tab-upload">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+              上传文件
+            </button>
+            <button type="button" class="sf-vtab" id="sf-tab-link">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+              粘贴链接
+            </button>
+          </div>
+
+          <div id="sf-panel-upload">
+            <div id="sf-dropzone" class="sf-dropzone">
+              <input id="f-video" type="file" accept="video/mp4,video/quicktime,.mov" style="display:none" />
+              <div id="sf-drop-idle">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--forest-800)" stroke-width="1.5" stroke-linecap="round" style="margin-bottom:10px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                <div style="font:600 15px var(--sans);color:var(--forest-800);margin-bottom:4px">将视频拖放到此处或<span style="text-decoration:underline;cursor:pointer" id="sf-browse-link">点击浏览</span></div>
+                <div style="font:400 12px var(--sans);color:var(--ink-500)">MP4 / MOV &middot; 最大500 MB &middot; 3分钟（3至4岁）或5分钟（5至6岁）</div>
+              </div>
+              <div id="sf-drop-uploading" class="sf-hidden">
+                <div style="font:600 14px var(--sans);color:var(--forest-800);margin-bottom:10px" id="sf-upload-name"></div>
+                <div class="sf-progress-track"><div class="sf-progress-bar" id="sf-progress-bar"></div></div>
+                <div style="font:500 12px var(--sans);color:var(--ink-500);margin-top:8px" id="sf-upload-pct">0%</div>
+              </div>
+              <div id="sf-drop-done" class="sf-hidden" style="display:flex;align-items:center;gap:12px">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--fern-600)" stroke-width="2.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <div>
+                  <div style="font:600 14px var(--sans);color:var(--forest-800)" id="sf-done-name"></div>
+                  <div style="font:400 12px var(--sans);color:var(--fern-600)">上传成功</div>
+                </div>
+                <button type="button" id="sf-remove-video" style="margin-left:auto;font:500 12px var(--sans);color:var(--ink-500);background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:6px">删除</button>
+              </div>
+              <div id="sf-drop-error" class="sf-hidden" style="text-align:center">
+                <div style="font:600 14px var(--sans);color:var(--orange-600);margin-bottom:6px" id="sf-upload-error-msg">上传失败</div>
+                <button type="button" id="sf-retry-btn" class="btn btn-outline" style="padding:8px 18px;font-size:13px">重试</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="sf-panel-link" class="sf-hidden">
+            <input id="f-videolink" class="field-input" type="url" placeholder="Google Drive、YouTube（不公开）或WeTransfer链接" />
+            <span style="font:400 12px var(--sans);color:var(--ink-500);margin-top:6px;display:block">将视频上传至Google Drive或YouTube（不公开），然后在此粘贴链接。</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 第3步：家长或监护人 ── -->
+      <div class="sf-step sf-hidden" id="sf-step-3">
+        <h2 class="sf-heading">家长或监护人</h2>
+        <div class="heart-divider" style="margin-bottom:14px"><span class="line" style="width:24px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:24px"></span></div>
+        <p class="sf-sub">我们将向您发送所有更新。</p>
+
+        <div class="sf-field">
+          <label class="sf-label">您的姓名</label>
+          <input id="f-pname" class="field-input" type="text" placeholder="家长/监护人全名" />
+        </div>
+
+        <div class="sf-field">
+          <label class="sf-label">电邮</label>
+          <input id="f-email" class="field-input" type="email" placeholder="you@email.com" />
+        </div>
+
+        <div class="sf-field">
+          <label class="sf-label">手机号码 <span class="sf-optional">（可选）</span></label>
+          <input id="f-mobile" class="field-input" type="tel" placeholder="+65 8123 4567" />
+        </div>
+      </div>
+
+      <!-- ── 第4步：同意与声明 ── -->
+      <div class="sf-step sf-hidden" id="sf-step-4">
+        <h2 class="sf-heading">同意与声明</h2>
+        <div class="heart-divider" style="margin-bottom:14px"><span class="line" style="width:24px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:24px"></span></div>
+        <p class="sf-sub">请在勾选下方选项前阅读完整的<a href="/zh/consent/" target="_blank" rel="noopener" style="color:var(--fern-600);font-weight:600">家长同意书</a>。</p>
+
+        <div class="sf-consent-group">
+          <label class="sf-checkbox-row">
+            <input type="checkbox" id="c-participation" class="sf-cb sf-required" />
+            <span>我是该儿童的家长/法定监护人。我已阅读并同意<a href="/zh/consent/" target="_blank" rel="noopener" style="color:var(--fern-600);font-weight:600">家长同意书</a>和<a href="/zh/rules/" target="_blank" rel="noopener" style="color:var(--fern-600);font-weight:600">官方比赛规则</a>。我理解我的个人数据仅用于管理本次比赛，未经同意不会与第三方分享，法律要求的情况除外。<span class="sf-req-star">*</span></span>
+          </label>
+        </div>
+
+        <div class="sf-consent-group" style="border-bottom:none;padding-bottom:0">
+          <div class="sf-field">
+            <label class="sf-label">全名 <span class="sf-req-star">*</span></label>
+            <input id="f-signature" class="field-input" type="text" placeholder="家长/监护人全名" />
+          </div>
+          <div style="font:500 13px var(--sans);color:var(--ink-700);margin-top:8px">日期：<strong id="sf-date"></strong></div>
+          <div id="sf-validation-msg" class="sf-hidden" style="font:500 13px var(--sans);color:var(--orange-600);margin-top:12px">
+            请勾选同意框并填写您的全名以提交。
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Navigation ── -->
+      <div class="sf-nav">
+        <div class="sf-dots">
+          <span class="sf-dot sf-dot--active" id="sf-dot-1"></span>
+          <span class="sf-dot" id="sf-dot-2"></span>
+          <span class="sf-dot" id="sf-dot-3"></span>
+          <span class="sf-dot" id="sf-dot-4"></span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <button class="btn btn-outline sf-hidden" id="sf-btn-back">返回</button>
+          <button class="btn btn-primary" id="sf-btn-next">继续 <span class="chev">›</span></button>
+          <button class="btn btn-primary sf-hidden" id="sf-btn-submit" style="opacity:.6" disabled>提交参赛作品 <span class="chev">›</span></button>
+        </div>
+      </div>
+
+      <!-- Success message -->
+      <div id="sf-success" class="sf-hidden" style="text-align:center;padding:48px 20px">
+        <div style="width:64px;height:64px;border-radius:999px;background:var(--sage-200);display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;color:var(--fern-600)">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3 style="font:700 26px var(--serif);color:var(--forest-800);margin:0 0 10px">报名已收到！</h3>
+        <p style="font:400 16px/1.6 var(--sans);color:var(--ink-700);margin:0 0 24px;max-width:440px;margin-inline:auto">感谢您的参赛。我们将在3个工作日内发送确认邮件至您的邮箱。我们迫不及待地想听您孩子的故事！♥</p>
+        <a href="/zh/" class="btn btn-secondary">返回首页 <span class="chev">›</span></a>
+      </div>
+
+    </div><!-- /submit-card -->
+  </div><!-- /sf-layout -->
+</section>
+
+</BaseLayout>
+
+<style>
+.sf-layout { display:grid;grid-template-columns:260px 1fr;gap:40px;align-items:start;max-width:1020px }
+.sf-sidebar { position:sticky;top:100px }
+
+@media(max-width:1023px){
+  .sf-layout { grid-template-columns:1fr }
+  .sf-sidebar { display:none }
+}
+
+.sf-heading { font:700 clamp(22px,3.5vw,32px)/1.15 var(--serif);color:var(--forest-800);margin:0 0 10px }
+.sf-sub { font:400 15px/1.55 var(--sans);color:var(--ink-500);margin:0 0 28px }
+.sf-optional { font-weight:400;color:var(--ink-500) }
+.sf-label { display:block;font:600 14px var(--sans);color:var(--forest-800);margin-bottom:7px }
+.sf-field { display:flex;flex-direction:column;margin-bottom:18px }
+.sf-row { display:grid;grid-template-columns:1fr 1fr;gap:16px }
+.sf-hidden { display:none!important }
+.sf-req-star { color:var(--orange-600);font-weight:700 }
+
+.sf-dropzone {
+  border:2px dashed rgba(31,77,31,.2);border-radius:16px;
+  padding:36px 24px;text-align:center;
+  background:var(--cream-100);cursor:pointer;
+  transition:border-color .2s,background .2s;
+}
+.sf-dropzone.drag-over { border-color:var(--fern-600);background:var(--sage-50) }
+
+.sf-consent-group { border-bottom:1px solid var(--border);padding-bottom:18px;margin-bottom:18px }
+.sf-checkbox-row {
+  display:flex;align-items:flex-start;gap:12px;
+  padding:14px 16px;border-radius:12px;
+  background:var(--cream-100);border:1.5px solid rgba(31,77,31,.10);
+  cursor:pointer;margin-bottom:8px;font:400 14px/1.5 var(--sans);color:var(--ink-700)
+}
+.sf-checkbox-row input[type="checkbox"] { flex-shrink:0;width:18px;height:18px;margin-top:2px;accent-color:var(--forest-800);cursor:pointer }
+
+.sf-nav { display:flex;align-items:center;justify-content:space-between;margin-top:36px;padding-top:24px;border-top:1px solid var(--border) }
+.sf-dots { display:flex;gap:8px;align-items:center }
+.sf-dot { width:11px;height:11px;border-radius:999px;background:var(--sage-200);transition:background .2s }
+.sf-dot--active { background:var(--forest-800) }
+
+.sf-step-circle { position:absolute;left:-48px;top:2px;width:30px;height:30px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .3s,box-shadow .3s }
+.sf-sc-done    { background:var(--forest-800) }
+.sf-sc-current { background:var(--orange-500);box-shadow:0 0 0 5px rgba(237,159,79,.2) }
+.sf-sc-future  { background:var(--sage-200) }
+.sf-step-title { font:700 16px/1.2 var(--serif);margin-bottom:4px;transition:color .3s }
+.sf-st-done    { color:var(--forest-800) }
+.sf-st-current { color:var(--orange-600) }
+.sf-st-future  { color:var(--ink-500) }
+.sf-sc-done    svg { stroke:var(--paper,#fff) }
+.sf-sc-current svg { stroke:var(--paper,#fff) }
+.sf-sc-future  svg { stroke:rgba(44,107,44,.3) }
+
+.sf-video-toggle { display:flex;gap:0;margin-bottom:12px;border:1.5px solid rgba(31,77,31,.15);border-radius:10px;overflow:hidden }
+.sf-vtab { flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 16px;font:600 13px var(--sans);color:var(--ink-500);background:#fff;border:none;cursor:pointer;transition:background .15s,color .15s }
+.sf-vtab--active { background:var(--sage-50);color:var(--forest-800) }
+.sf-vtab:hover:not(.sf-vtab--active) { background:var(--cream-100) }
+
+.sf-progress-track { width:100%;height:6px;background:var(--sage-200);border-radius:999px;overflow:hidden }
+.sf-progress-bar { height:100%;background:var(--forest-800);border-radius:999px;width:0%;transition:width .2s }
+
+@media(max-width:639px){
+  #submit-card { padding:28px 20px }
+  .sf-row { grid-template-columns:1fr }
+}
+</style>
+
+<script>
+// ── 状态 ──
+let step = 1;
+const TOTAL = 4;
+
+// ── 元素 ──
+const steps    = [1,2,3,4].map(n => document.getElementById(`sf-step-${n}`)!);
+const dots     = [1,2,3,4].map(n => document.getElementById(`sf-dot-${n}`)!);
+const btnBack  = document.getElementById('sf-btn-back')!;
+const btnNext  = document.getElementById('sf-btn-next')!;
+const btnSub   = document.getElementById('sf-btn-submit')!;
+const success  = document.getElementById('sf-success')!;
+const card     = document.getElementById('submit-card')!;
+const nav      = card.querySelector('.sf-nav')!;
+
+// 日期
+const d = new Date();
+(document.getElementById('sf-date') as HTMLElement).textContent =
+  d.toLocaleDateString('zh-CN',{day:'numeric',month:'long',year:'numeric'});
+
+// ── 年龄 → 年龄组别自动填充 ──
+(document.getElementById('f-age') as HTMLSelectElement).addEventListener('change', function(){
+  const ag = document.getElementById('f-agegroup') as HTMLSelectElement;
+  const v = +this.value;
+  if (v === 3 || v === 4) ag.value = '3-4';
+  else if (v === 5 || v === 6) ag.value = '5-6';
+  else ag.value = '';
+});
+
+// ── 视频——切换标签 ──
+let videoMode: 'upload' | 'link' = 'upload';
+let uploadedVideoUrl = '';
+
+const tabUpload   = document.getElementById('sf-tab-upload')!;
+const tabLink     = document.getElementById('sf-tab-link')!;
+const panelUpload = document.getElementById('sf-panel-upload')!;
+const panelLink   = document.getElementById('sf-panel-link')!;
+
+function setVideoMode(mode: 'upload' | 'link') {
+  videoMode = mode;
+  tabUpload.classList.toggle('sf-vtab--active', mode === 'upload');
+  tabLink.classList.toggle('sf-vtab--active',   mode === 'link');
+  panelUpload.classList.toggle('sf-hidden', mode !== 'upload');
+  panelLink.classList.toggle('sf-hidden',   mode !== 'link');
+}
+tabUpload.addEventListener('click', () => setVideoMode('upload'));
+tabLink.addEventListener('click',   () => setVideoMode('link'));
+
+// ── 视频——上传状态 ──
+type UploadState = 'idle' | 'uploading' | 'done' | 'error';
+const dropzone    = document.getElementById('sf-dropzone')!;
+const fileInput   = document.getElementById('f-video') as HTMLInputElement;
+const stateIdle   = document.getElementById('sf-drop-idle')!;
+const stateUp     = document.getElementById('sf-drop-uploading')!;
+const stateDone   = document.getElementById('sf-drop-done')!;
+const stateErr    = document.getElementById('sf-drop-error')!;
+const uploadName  = document.getElementById('sf-upload-name')!;
+const progressBar = document.getElementById('sf-progress-bar') as HTMLElement;
+const progressPct = document.getElementById('sf-upload-pct')!;
+const doneName    = document.getElementById('sf-done-name')!;
+const errMsg      = document.getElementById('sf-upload-error-msg')!;
+
+function setUploadState(s: UploadState) {
+  stateIdle.classList.toggle('sf-hidden', s !== 'idle');
+  stateUp.classList.toggle('sf-hidden',   s !== 'uploading');
+  stateDone.classList.toggle('sf-hidden', s !== 'done');
+  stateErr.classList.toggle('sf-hidden',  s !== 'error');
+}
+
+async function handleFile(file: File) {
+  const MAX = 500 * 1024 * 1024;
+  if (file.size > MAX) {
+    setUploadState('error');
+    errMsg.textContent = '文件过大，最大限制为500 MB。';
+    return;
+  }
+  if (!file.type.startsWith('video/')) {
+    setUploadState('error');
+    errMsg.textContent = '请上传视频文件（MP4或MOV）。';
+    return;
+  }
+
+  uploadName.textContent = file.name;
+  setUploadState('uploading');
+  progressBar.style.width = '0%';
+  progressPct.textContent = '0%';
+
+  try {
+    const res = await fetch('/api/upload-url', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ filename: file.name, contentType: file.type }),
+    });
+    const { ok, uploadUrl, videoUrl, error } = await res.json() as any;
+    if (!ok) throw new Error(error || '无法获取上传地址');
+
+    await new Promise<void>((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('PUT', uploadUrl);
+      xhr.setRequestHeader('Content-Type', file.type);
+      xhr.upload.onprogress = (e) => {
+        if (e.lengthComputable) {
+          const pct = Math.round((e.loaded / e.total) * 100);
+          progressBar.style.width = pct + '%';
+          progressPct.textContent = pct + '%';
+        }
+      };
+      xhr.onload  = () => xhr.status < 300 ? resolve() : reject(new Error(`上传失败：${xhr.status}`));
+      xhr.onerror = () => reject(new Error('上传时网络错误'));
+      xhr.send(file);
+    });
+
+    uploadedVideoUrl = videoUrl;
+    doneName.textContent = file.name;
+    setUploadState('done');
+
+  } catch (err: any) {
+    setUploadState('error');
+    errMsg.textContent = err.message || '上传失败，请重试。';
+  }
+}
+
+document.getElementById('sf-browse-link')!.addEventListener('click', e => { e.stopPropagation(); fileInput.click(); });
+dropzone.addEventListener('click', (e) => {
+  if ((e.target as HTMLElement).closest('#sf-remove-video, #sf-retry-btn')) return;
+  if (stateIdle.classList.contains('sf-hidden') === false) fileInput.click();
+});
+fileInput.addEventListener('change', () => { if(fileInput.files?.[0]) handleFile(fileInput.files[0]); });
+
+dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('drag-over'); });
+dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag-over'));
+dropzone.addEventListener('drop', e => {
+  e.preventDefault(); dropzone.classList.remove('drag-over');
+  const f = e.dataTransfer?.files[0];
+  if (f) handleFile(f);
+});
+
+document.getElementById('sf-remove-video')!.addEventListener('click', () => {
+  uploadedVideoUrl = '';
+  fileInput.value = '';
+  setUploadState('idle');
+});
+
+document.getElementById('sf-retry-btn')!.addEventListener('click', () => {
+  setUploadState('idle');
+  fileInput.click();
+});
+
+// ── 提交按钮启用/禁用 ──
+const requiredCBs = document.querySelectorAll<HTMLInputElement>('.sf-cb.sf-required');
+const signature   = document.getElementById('f-signature') as HTMLInputElement;
+function checkSubmit(){
+  const allChecked = [...requiredCBs].every(cb => cb.checked);
+  const hasSig = signature.value.trim().length > 0;
+  const ok = allChecked && hasSig;
+  btnSub.disabled = !ok;
+  (btnSub as HTMLButtonElement).style.opacity = ok ? '1' : '.6';
+}
+requiredCBs.forEach(cb => cb.addEventListener('change', checkSubmit));
+signature.addEventListener('input', checkSubmit);
+
+// ── 侧边栏同步 ──
+function syncSidebar(n: number){
+  const badge = document.getElementById('sf-badge');
+  const label = document.getElementById('sf-badge-label');
+  if(badge) badge.textContent = String(n);
+  if(label) label.textContent = '第' + n + '步，共4步';
+  for(let i = 1; i <= TOTAL; i++){
+    const circ  = document.getElementById('sf-sc-' + i);
+    const title = document.getElementById('sf-st-' + i);
+    if(!circ || !title) continue;
+    const state = i < n ? 'done' : i === n ? 'current' : 'future';
+    circ.className  = 'sf-step-circle sf-sc-' + state;
+    title.className = 'sf-step-title sf-st-' + state;
+  }
+}
+
+// ── 显示步骤 ──
+function showStep(n: number){
+  steps.forEach((s, i) => s.classList.toggle('sf-hidden', i + 1 !== n));
+  dots.forEach((d, i) => d.classList.toggle('sf-dot--active', i < n));
+  btnBack.classList.toggle('sf-hidden', n === 1);
+  btnNext.classList.toggle('sf-hidden', n === TOTAL);
+  btnSub.classList.toggle('sf-hidden',  n !== TOTAL);
+  step = n;
+  syncSidebar(n);
+  window.scrollTo({ top: (document.getElementById('submit-card') as HTMLElement).getBoundingClientRect().top + window.scrollY - 100, behavior:'smooth' });
+}
+
+btnNext.addEventListener('click', () => { if(step < TOTAL) showStep(step + 1); });
+btnBack.addEventListener('click', () => { if(step > 1) showStep(step - 1); });
+
+btnSub.addEventListener('click', async () => {
+  const allChecked = [...requiredCBs].every(cb => cb.checked);
+  const hasSig = signature.value.trim().length > 0;
+  if(!allChecked || !hasSig){
+    document.getElementById('sf-validation-msg')!.classList.remove('sf-hidden');
+    return;
+  }
+
+  const payload = {
+    childName:          (document.getElementById('f-name')      as HTMLInputElement).value.trim(),
+    age:                (document.getElementById('f-age')       as HTMLSelectElement).value,
+    language:           (document.getElementById('f-lang')      as HTMLSelectElement).value,
+    ageGroup:           (document.getElementById('f-agegroup')  as HTMLSelectElement).value,
+    school:             (document.getElementById('f-school')    as HTMLInputElement).value.trim(),
+    storyTitle:         (document.getElementById('f-title')     as HTMLInputElement).value.trim(),
+    synopsis:           (document.getElementById('f-synopsis')  as HTMLTextAreaElement).value.trim(),
+    videoSource:        videoMode,
+    videoLink:          videoMode === 'link'
+                          ? (document.getElementById('f-videolink') as HTMLInputElement).value.trim()
+                          : uploadedVideoUrl,
+    parentName:         (document.getElementById('f-pname')     as HTMLInputElement).value.trim(),
+    parentEmail:        (document.getElementById('f-email')     as HTMLInputElement).value.trim(),
+    parentMobile:       (document.getElementById('f-mobile')    as HTMLInputElement).value.trim(),
+    consentParticipation:(document.getElementById('c-participation') as HTMLInputElement).checked,
+    signature:          signature.value.trim(),
+  };
+
+  (btnSub as HTMLButtonElement).disabled = true;
+  btnSub.textContent = '提交中……';
+
+  try {
+    const res = await fetch('/api/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const json = await res.json() as { ok: boolean; error?: string };
+
+    if (json.ok) {
+      steps.forEach(s => s.classList.add('sf-hidden'));
+      nav.classList.add('sf-hidden');
+      success.classList.remove('sf-hidden');
+    } else {
+      btnSub.textContent = '提交参赛作品 ›';
+      (btnSub as HTMLButtonElement).disabled = false;
+      alert('出现问题：' + (json.error || '请重试。'));
+    }
+  } catch {
+    btnSub.textContent = '提交参赛作品 ›';
+    (btnSub as HTMLButtonElement).disabled = false;
+    alert('网络错误，请检查您的网络连接后重试。');
+  }
+});
+
+syncSidebar(1);
+</script>

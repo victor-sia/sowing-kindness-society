@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+const EVENTS = [
+  { featured:true, tag:'比赛', date:'2026年9月20日', time:'晚11时59分——提交截止', title:'2026年讲故事比赛', body:'我们一年一度的双语讲故事比赛，面向4至12岁的儿童。用心分享一个故事——用英语或华语——以善意启发他人。', img:'/illustrations/storytellers-mic.webp' },
+  { tag:'家庭', date:'2026年6月21日', time:'全天', location:'社区活动摊位', title:'父亲节庆典', body:'亲子艺术手工活动，孩子为最爱的爸爸和父亲形象人物创作温暖纪念品。' },
+  { tag:'家庭', date:'2026年9月25日', time:'傍晚', location:'待确认', title:'中秋节', body:'全家一起制作灯笼，庆祝团圆、光明与社区温暖。' },
+  { tag:'家庭', date:'2026年12月初', time:'日期待确认', title:'圣诞节活动', body:"用善意承诺填满'礼物盒'，为我们的社区圣诞树装饰纸质挂件。" },
+];
+---
+<BaseLayout title="即将举行的活动 | 播种善意协会" description="家庭故事时光、学校项目、社区日和年度比赛——全年各种温柔的参与时刻。">
+
+<section class="page-header">
+  <div class="container">
+    <div class="page-header__crumbs"><span>活动</span><span class="dot"></span><span>即将举行</span></div>
+    <h1 style="font:700 clamp(36px,5.5vw,72px)/1.06 var(--serif);letter-spacing:-.02em;margin:0 0 16px">
+      <span style="color:var(--ink-900)">加入我们——</span><span style="color:var(--forest-800)">总有</span><span style="color:var(--orange-500)">什么在生长。</span>
+    </h1>
+    <p style="font:400 18px/1.6 var(--sans);color:var(--ink-700);max-width:620px;margin:0">家庭故事时光、学校项目、社区日和年度比赛——全年各种温柔的参与时刻。</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:40px">
+  <div class="container">
+    <div style="display:grid;gap:24px" data-stagger>
+      {EVENTS.map(e => (
+        <div class={`card ${e.img ? 'event-card-grid' : ''}`} style={`overflow:hidden;display:grid;grid-template-columns:${e.img ? '1.3fr 1fr' : '1fr'}`}>
+          {e.img && (
+            <div style="position:relative;min-height:280px">
+              <img src={e.img} alt={e.title} style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" />
+              <span class="pill pill--paper" style="position:absolute;left:16px;top:16px">{e.tag}</span>
+              {e.featured && <span style="position:absolute;left:16px;bottom:16px;padding:8px 14px;border-radius:999px;background:var(--orange-600);color:#fff;font:700 12px var(--sans);letter-spacing:.06em;text-transform:uppercase">旗舰活动</span>}
+            </div>
+          )}
+          <div style={`padding:${e.featured ? '32px 28px' : '24px 26px 28px'}`}>
+            {!e.img && <span class="pill pill--sage" style="margin-bottom:14px;display:inline-flex">{e.tag}</span>}
+            <div style="display:flex;align-items:center;gap:12px;color:var(--forest-800);margin-bottom:12px;flex-wrap:wrap;font:600 14px var(--sans)">
+              <span>{e.date}</span>
+              {e.time && <span style="color:var(--ink-500)">{e.time}</span>}
+              {e.location && <span style="color:var(--ink-500)">{e.location}</span>}
+            </div>
+            <div style={`font:700 ${e.featured ? 30 : 22}px/1.25 var(--serif);color:var(--ink-900);margin-bottom:10px`}>{e.title}</div>
+            <div class="heart-divider" style="margin-bottom:14px"><span class="line" style="width:20px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:20px"></span></div>
+            <p style={`font:400 ${e.featured ? 16 : 15}px/1.65 var(--sans);color:var(--ink-700);margin:0 0 18px`}>{e.body}</p>
+            <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+              <a href="/zh/submit/" class="btn btn-secondary">报名 <span class="chev">›</span></a>
+              <a href="/zh/contact/" class="link-arrow">加入日历 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

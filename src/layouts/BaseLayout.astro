@@ -15,10 +15,16 @@ const {
   image = '/logo/sks-logo.webp',
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://sowingkindness.org.sg');
+const path = Astro.url.pathname;
+const isZh = path.startsWith('/zh/') || path === '/zh';
+const pageLang = isZh ? 'zh-Hans' : 'en';
+const baseUrl = 'https://sowingkindness.org.sg';
+const enPath = isZh ? (path.replace(/^\/zh/, '') || '/') : path;
+const zhPath = isZh ? path : ('/zh' + (path === '/' ? '/' : path));
+const canonicalURL = new URL(path, Astro.site ?? baseUrl);
 ---
 <!doctype html>
-<html lang="en">
+<html lang={pageLang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,9 +34,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://sowingki
   <meta property="og:image" content={image} />
   <meta property="og:type" content="website" />
   <link rel="canonical" href={canonicalURL} />
-  
-  
-  
+  <link rel="alternate" hreflang="en" href={`${baseUrl}${enPath}`} />
+  <link rel="alternate" hreflang="zh-Hans" href={`${baseUrl}${zhPath}`} />
+  <link rel="alternate" hreflang="x-default" href={`${baseUrl}${enPath}`} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito+Sans:ital,wght@0,300..900;1,300..900&display=swap" />
@@ -38,11 +44,26 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://sowingki
   <title>{title}</title>
 </head>
 <body>
-  <Nav currentPath={Astro.url.pathname} />
+  <Nav currentPath={path} />
   <main>
     <slot />
   </main>
   <Footer />
+
+  <!-- Browser language detection: redirect on first visit if browser is Chinese -->
+  <script>
+    (function() {
+      if (document.cookie.includes('sks_lang=')) return;
+      const lang = (navigator.language || '').toLowerCase();
+      const onZhPage = location.pathname.startsWith('/zh/') || location.pathname === '/zh';
+      if (lang.startsWith('zh') && !onZhPage) {
+        document.cookie = 'sks_lang=zh; path=/; max-age=31536000';
+        location.replace('/zh' + (location.pathname === '/' ? '/' : location.pathname));
+      } else {
+        document.cookie = 'sks_lang=' + (onZhPage ? 'zh' : 'en') + '; path=/; max-age=31536000';
+      }
+    })();
+  </script>
 
   <!-- GSAP global init -->
   <script>
