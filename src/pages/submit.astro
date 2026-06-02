@@ -209,71 +209,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="sf-step sf-hidden" id="sf-step-4">
         <h2 class="sf-heading">Consent &amp; declaration</h2>
         <div class="heart-divider" style="margin-bottom:14px"><span class="line" style="width:24px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:24px"></span></div>
-        <p class="sf-sub">This is the Parental / Guardian Consent Form. Items marked <span style="color:var(--orange-600);font-weight:700">*</span> are required to take part. You can read the full version on the <a href="/consent/" style="color:var(--fern-600);font-weight:600">Consent Form</a> page.</p>
+        <p class="sf-sub">Please read the full <a href="/consent/" style="color:var(--fern-600);font-weight:600">Consent Form</a> before ticking the box below.</p>
 
-        <!-- Participation -->
+        <!-- Single consent checkbox -->
         <div class="sf-consent-group">
-          <div class="sf-consent-label">PARTICIPATION</div>
           <label class="sf-checkbox-row">
             <input type="checkbox" id="c-participation" class="sf-cb sf-required" />
-            <span>I am the parent / legal guardian of this child. I have read and agree to the <a href="/rules/" style="color:var(--fern-600);font-weight:600">Official Competition Rules</a>, will accompany my child at the Grand Final if selected, accept that the organisers are not liable for any injury, loss or damage, and accept that the judges' decisions are final. <span class="sf-req-star">*</span></span>
+            <span>I am the parent / legal guardian of this child. I have read and agree to the <a href="/consent/" target="_blank" rel="noopener" style="color:var(--fern-600);font-weight:600">Parental Consent Form</a> and the <a href="/rules/" target="_blank" rel="noopener" style="color:var(--fern-600);font-weight:600">Official Competition Rules</a>. I understand my personal data is used only to administer this competition and is not shared with third parties without consent, except as required by law. <span class="sf-req-star">*</span></span>
           </label>
         </div>
 
-        <!-- Video recording -->
-        <div class="sf-consent-group">
-          <div class="sf-consent-label">VIDEO RECORDING &amp; SUBMISSION</div>
-          <label class="sf-checkbox-row">
-            <input type="checkbox" id="c-judging" class="sf-cb sf-required" />
-            <span>I consent to my child's video being viewed and evaluated by the judging panel for the competition. <span class="sf-req-star">*</span></span>
-          </label>
-          <label class="sf-checkbox-row">
-            <input type="checkbox" id="c-social" class="sf-cb" />
-            <span>I consent to the video being featured on the Sowing Kindness Society website and social media for competition publicity.</span>
-          </label>
-          <label class="sf-checkbox-row">
-            <input type="checkbox" id="c-popularity" class="sf-cb" />
-            <span>I consent to the video being used for Best Popularity Award voting, which may involve public viewing on the competition website.</span>
-          </label>
-        </div>
-
-        <!-- Photography -->
-        <div class="sf-consent-group">
-          <div class="sf-consent-label">PHOTOGRAPHY &amp; USE OF IMAGES</div>
-          <label class="sf-checkbox-row">
-            <input type="checkbox" id="c-photo" class="sf-cb" />
-            <span>I consent to photographs / videos of my child being taken during the Grand Final by the official photographer.</span>
-          </label>
-          <label class="sf-checkbox-row">
-            <input type="checkbox" id="c-photo-use" class="sf-cb" />
-            <span>I consent to those photographs / videos being used for event reporting, publicity, social media, and future promotional materials.</span>
-          </label>
-          <label class="sf-checkbox-row">
-            <input type="checkbox" id="c-name-pub" class="sf-cb" />
-            <span>I consent to my child's name and school / centre name being published alongside photographs or videos.</span>
-          </label>
-        </div>
-
-        <!-- PDPA -->
-        <div class="sf-consent-group">
-          <div class="sf-consent-label">DATA PROTECTION (PDPA)</div>
-          <label class="sf-checkbox-row">
-            <input type="checkbox" id="c-pdpa" class="sf-cb sf-required" />
-            <span>I understand my personal data is used only to administer this competition, is not shared with third parties without consent except as required by law, and that I may withdraw consent or request access / correction by emailing contact@sowingkindness.org.sg. <span class="sf-req-star">*</span></span>
-          </label>
-        </div>
-
-        <!-- Signature -->
+        <!-- Full name & date -->
         <div class="sf-consent-group" style="border-bottom:none;padding-bottom:0">
-          <div class="sf-consent-label">DECLARATION &amp; SIGNATURE</div>
-          <p style="font:400 13px/1.5 var(--sans);color:var(--ink-700);margin:0 0 12px">Type your full name below as your digital signature. By submitting, you confirm everything above is true.</p>
           <div class="sf-field">
-            <label class="sf-label">Full name (digital signature) <span class="sf-req-star">*</span></label>
+            <label class="sf-label">Full name <span class="sf-req-star">*</span></label>
             <input id="f-signature" class="field-input" type="text" placeholder="Full name of parent / guardian" />
           </div>
           <div style="font:500 13px var(--sans);color:var(--ink-700);margin-top:8px">Date: <strong id="sf-date"></strong></div>
           <div id="sf-validation-msg" class="sf-hidden" style="font:500 13px var(--sans);color:var(--orange-600);margin-top:12px">
-            Please complete the required items ( <span class="sf-req-star">*</span> ) to submit.
+            Please tick the consent box and enter your full name to submit.
           </div>
         </div>
       </div>
@@ -610,13 +564,6 @@ btnSub.addEventListener('click', async () => {
     parentEmail:        (document.getElementById('f-email')     as HTMLInputElement).value.trim(),
     parentMobile:       (document.getElementById('f-mobile')    as HTMLInputElement).value.trim(),
     consentParticipation:(document.getElementById('c-participation') as HTMLInputElement).checked,
-    consentJudging:     (document.getElementById('c-judging')   as HTMLInputElement).checked,
-    consentSocial:      (document.getElementById('c-social')    as HTMLInputElement).checked,
-    consentPopularity:  (document.getElementById('c-popularity') as HTMLInputElement).checked,
-    consentPhoto:       (document.getElementById('c-photo')     as HTMLInputElement).checked,
-    consentPhotoUse:    (document.getElementById('c-photo-use') as HTMLInputElement).checked,
-    consentNamePub:     (document.getElementById('c-name-pub')  as HTMLInputElement).checked,
-    consentPDPA:        (document.getElementById('c-pdpa')      as HTMLInputElement).checked,
     signature:          signature.value.trim(),
   };
 
