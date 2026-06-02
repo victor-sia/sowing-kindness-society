@@ -157,11 +157,6 @@ const storiesActive = storiesDropdown.some(d => currentPath.startsWith(d.href));
       ))}
     </div>
     <a href={`${base}/contact/`} class={`nav__link${isActive(`${base}/contact/`) ? ' active' : ''}`}>{T.contact}</a>
-    <!-- Language toggle mobile -->
-    <div class="lang-toggle lang-toggle--mobile">
-      <a href={enPath} class={`lang-btn${!isZh ? ' active' : ''}`}>EN — English</a>
-      <a href={zhPath} class={`lang-btn${isZh ? ' active' : ''}`}>中文 — 简体中文</a>
-    </div>
   </nav>
   <div class="nav__drawer-cta">
     <a href={`${base}/about/`} class="btn btn-outline">{T.learnMore}</a>
