@@ -1,25 +1,76 @@
 ---
-const explore = [['/', 'Home'], ['/about/', 'About'], ['/stories/', 'Stories'], ['/watch/', 'Watch'], ['/events/upcoming/', 'Upcoming Events'], ['/events/past/', 'Past Events'], ['/contact/', 'Contact']];
-const comp    = [['/competition/', 'Competition'], ['/rules/', 'Official Rules'], ['/consent/', 'Consent Form'], ['/submit/', 'Submit a Video']];
+const path = Astro.url.pathname;
+const isZh = path.startsWith('/zh/') || path === '/zh';
+const base = isZh ? '/zh' : '';
+
+const T = isZh ? {
+  desc:    '总部位于新加坡的非营利组织，在儿童、家庭和社区中培育善意、同理心与正向价值观。',
+  tagline: '让我们一起播撒善意，静待花开。',
+  explore: '探索',
+  comp:    '比赛',
+  stay:    '保持联系',
+  stayDesc:'温柔故事与活动更新，每月一次。',
+  subscribe:'订阅',
+  copyright:'© 2026 播种善意协会 新加坡。保留所有权利。',
+  by:      '网站由',
+  privacy: '隐私政策',
+  terms:   '使用条款',
+} : {
+  desc:    'A Singapore-based non-profit nurturing kindness, compassion and positive values in children, families and communities.',
+  tagline: "Together, let's sow kindness and watch it grow.",
+  explore: 'Explore',
+  comp:    'Competition',
+  stay:    'Stay Updated',
+  stayDesc:'Gentle stories and updates, once a month.',
+  subscribe:'Subscribe',
+  copyright:'© 2026 Sowing Kindness Society Singapore. All rights reserved.',
+  by:      'Website by',
+  privacy: 'Privacy',
+  terms:   'Terms',
+};
+
+const explore = isZh ? [
+  [`${base}/`, '首页'],
+  [`${base}/about/`, '关于我们'],
+  [`${base}/stories/`, '温情故事'],
+  [`${base}/watch/`, '观看'],
+  [`${base}/events/upcoming/`, '即将举行的活动'],
+  [`${base}/events/past/`, '往届活动'],
+  [`${base}/contact/`, '联系我们'],
+] : [
+  ['/', 'Home'],
+  ['/about/', 'About'],
+  ['/stories/', 'Stories'],
+  ['/watch/', 'Watch'],
+  ['/events/upcoming/', 'Upcoming Events'],
+  ['/events/past/', 'Past Events'],
+  ['/contact/', 'Contact'],
+];
+
+const comp = isZh ? [
+  [`${base}/competition/`, '比赛'],
+  [`${base}/rules/`, '官方规则'],
+  [`${base}/consent/`, '同意书'],
+  [`${base}/submit/`, '提交视频'],
+] : [
+  ['/competition/', 'Competition'],
+  ['/rules/', 'Official Rules'],
+  ['/consent/', 'Consent Form'],
+  ['/submit/', 'Submit a Video'],
+];
+
 const dandelionImg = '/images/girl-dandelion.webp';
 ---
 <footer class="footer" style="position:relative;overflow:hidden">
-  <!-- Soft background photo -->
   <div aria-hidden="true" style={`position:absolute;inset:0;pointer-events:none;background-image:url('${dandelionImg}');background-size:cover;background-position:center 30%;opacity:0.20;filter:blur(3px) saturate(0.4) brightness(0.9);mask-image:radial-gradient(ellipse 80% 100% at 50% 50%, black 20%, transparent 80%);-webkit-mask-image:radial-gradient(ellipse 80% 100% at 50% 50%, black 20%, transparent 80%)`}></div>
-  <!-- Warm cream tint -->
-  <div aria-hidden="true" style="
-    position:absolute;inset:0;pointer-events:none;
-    background:linear-gradient(135deg, rgba(255,245,220,0.06) 0%, rgba(255,235,180,0.04) 60%, transparent 100%);
-  "></div>
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(135deg, rgba(255,245,220,0.06) 0%, rgba(255,235,180,0.04) 60%, transparent 100%);"></div>
   <div class="container" style="position:relative;z-index:1">
     <div class="footer-grid">
       <div>
         <img src="/logo/sks-logo-transparent.webp" alt="Sowing Kindness Society" width="200" height="104"
           style="height:100px;width:auto;margin-bottom:14px;filter:brightness(0) invert(1)" />
-        <p style="font:400 14px/1.6 var(--sans);margin:0;opacity:.85;max-width:320px">
-          A Singapore-based non-profit nurturing kindness, compassion and positive values in children, families and communities.
-        </p>
-        <p style="font:400 13px/1.6 var(--sans);margin-top:14px;opacity:.7">Together, let's sow kindness and watch it grow.</p>
+        <p style="font:400 14px/1.6 var(--sans);margin:0;opacity:.85;max-width:320px">{T.desc}</p>
+        <p style="font:400 13px/1.6 var(--sans);margin-top:14px;opacity:.7">{T.tagline}</p>
         <div style="display:flex;gap:10px;margin-top:18px">
           {[
             { href:'https://www.ganjingworld.com/@sowingkindness', label:'GanjingWorld', d:'M10 8l6 4-6 4V8z', fill:true },
@@ -37,25 +88,25 @@ const dandelionImg = '/images/girl-dandelion.webp';
       </div>
 
       <div>
-        <h4 style="font:700 13px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:#fff;margin-bottom:14px;margin-top:0">Explore</h4>
+        <h4 style="font:700 13px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:#fff;margin-bottom:14px;margin-top:0">{T.explore}</h4>
         <ul style="list-style:none;padding:0;margin:0;display:grid;gap:10px;font:400 14px var(--sans)">
           {explore.map(([href,label]) => <li><a href={href}>{label}</a></li>)}
         </ul>
       </div>
 
       <div>
-        <h4 style="font:700 13px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:#fff;margin-bottom:14px;margin-top:0">Competition</h4>
+        <h4 style="font:700 13px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:#fff;margin-bottom:14px;margin-top:0">{T.comp}</h4>
         <ul style="list-style:none;padding:0;margin:0;display:grid;gap:10px;font:400 14px var(--sans)">
           {comp.map(([href,label]) => <li><a href={href}>{label}</a></li>)}
         </ul>
       </div>
 
       <div>
-        <h4 style="font:700 13px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:#fff;margin-bottom:14px;margin-top:0">Stay Updated</h4>
-        <p style="font:400 14px/1.5 var(--sans);opacity:.85;margin-bottom:12px">Gentle stories and updates, once a month.</p>
+        <h4 style="font:700 13px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:#fff;margin-bottom:14px;margin-top:0">{T.stay}</h4>
+        <p style="font:400 14px/1.5 var(--sans);opacity:.85;margin-bottom:12px">{T.stayDesc}</p>
         <div style="display:flex;gap:8px">
-          <input placeholder="you@email.com" style="flex:1;padding:12px 16px;border-radius:999px;border:none;font:400 14px var(--sans);background:rgba(255,255,255,.10);color:#fff;outline:none" />
-          <button class="btn btn-primary" style="padding:12px 16px">Subscribe</button>
+          <input placeholder={isZh ? 'you@email.com' : 'you@email.com'} style="flex:1;padding:12px 16px;border-radius:999px;border:none;font:400 14px var(--sans);background:rgba(255,255,255,.10);color:#fff;outline:none" />
+          <button class="btn btn-primary" style="padding:12px 16px">{T.subscribe}</button>
         </div>
       </div>
     </div>
@@ -63,10 +114,10 @@ const dandelionImg = '/images/girl-dandelion.webp';
     <hr />
 
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font:400 13px var(--sans);opacity:.7">
-      <span>© 2026 Sowing Kindness Society Singapore. All rights reserved.</span>
+      <span>{T.copyright}</span>
       <span>
-        Website by <a href="https://digitalreconnect.sg/" target="_blank" style="color:#fff;text-decoration:underline">Digital Reconnect</a>
-        · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a>
+        {T.by} <a href="https://digitalreconnect.sg/" target="_blank" style="color:#fff;text-decoration:underline">Digital Reconnect</a>
+        · <a href={`${base}/privacy/`}>{T.privacy}</a> · <a href={`${base}/terms/`}>{T.terms}</a>
       </span>
     </div>
   </div>

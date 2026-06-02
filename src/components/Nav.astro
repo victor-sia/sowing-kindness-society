@@ -105,12 +105,21 @@ const storiesActive = storiesDropdown.some(d => currentPath.startsWith(d.href));
     <div class="nav__cta">
       <!-- Language toggle -->
       <div class="lang-toggle">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="lang-globe"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
         <a href={enPath} class={`lang-btn${!isZh ? ' active' : ''}`}>EN</a>
-        <span class="lang-sep">|</span>
+        <span class="lang-divider"></span>
         <a href={zhPath} class={`lang-btn${isZh ? ' active' : ''}`}>中文</a>
       </div>
       <a href={`${base}/about/`} class="btn btn-outline">{T.learnMore}</a>
       <a href={`${base}/submit/`} class="btn btn-primary">{T.register} <span class="chev">›</span></a>
+    </div>
+
+    <!-- Mobile-only language toggle (sits left of burger) -->
+    <div class="lang-toggle lang-toggle--mobile-bar">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="lang-globe"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+      <a href={enPath} class={`lang-btn${!isZh ? ' active' : ''}`}>EN</a>
+      <span class="lang-divider"></span>
+      <a href={zhPath} class={`lang-btn${isZh ? ' active' : ''}`}>中文</a>
     </div>
 
     <button class="nav__burger" id="nav-burger" aria-label="Open menu">
@@ -170,30 +179,49 @@ const storiesActive = storiesDropdown.some(d => currentPath.startsWith(d.href));
 <style>
 /* ── Language toggle ── */
 .lang-toggle {
-  display:flex;align-items:center;gap:2px;
-  font:600 13px var(--sans);
-  background:var(--sage-50);
-  border:1.5px solid rgba(31,77,31,.18);
+  display:flex;align-items:center;gap:0;
+  font:700 12px var(--sans);
+  background:var(--forest-800);
   border-radius:999px;
-  padding:3px;
+  padding:4px 4px 4px 12px;
   flex-shrink:0;
-  box-shadow:0 1px 3px rgba(31,77,31,.08);
+  box-shadow:0 2px 8px rgba(31,77,31,.25);
+  color:rgba(255,255,255,.7);
+}
+.lang-globe {
+  flex-shrink:0;
+  margin-right:6px;
+  stroke:rgba(255,255,255,.7);
 }
 .lang-btn {
-  padding:5px 13px;
+  padding:5px 11px;
   border-radius:999px;
-  color:var(--ink-400);
-  transition:background .15s,color .15s,box-shadow .15s;
+  color:rgba(255,255,255,.65);
+  transition:background .15s,color .15s;
   white-space:nowrap;
   line-height:1;
+  letter-spacing:.02em;
 }
 .lang-btn.active {
-  background:#fff;
-  color:var(--forest-800);
-  box-shadow:0 1px 4px rgba(31,77,31,.14);
+  background:rgba(255,255,255,.18);
+  color:#fff;
 }
-.lang-btn:hover:not(.active) { color:var(--ink-700); }
-.lang-sep { display:none; }
+.lang-btn:hover:not(.active) { color:rgba(255,255,255,.9); }
+.lang-divider {
+  width:1px;height:12px;
+  background:rgba(255,255,255,.25);
+  flex-shrink:0;
+}
+
+/* Mobile bar toggle — hidden on desktop, shown on mobile */
+.lang-toggle--mobile-bar { display:none; }
+
+@media(max-width:1023px) {
+  /* Hide the desktop toggle inside nav__cta */
+  .nav__cta .lang-toggle { display:none; }
+  /* Show the mobile bar toggle */
+  .lang-toggle--mobile-bar { display:flex; }
+}
 
 .lang-toggle--mobile {
   display:flex;flex-direction:column;gap:0;
