@@ -48,27 +48,36 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     ))}
   </svg>
 
-  <div class="container" style="text-align:center;position:relative;z-index:1">
-    <div class="eyebrow" style="justify-content:center;margin-bottom:8px" data-fade><span class="eyebrow__num">02</span><span class="eyebrow__label">使命、愿景与价值观</span></div>
-    <h2 data-fade style="font:700 clamp(28px,4.5vw,64px)/1.1 var(--serif);margin:16px 0 16px">
-      <span style="color:var(--ink-900)">指引我们</span><span style="color:var(--forest-800)">一切</span><span style="color:var(--orange-500)">工作的核心。</span>
-    </h2>
-    <div class="heart-divider" style="justify-content:center;margin-bottom:52px" data-fade><span class="line" style="width:60px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:60px"></span></div>
-    <div class="grid-3col" style="max-width:1080px;margin:0 auto" data-stagger>
-      {[
-        { title:'使命', img:'/images/Mission.png',  body:'通过故事、课程与社区，在孩子和家庭中培育善意与正向品格。' },
-        { title:'愿景', img:'/images/Vision.png',   body:'一个更善良的新加坡，让同理心在日常生活中生长——在家里、学校、巴士上和操场上。' },
-        { title:'价值观', img:'/images/Values.png', body:'善意、同理心、成长与社区——每一个项目核心的四粒种子。' },
-      ].map(c => (
-        <div class="card" style="padding:36px 28px 32px;text-align:center;background:var(--paper)">
-          <div style="width:200px;height:200px;border-radius:999px;margin:0 auto 24px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.10)">
-            <img src={c.img} alt={c.title} style="width:100%;height:100%;object-fit:cover" loading="lazy" />
+  <div class="container" style="position:relative;z-index:1">
+    <div style="text-align:center;margin-bottom:52px">
+      <div class="eyebrow" style="justify-content:center;margin-bottom:8px" data-fade><span class="eyebrow__num">02</span><span class="eyebrow__label">使命、愿景与价值观</span></div>
+      <h2 data-fade style="font:700 clamp(28px,4.5vw,64px)/1.1 var(--serif);margin:16px 0 16px">
+        <span style="color:var(--ink-900)">指引我们</span><span style="color:var(--forest-800)">一切</span><span style="color:var(--orange-500)">工作的核心。</span>
+      </h2>
+      <div class="heart-divider" style="justify-content:center" data-fade><span class="line" style="width:60px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:60px"></span></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 416px;gap:36px;align-items:center">
+      <div class="grid-3col" style="gap:14px" data-stagger>
+        {[
+          { title:'使命', img:'/images/Mission.png',  body:'通过故事、课程与社区，在孩子和家庭中培育善意与正向品格。' },
+          { title:'愿景', img:'/images/Vision.png',   body:'一个更善良的新加坡，让同理心在日常生活中生长——在家里、学校、巴士上和操场上。' },
+          { title:'价值观', img:'/images/Values.png', body:'善意、同理心、成长与社区——每一个项目核心的四粒种子。' },
+        ].map(c => (
+          <div class="card" style="padding:24px 14px 20px;text-align:center;background:var(--paper)">
+            <div style="width:140px;height:140px;border-radius:999px;margin:0 auto 16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.10)">
+              <img src={c.img} alt={c.title} style="width:100%;height:100%;object-fit:cover" loading="lazy" />
+            </div>
+            <div style="font:700 22px var(--serif);color:var(--forest-800);margin-bottom:6px">{c.title}</div>
+            <span style="color:var(--heart);font-size:16px">♥</span>
+            <p style="font:400 13px/1.65 var(--sans);color:var(--ink-700);margin-top:10px;margin-bottom:0">{c.body}</p>
           </div>
-          <div style="font:700 28px var(--serif);color:var(--forest-800);margin-bottom:10px">{c.title}</div>
-          <span style="color:var(--heart);font-size:18px">♥</span>
-          <p style="font:400 15px/1.7 var(--sans);color:var(--ink-700);margin-top:14px;margin-bottom:0">{c.body}</p>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      <div data-fade class="hide-tablet" style="width:416px;flex-shrink:0;aspect-ratio:577/530;-webkit-mask-image:url(/images/section-3-blob-mask-custom.svg);mask-image:url(/images/section-3-blob-mask-custom.svg);-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat">
+        <img src="/images/Section%203%20image.png" alt="孩子们浇灌善意之树" style="width:100%;height:100%;object-fit:contain;display:block" loading="lazy" />
+      </div>
     </div>
   </div>
 </section>

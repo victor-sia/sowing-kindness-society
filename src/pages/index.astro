@@ -114,30 +114,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     ))}
   </svg>
 
-  <div class="container" style="text-align:center;position:relative;z-index:1">
-    <div data-fade style="font:600 18px var(--serif);color:var(--fern-600);margin-bottom:10px">Guiding everything we do</div>
-    <h2 data-fade style="font:700 clamp(28px,4.5vw,60px)/1.1 var(--serif);margin:0 0 12px">
-      <span style="color:var(--ink-900)">Our </span><span style="color:var(--orange-500)">Mission,</span>{' '}
-      <span style="color:var(--forest-800)">Vision</span>{' '}<span style="color:var(--ink-900)">&amp; </span><span style="color:var(--orange-500)">Values</span>
-    </h2>
-    <div class="heart-divider" style="justify-content:center;margin-bottom:52px" data-fade>
-      <span class="line" style="width:60px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:60px"></span>
+  <div class="container" style="position:relative;z-index:1">
+    <div style="text-align:center;margin-bottom:52px">
+      <div data-fade style="font:600 18px var(--serif);color:var(--fern-600);margin-bottom:10px">Guiding everything we do</div>
+      <h2 data-fade style="font:700 clamp(28px,4.5vw,60px)/1.1 var(--serif);margin:0 0 12px">
+        <span style="color:var(--ink-900)">Our </span><span style="color:var(--orange-500)">Mission,</span>{' '}
+        <span style="color:var(--forest-800)">Vision</span>{' '}<span style="color:var(--ink-900)">&amp; </span><span style="color:var(--orange-500)">Values</span>
+      </h2>
+      <div class="heart-divider" style="justify-content:center" data-fade>
+        <span class="line" style="width:60px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:60px"></span>
+      </div>
     </div>
-    <div class="grid-3col" style="max-width:1000px;margin:0 auto" data-stagger>
-      {[
-        { title:'Mission', img:'/images/Mission.png', body:'Cultivate kindness and positive character in children and families.' },
-        { title:'Vision',  img:'/images/Vision.png',  body:'A kinder society where compassion grows in everyday life.' },
-        { title:'Values',  img:'/images/Values.png',  body:'Kindness, Compassion, Growth, Community.' },
-      ].map(c => (
-        <div class="card" style="padding:36px 28px 32px;text-align:center;background:var(--paper)">
-          <div style="width:200px;height:200px;border-radius:999px;margin:0 auto 24px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.10)">
-            <img src={c.img} alt={c.title} style="width:100%;height:100%;object-fit:cover" loading="lazy" />
+    <div style="display:grid;grid-template-columns:1fr 416px;gap:36px;align-items:center">
+      <div class="grid-3col" style="gap:14px" data-stagger>
+        {[
+          { title:'Mission', img:'/images/Mission.png', body:'Cultivate kindness and positive character in children and families.' },
+          { title:'Vision',  img:'/images/Vision.png',  body:'A kinder society where compassion grows in everyday life.' },
+          { title:'Values',  img:'/images/Values.png',  body:'Kindness, Compassion, Growth, Community.' },
+        ].map(c => (
+          <div class="card" style="padding:24px 14px 20px;text-align:center;background:var(--paper)">
+            <div style="width:140px;height:140px;border-radius:999px;margin:0 auto 16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.10)">
+              <img src={c.img} alt={c.title} style="width:100%;height:100%;object-fit:cover" loading="lazy" />
+            </div>
+            <div style="font:700 22px var(--serif);color:var(--forest-800);margin-bottom:6px">{c.title}</div>
+            <span style="color:var(--heart);font-size:16px">♥</span>
+            <p style="font:400 13px/1.65 var(--sans);color:var(--ink-700);margin-top:10px;margin-bottom:0">{c.body}</p>
           </div>
-          <div style="font:700 28px var(--serif);color:var(--forest-800);margin-bottom:10px">{c.title}</div>
-          <span style="color:var(--heart);font-size:18px">♥</span>
-          <p style="font:400 15px/1.7 var(--sans);color:var(--ink-700);margin-top:14px;margin-bottom:0">{c.body}</p>
-        </div>
-      ))}
+        ))}
+      </div>
+      <div data-fade class="hide-tablet" style="width:416px;flex-shrink:0;aspect-ratio:577/530;-webkit-mask-image:url(/images/section-3-blob-mask-custom.svg);mask-image:url(/images/section-3-blob-mask-custom.svg);-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat">
+        <img src="/images/Section%203%20image.png" alt="Children watering a kindness plant" style="width:100%;height:100%;object-fit:contain;display:block" loading="lazy" />
+      </div>
     </div>
     <div data-fade style="margin-top:36px;display:flex;justify-content:center">
       <div class="card card--quiet" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;max-width:100%">
