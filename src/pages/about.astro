@@ -61,7 +61,64 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </section>
 
 <!-- Team -->
-<section class="section section--cream">
+<section class="section section--cream" style="position:relative;overflow:hidden">
+
+  <!-- Dandelion decorations -->
+  <!-- Full dandelion — top left -->
+  <svg style="position:absolute;top:40px;left:3%;opacity:.18;animation:9s ease-in-out infinite alternate drift-b;pointer-events:none" width="80" height="100" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line x1="40" y1="100" x2="40" y2="40" stroke="#6BAA45" stroke-width="1.5"/>
+    {[0,30,60,90,120,150,180,210,240,270,300,330].map((a,i) => (
+      <g transform={`rotate(${a} 40 40)`}>
+        <line x1="40" y1="40" x2="40" y2="8" stroke="#6BAA45" stroke-width="1"/>
+        <circle cx="40" cy="7" r="3" fill="#8FBE6C"/>
+      </g>
+    ))}
+  </svg>
+
+  <!-- Full dandelion — top right -->
+  <svg style="position:absolute;top:20px;right:4%;opacity:.15;animation:11s ease-in-out infinite alternate drift-a;pointer-events:none" width="60" height="80" viewBox="0 0 60 80" fill="none">
+    <line x1="30" y1="80" x2="30" y2="30" stroke="#6BAA45" stroke-width="1.5"/>
+    {[0,36,72,108,144,180,216,252,288,324].map((a) => (
+      <g transform={`rotate(${a} 30 30)`}>
+        <line x1="30" y1="30" x2="30" y2="6" stroke="#6BAA45" stroke-width="1"/>
+        <circle cx="30" cy="5" r="2.5" fill="#8FBE6C"/>
+      </g>
+    ))}
+  </svg>
+
+  <!-- Scattered seeds -->
+  <svg style="position:absolute;top:15%;left:8%;opacity:.22;animation:7s ease-in-out 1s infinite alternate drift-a;pointer-events:none" width="22" height="28" viewBox="0 0 22 28" fill="none">
+    <line x1="11" y1="28" x2="11" y2="14" stroke="#8FBE6C" stroke-width="1"/>
+    {[0,45,90,135,180,225,270,315].map(a => (
+      <g transform={`rotate(${a} 11 14)`}><line x1="11" y1="14" x2="11" y2="6" stroke="#8FBE6C" stroke-width=".8"/><circle cx="11" cy="5" r="1.5" fill="#8FBE6C"/></g>
+    ))}
+  </svg>
+
+  <svg style="position:absolute;top:10%;right:10%;opacity:.2;animation:8s ease-in-out 2s infinite alternate drift-b;pointer-events:none" width="18" height="24" viewBox="0 0 18 24" fill="none">
+    <line x1="9" y1="24" x2="9" y2="12" stroke="#8FBE6C" stroke-width="1"/>
+    {[0,60,120,180,240,300].map(a => (
+      <g transform={`rotate(${a} 9 12)`}><line x1="9" y1="12" x2="9" y2="5" stroke="#8FBE6C" stroke-width=".8"/><circle cx="9" cy="4" r="1.5" fill="#8FBE6C"/></g>
+    ))}
+  </svg>
+
+  <svg style="position:absolute;bottom:20%;left:5%;opacity:.18;animation:10s ease-in-out 0.5s infinite alternate drift-a;pointer-events:none" width="16" height="20" viewBox="0 0 16 20" fill="none">
+    <line x1="8" y1="20" x2="8" y2="10" stroke="#8FBE6C" stroke-width="1"/>
+    {[0,72,144,216,288].map(a => (
+      <g transform={`rotate(${a} 8 10)`}><line x1="8" y1="10" x2="8" y2="4" stroke="#8FBE6C" stroke-width=".8"/><circle cx="8" cy="3" r="1.5" fill="#8FBE6C"/></g>
+    ))}
+  </svg>
+
+  <svg style="position:absolute;bottom:15%;right:7%;opacity:.2;animation:9s ease-in-out 1.5s infinite alternate drift-b;pointer-events:none" width="20" height="26" viewBox="0 0 20 26" fill="none">
+    <line x1="10" y1="26" x2="10" y2="13" stroke="#8FBE6C" stroke-width="1"/>
+    {[0,45,90,135,180,225,270,315].map(a => (
+      <g transform={`rotate(${a} 10 13)`}><line x1="10" y1="13" x2="10" y2="6" stroke="#8FBE6C" stroke-width=".8"/><circle cx="10" cy="5" r="1.5" fill="#8FBE6C"/></g>
+    ))}
+  </svg>
+
+  <!-- Small heart floats -->
+  <span class="float-heart hide-mobile" style="top:25%;left:1.5%;font-size:14px;opacity:.4">♥</span>
+  <span class="float-heart hide-mobile" style="top:60%;right:2%;font-size:12px;opacity:.3;animation-delay:2s">♥</span>
+
   <div class="container">
 
     <!-- Centered header -->
