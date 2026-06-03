@@ -34,26 +34,39 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 </section>
 
 <!-- MVV -->
-<section class="section section--cream">
-  <div class="container" style="text-align:center">
+<section class="section section--cream" style="position:relative;overflow:hidden">
+  <svg style="position:absolute;top:0;left:0;opacity:.35;pointer-events:none" width="160" height="180" viewBox="0 0 160 180" fill="none">
+    <path d="M20 160 C20 100 80 60 140 20" stroke="#8FBE6C" stroke-width="1.5" fill="none"/>
+    {[[60,90],[40,110],[80,70],[100,50],[120,35]].map(([x,y]) => (
+      <ellipse cx={x} cy={y} rx="14" ry="8" fill="#8FBE6C" opacity=".5" transform={`rotate(${-30+x/3} ${x} ${y})`}/>
+    ))}
+  </svg>
+  <svg style="position:absolute;bottom:0;right:0;opacity:.3;pointer-events:none;transform:scaleX(-1)" width="160" height="180" viewBox="0 0 160 180" fill="none">
+    <path d="M20 160 C20 100 80 60 140 20" stroke="#8FBE6C" stroke-width="1.5" fill="none"/>
+    {[[60,90],[40,110],[80,70],[100,50],[120,35]].map(([x,y]) => (
+      <ellipse cx={x} cy={y} rx="14" ry="8" fill="#8FBE6C" opacity=".5" transform={`rotate(${-30+x/3} ${x} ${y})`}/>
+    ))}
+  </svg>
+
+  <div class="container" style="text-align:center;position:relative;z-index:1">
     <div class="eyebrow" style="justify-content:center;margin-bottom:8px" data-fade><span class="eyebrow__num">02</span><span class="eyebrow__label">使命、愿景与价值观</span></div>
-    <h2 data-fade style="font:700 clamp(24px,4.5vw,60px)/1.1 var(--serif);margin:16px 0 12px">
+    <h2 data-fade style="font:700 clamp(28px,4.5vw,64px)/1.1 var(--serif);margin:16px 0 16px">
       <span style="color:var(--ink-900)">指引我们</span><span style="color:var(--forest-800)">一切</span><span style="color:var(--orange-500)">工作的核心。</span>
     </h2>
-    <div class="heart-divider" style="justify-content:center;margin-bottom:48px" data-fade><span class="line" style="width:60px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:60px"></span></div>
+    <div class="heart-divider" style="justify-content:center;margin-bottom:52px" data-fade><span class="line" style="width:60px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:60px"></span></div>
     <div class="grid-3col" style="max-width:1080px;margin:0 auto" data-stagger>
       {[
-        { title:'使命', img:'/illustrations/section-3-mission.webp', bg:'var(--orange-100)', body:'通过故事、课程与社区，在孩子和家庭中培育善意与正向品格。' },
-        { title:'愿景', img:'/illustrations/section-3-vision.webp',  bg:'var(--orange-100)', body:'一个更善良的新加坡，让同理心在日常生活中生长——在家里、学校、巴士上和操场上。' },
-        { title:'价值观', img:'/illustrations/section-3-values.webp', bg:'var(--sage-200)',  body:'善意、同理心、成长与社区——每一个项目核心的四粒种子。' },
+        { title:'使命', img:'/images/Mission.png',  body:'通过故事、课程与社区，在孩子和家庭中培育善意与正向品格。' },
+        { title:'愿景', img:'/images/Vision.png',   body:'一个更善良的新加坡，让同理心在日常生活中生长——在家里、学校、巴士上和操场上。' },
+        { title:'价值观', img:'/images/Values.png', body:'善意、同理心、成长与社区——每一个项目核心的四粒种子。' },
       ].map(c => (
-        <div class="card" style="padding:28px 20px;text-align:center">
-          <div style={`width:100px;height:100px;border-radius:999px;background:${c.bg};margin:0 auto 16px;overflow:hidden`}>
+        <div class="card" style="padding:36px 28px 32px;text-align:center;background:var(--paper)">
+          <div style="width:200px;height:200px;border-radius:999px;margin:0 auto 24px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.10)">
             <img src={c.img} alt={c.title} style="width:100%;height:100%;object-fit:cover" loading="lazy" />
           </div>
-          <div style="font:700 24px var(--serif);color:var(--forest-800);margin-bottom:8px">{c.title}</div>
-          <span style="color:var(--heart)">♥</span>
-          <p style="font:400 14px/1.6 var(--sans);color:var(--ink-700);margin-top:12px;margin-bottom:0">{c.body}</p>
+          <div style="font:700 28px var(--serif);color:var(--forest-800);margin-bottom:10px">{c.title}</div>
+          <span style="color:var(--heart);font-size:18px">♥</span>
+          <p style="font:400 15px/1.7 var(--sans);color:var(--ink-700);margin-top:14px;margin-bottom:0">{c.body}</p>
         </div>
       ))}
     </div>
