@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Sowing Kindness Society//Events//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260621
+DTEND;VALUE=DATE:20260622
+SUMMARY:Father's Day Celebration — Sowing Kindness Society
+DESCRIPTION:Art & craft activities where children create heartfelt keepsakes for the dads and father-figures they love.
+LOCATION:Community booth
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

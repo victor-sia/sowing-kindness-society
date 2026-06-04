@@ -318,45 +318,6 @@ const description = 'Follow Sowing Kindness Society on social media and stay con
       opacity: .7;
     }
 
-    /* ── Add to Calendar row ── */
-    .cal-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin: 4px 4px 8px;
-    }
-    .cal-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-    .cal-btn {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      padding: 8px 13px 8px 10px;
-      background: rgba(255,255,255,.75);
-      border: 1.5px solid rgba(255,255,255,.9);
-      border-radius: 12px;
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--ink);
-      box-shadow: 0 1px 6px rgba(45,90,39,.07), inset 0 1px 0 rgba(255,255,255,.8);
-      transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
-      flex: 1;
-      min-width: 0;
-      justify-content: center;
-    }
-    .cal-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 14px rgba(45,90,39,.12);
-      background: rgba(255,255,255,.95);
-    }
-    .cal-btn:active { transform: translateY(0); }
-    .cal-btn svg { flex-shrink: 0; }
   </style>
 </head>
 <body>
@@ -520,65 +481,6 @@ const description = 'Follow Sowing Kindness Society on social media and stay con
         <div class="chevron">›</div>
       </a>
 
-      <!-- Add to Calendar row -->
-      <!-- TODO: Replace href="#" with your actual calendar subscription URLs -->
-      <!-- Google: https://calendar.google.com/calendar/r?cid=YOUR_CALENDAR_ID -->
-      <!-- Apple / Outlook / Yahoo: use your webcal:// or .ics URL -->
-      <div style="padding: 0 2px">
-        <div class="cal-label">Add to your calendar</div>
-        <div class="cal-row">
-
-          <!-- Google Calendar -->
-          <a href="https://www.sowingkindness.org.sg/events/upcoming/" target="_blank" rel="noopener" class="cal-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24">
-              <path d="M12 0C5.372 0 0 5.373 0 12s5.372 12 12 12 12-5.373 12-12S18.628 0 12 0z" fill="#fff"/>
-              <path d="M17.04 17.04H6.96V6.96h10.08v10.08z" fill="#fff"/>
-              <path d="M6.96 17.04l-2.4 2.4V6.96l2.4 2.4v7.68z" fill="#EA4335"/>
-              <path d="M17.04 6.96l2.4-2.4H6.96l2.4 2.4h7.68z" fill="#4285F4"/>
-              <path d="M19.44 19.44l-2.4-2.4H6.96l-2.4 2.4h14.88z" fill="#34A853"/>
-              <path d="M17.04 17.04l2.4 2.4V6.96l-2.4 2.4v7.68z" fill="#FBBC05"/>
-              <rect x="6.96" y="6.96" width="10.08" height="10.08" fill="none"/>
-              <path d="M9.5 14.5v-4l-1 1" stroke="#4285F4" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-              <path d="M11.2 10.5h1.3c.7 0 1.2.45 1.2 1.05 0 .45-.25.8-.65.95.5.15.85.55.85 1.05 0 .7-.6 1.15-1.4 1.15H11.2v-4.2z" fill="#4285F4"/>
-            </svg>
-            Google
-          </a>
-
-          <!-- Apple Calendar -->
-          <a href="https://www.sowingkindness.org.sg/events/upcoming/" target="_blank" rel="noopener" class="cal-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <rect width="24" height="24" rx="5.5" fill="#FF3B30"/>
-              <rect x="2" y="6" width="20" height="16" rx="2" fill="white"/>
-              <rect x="2" y="6" width="20" height="4" fill="#FF3B30"/>
-              <line x1="7" y1="4" x2="7" y2="8" stroke="white" stroke-width="2" stroke-linecap="round"/>
-              <line x1="17" y1="4" x2="17" y2="8" stroke="white" stroke-width="2" stroke-linecap="round"/>
-              <text x="12" y="19" font-size="7" font-weight="800" fill="#FF3B30" text-anchor="middle" font-family="sans-serif">CAL</text>
-            </svg>
-            Apple
-          </a>
-
-          <!-- Outlook -->
-          <a href="https://www.sowingkindness.org.sg/events/upcoming/" target="_blank" rel="noopener" class="cal-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <rect width="24" height="24" rx="3" fill="#0078D4"/>
-              <rect x="11" y="3" width="10" height="18" rx="1.5" fill="#50A0E8"/>
-              <rect x="3" y="7" width="12" height="13" rx="2" fill="#28A8E0"/>
-              <ellipse cx="9" cy="13.5" rx="3" ry="3.5" fill="white"/>
-            </svg>
-            Outlook
-          </a>
-
-          <!-- Yahoo Calendar -->
-          <a href="https://www.sowingkindness.org.sg/events/upcoming/" target="_blank" rel="noopener" class="cal-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <rect width="24" height="24" rx="4" fill="#6001D2"/>
-              <text x="12" y="17" font-size="13" font-weight="900" fill="white" text-anchor="middle" font-family="sans-serif">Y!</text>
-            </svg>
-            Yahoo
-          </a>
-
-        </div>
-      </div>
 
     </div>
 

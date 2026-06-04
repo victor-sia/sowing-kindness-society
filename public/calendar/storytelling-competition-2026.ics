@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Sowing Kindness Society//Events//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20260920T235900
+DTEND:20260921T000000
+SUMMARY:Storytelling Competition 2026 — Submission Deadline
+DESCRIPTION:Last day to upload your storytelling video. Submit at https://sowingkindness.org.sg/submit/
+URL:https://sowingkindness.org.sg/submit/
+LOCATION:sowingkindness.org.sg
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

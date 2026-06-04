@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Sowing Kindness Society//Events//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20260925T190000
+DTEND:20260925T210000
+SUMMARY:Mid-Autumn Festival — Sowing Kindness Society
+DESCRIPTION:Lantern-making activities for the whole family, celebrating togetherness, light and the warmth of community.
+LOCATION:To be confirmed
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR
