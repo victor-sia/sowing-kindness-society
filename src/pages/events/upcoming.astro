@@ -1,10 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const EVENTS = [
-  { featured:true, tag:'Competition', date:'20 Sep 2026', time:'11.59 PM — submission deadline', title:'Storytelling Competition 2026', body:"Our annual bilingual storytelling competition for children aged 4 to 12. Share a story from the heart — in English or Chinese — and inspire others with kindness.", img:'/illustrations/storytellers-mic.webp' },
-  { tag:'Family', date:'21 Jun 2026', time:'All day', location:'Community booth', title:"Father's Day Celebration", body:'Art & craft activities where children create heartfelt keepsakes for the dads and father-figures they love.' },
-  { tag:'Family', date:'25 Sep 2026', time:'Evening', location:'To be confirmed', title:'Mid-Autumn Festival', body:'Lantern-making activities for the whole family, celebrating togetherness, light and the warmth of community.' },
-  { tag:'Family', date:'Early Dec 2026', time:'Date to be confirmed', title:'Christmas Programme', body:"Fill 'gift boxes' with kindness promises and decorate paper ornaments for our community Christmas tree." },
+  { featured:true, tag:'Competition', date:'20 Sep 2026', time:'11.59 PM — submission deadline', title:'Storytelling Competition 2026', body:"Our annual bilingual storytelling competition for children aged 4 to 12. Share a story from the heart — in English or Chinese — and inspire others with kindness.", img:'/illustrations/storytellers-mic.webp',
+    gcal:'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Storytelling+Competition+2026+%E2%80%94+Submission+Deadline&dates=20260920T235900/20260921T000000&details=Last+day+to+upload+your+storytelling+video.+Submit+at+sowingkindness.org.sg%2Fsubmit%2F&location=sowingkindness.org.sg' },
+  { tag:'Family', date:'21 Jun 2026', time:'All day', location:'Community booth', title:"Father's Day Celebration", body:"Art & craft activities where children create heartfelt keepsakes for the dads and father-figures they love.",
+    gcal:"https://calendar.google.com/calendar/render?action=TEMPLATE&text=Father%27s+Day+Celebration+%E2%80%94+Sowing+Kindness+Society&dates=20260621/20260622&details=Art+%26+craft+activities+where+children+create+heartfelt+keepsakes+for+the+dads+and+father-figures+they+love.&location=Community+booth" },
+  { tag:'Family', date:'25 Sep 2026', time:'Evening', location:'To be confirmed', title:'Mid-Autumn Festival', body:'Lantern-making activities for the whole family, celebrating togetherness, light and the warmth of community.',
+    gcal:'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mid-Autumn+Festival+%E2%80%94+Sowing+Kindness+Society&dates=20260925T190000/20260925T210000&details=Lantern-making+activities+for+the+whole+family%2C+celebrating+togetherness%2C+light+and+the+warmth+of+community.' },
+  { tag:'Family', date:'Early Dec 2026', time:'Date to be confirmed', title:'Christmas Programme', body:"Fill 'gift boxes' with kindness promises and decorate paper ornaments for our community Christmas tree.",
+    gcal:null },
 ];
 ---
 <BaseLayout title="Upcoming Events | Sowing Kindness Society" description="Family storytimes, school programmes, community days and the annual competition — gentle moments to take part in throughout the year.">
@@ -43,7 +47,10 @@ const EVENTS = [
             <p style={`font:400 ${e.featured ? 16 : 15}px/1.65 var(--sans);color:var(--ink-700);margin:0 0 18px`}>{e.body}</p>
             <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
               <a href="/submit/" class="btn btn-secondary">Register <span class="chev">›</span></a>
-              <a href="/contact/" class="link-arrow">Add to Calendar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              {e.gcal
+                ? <a href={e.gcal} target="_blank" rel="noopener" class="link-arrow">Add to Calendar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></a>
+                : <span style="font:500 13px var(--sans);color:var(--ink-400)">Date to be confirmed</span>
+              }
             </div>
           </div>
         </div>

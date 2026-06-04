@@ -1,10 +1,14 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 const EVENTS = [
-  { featured:true, tag:'比赛', date:'2026年9月20日', time:'晚11时59分——提交截止', title:'2026年讲故事比赛', body:'我们一年一度的双语讲故事比赛，面向4至12岁的儿童。用心分享一个故事——用英语或华语——以善意启发他人。', img:'/illustrations/storytellers-mic.webp' },
-  { tag:'家庭', date:'2026年6月21日', time:'全天', location:'社区活动摊位', title:'父亲节庆典', body:'亲子艺术手工活动，孩子为最爱的爸爸和父亲形象人物创作温暖纪念品。' },
-  { tag:'家庭', date:'2026年9月25日', time:'傍晚', location:'待确认', title:'中秋节', body:'全家一起制作灯笼，庆祝团圆、光明与社区温暖。' },
-  { tag:'家庭', date:'2026年12月初', time:'日期待确认', title:'圣诞节活动', body:"用善意承诺填满'礼物盒'，为我们的社区圣诞树装饰纸质挂件。" },
+  { featured:true, tag:'比赛', date:'2026年9月20日', time:'晚11时59分——提交截止', title:'2026年讲故事比赛', body:'我们一年一度的双语讲故事比赛，面向4至12岁的儿童。用心分享一个故事——用英语或华语——以善意启发他人。', img:'/illustrations/storytellers-mic.webp',
+    gcal:'https://calendar.google.com/calendar/render?action=TEMPLATE&text=2026%E5%B9%B4%E8%AE%B2%E6%95%85%E4%BA%8B%E6%AF%94%E8%B5%9B%E2%80%94%E2%80%94%E6%8F%90%E4%BA%A4%E6%88%AA%E6%AD%A2&dates=20260920T235900/20260921T000000&details=%E8%A7%86%E9%A2%91%E6%8F%90%E4%BA%A4%E6%88%AA%E6%AD%A2%E6%97%A5%E3%80%82%E5%9C%A8+sowingkindness.org.sg%2Fzh%2Fsubmit%2F+%E6%8F%90%E4%BA%A4' },
+  { tag:'家庭', date:'2026年6月21日', time:'全天', location:'社区活动摊位', title:'父亲节庆典', body:'亲子艺术手工活动，孩子为最爱的爸爸和父亲形象人物创作温暖纪念品。',
+    gcal:'https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E7%88%B6%E4%BA%B2%E8%8A%82%E5%BA%86%E5%85%B8%E2%80%94%E2%80%94%E6%92%AD%E7%A7%8D%E5%96%84%E6%84%8F%E5%8D%8F%E4%BC%9A&dates=20260621/20260622&details=%E4%BA%B2%E5%AD%90%E8%89%BA%E6%9C%AF%E6%89%8B%E5%B7%A5%E6%B4%BB%E5%8A%A8&location=%E7%A4%BE%E5%8C%BA%E6%B4%BB%E5%8A%A8%E6%91%8A%E4%BD%8D' },
+  { tag:'家庭', date:'2026年9月25日', time:'傍晚', location:'待确认', title:'中秋节', body:'全家一起制作灯笼，庆祝团圆、光明与社区温暖。',
+    gcal:'https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E4%B8%AD%E7%A7%8B%E8%8A%82%E2%80%94%E2%80%94%E6%92%AD%E7%A7%8D%E5%96%84%E6%84%8F%E5%8D%8F%E4%BC%9A&dates=20260925T190000/20260925T210000&details=%E5%85%A8%E5%AE%B6%E4%B8%80%E8%B5%B7%E5%88%B6%E4%BD%9C%E7%81%AF%E7%AC%BC' },
+  { tag:'家庭', date:'2026年12月初', time:'日期待确认', title:'圣诞节活动', body:"用善意承诺填满'礼物盒'，为我们的社区圣诞树装饰纸质挂件。",
+    gcal:null },
 ];
 ---
 <BaseLayout title="即将举行的活动 | 播种善意协会" description="家庭故事时光、学校项目、社区日和年度比赛——全年各种温柔的参与时刻。">
@@ -43,7 +47,10 @@ const EVENTS = [
             <p style={`font:400 ${e.featured ? 16 : 15}px/1.65 var(--sans);color:var(--ink-700);margin:0 0 18px`}>{e.body}</p>
             <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
               <a href="/zh/submit/" class="btn btn-secondary">报名 <span class="chev">›</span></a>
-              <a href="/zh/contact/" class="link-arrow">加入日历 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></a>
+              {e.gcal
+                ? <a href={e.gcal} target="_blank" rel="noopener" class="link-arrow">加入日历 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></a>
+                : <span style="font:500 13px var(--sans);color:var(--ink-400)">日期待确认</span>
+              }
             </div>
           </div>
         </div>
