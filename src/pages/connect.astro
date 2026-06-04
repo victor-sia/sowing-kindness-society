@@ -49,14 +49,7 @@ const description = 'Follow Sowing Kindness Society on social media and stay con
       overflow-x: hidden;
     }
 
-    /* ── Decorative corner botanical SVGs ── */
-    .deco {
-      position: fixed;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .deco-tl { top: 0; left: 0; }
-    .deco-br { bottom: 0; right: 0; transform: rotate(180deg); }
+    /* decorative SVGs removed */
 
     /* ── Page card wrapper ── */
     .page {
@@ -72,16 +65,6 @@ const description = 'Follow Sowing Kindness Society on social media and stay con
       text-align: center;
       padding: 48px 0 36px;
       position: relative;
-    }
-
-    /* Dandelion illustration sits behind logo */
-    .header-deco {
-      position: absolute;
-      top: -10px; left: 50%;
-      transform: translateX(-50%);
-      width: 260px;
-      opacity: 0.14;
-      pointer-events: none;
     }
 
     .header {
@@ -302,7 +285,7 @@ const description = 'Follow Sowing Kindness Society on social media and stay con
     .footer {
       margin-top: 44px;
       text-align: center;
-      padding-bottom: 4px;
+      padding-bottom: 40px;
     }
     .footer-divider {
       display: flex;
@@ -338,83 +321,11 @@ const description = 'Follow Sowing Kindness Society on social media and stay con
 </head>
 <body>
 
-  <!-- Corner botanical decoration — top left -->
-  <svg class="deco deco-tl" width="140" height="200" viewBox="0 0 140 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8 195 Q20 120 65 55 Q90 20 120 5" stroke="#5a8a3c" stroke-width="1.4" fill="none" opacity=".22"/>
-    <ellipse cx="42" cy="112" rx="20" ry="8" transform="rotate(-50 42 112)" fill="#5a8a3c" opacity=".13"/>
-    <ellipse cx="22" cy="150" rx="16" ry="7" transform="rotate(-35 22 150)" fill="#2d5a27" opacity=".10"/>
-    <ellipse cx="68" cy="72" rx="15" ry="6" transform="rotate(-65 68 72)" fill="#5a8a3c" opacity=".12"/>
-    <ellipse cx="90" cy="42" rx="12" ry="5" transform="rotate(-70 90 42)" fill="#5a8a3c" opacity=".09"/>
-    <text x="108" y="28" font-size="9" fill="#e8933a" opacity=".5">♥</text>
-    <text x="126" y="52" font-size="7" fill="#e8933a" opacity=".35">♥</text>
-    <g opacity=".2" stroke="#2d5a27" stroke-width="1">
-      <line x1="100" y1="18" x2="112" y2="6"/><circle cx="112" cy="5" r="2.5" fill="none"/>
-      <line x1="118" y1="38" x2="132" y2="26"/><circle cx="132" cy="25" r="2" fill="none"/>
-      <line x1="128" y1="58" x2="138" y2="44"/><circle cx="138" cy="43" r="2" fill="none"/>
-    </g>
-  </svg>
-
-  <!-- Corner botanical decoration — bottom right -->
-  <svg class="deco deco-br" width="140" height="200" viewBox="0 0 140 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8 195 Q20 120 65 55 Q90 20 120 5" stroke="#5a8a3c" stroke-width="1.4" fill="none" opacity=".18"/>
-    <ellipse cx="42" cy="112" rx="18" ry="7" transform="rotate(-50 42 112)" fill="#5a8a3c" opacity=".10"/>
-    <ellipse cx="22" cy="150" rx="14" ry="6" transform="rotate(-35 22 150)" fill="#2d5a27" opacity=".08"/>
-    <ellipse cx="68" cy="72" rx="13" ry="5" transform="rotate(-65 68 72)" fill="#5a8a3c" opacity=".09"/>
-    <text x="108" y="28" font-size="8" fill="#e8933a" opacity=".4">♥</text>
-    <text x="124" y="50" font-size="6" fill="#e8933a" opacity=".3">♥</text>
-    <g opacity=".16" stroke="#2d5a27" stroke-width="1">
-      <line x1="100" y1="18" x2="112" y2="6"/><circle cx="112" cy="5" r="2.5" fill="none"/>
-      <line x1="118" y1="38" x2="130" y2="26"/><circle cx="130" cy="25" r="2" fill="none"/>
-    </g>
-  </svg>
 
   <div class="page">
 
     <!-- ── Header ── -->
     <div class="header">
-
-      <!-- Ghost dandelion behind logo -->
-      <svg class="header-deco" viewBox="0 0 260 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- stem -->
-        <path d="M130 210 Q128 165 130 110" stroke="#2d5a27" stroke-width="2" fill="none"/>
-        <!-- leaves -->
-        <path d="M130 172 Q106 158 94 144 Q116 152 130 172Z" fill="#5a8a3c"/>
-        <path d="M130 184 Q154 168 166 154 Q146 162 130 184Z" fill="#5a8a3c"/>
-        <!-- seed head -->
-        <circle cx="130" cy="98" r="22" stroke="#2d5a27" stroke-width="1.2" fill="none"/>
-        <!-- spokes (pre-drawn at 22.5° intervals) -->
-        <g stroke="#2d5a27" stroke-width=".9">
-          <!-- 0° right -->   <line x1="140" y1="98" x2="152" y2="98"/>
-          <!-- 22.5° -->      <line x1="138.4" y1="90.6" x2="149.9" y2="81.5"/>
-          <!-- 45° -->        <line x1="133.6" y1="85.4" x2="141.6" y2="74.4"/>
-          <!-- 67.5° -->      <line x1="126.4" y1="83.0" x2="128.9" y2="70.0"/>
-          <!-- 90° up -->     <line x1="130" y1="76" x2="130" y2="64"/>
-          <!-- 112.5° -->     <line x1="123.6" y1="83.0" x2="121.1" y2="70.0"/>
-          <!-- 135° -->       <line x1="118.4" y1="85.4" x2="110.4" y2="74.4"/>
-          <!-- 157.5° -->     <line x1="113.6" y1="90.6" x2="102.1" y2="81.5"/>
-          <!-- 180° left -->  <line x1="120" y1="98" x2="108" y2="98"/>
-          <!-- 202.5° -->     <line x1="113.6" y1="105.4" x2="102.1" y2="114.5"/>
-          <!-- 225° -->       <line x1="118.4" y1="110.6" x2="110.4" y2="121.6"/>
-          <!-- 247.5° -->     <line x1="123.6" y1="113.0" x2="121.1" y2="126.0"/>
-          <!-- 270° down -->  <line x1="130" y1="120" x2="130" y2="132"/>
-          <!-- 292.5° -->     <line x1="136.4" y1="113.0" x2="138.9" y2="126.0"/>
-          <!-- 315° -->       <line x1="141.6" y1="110.6" x2="149.6" y2="121.6"/>
-          <!-- 337.5° -->     <line x1="146.4" y1="105.4" x2="157.9" y2="114.5"/>
-        </g>
-        <!-- Flying seeds -->
-        <g stroke="#2d5a27" stroke-width=".9">
-          <line x1="154" y1="86" x2="174" y2="62"/><circle cx="174" cy="61" r="2.5" fill="none"/>
-          <line x1="158" y1="96" x2="184" y2="78"/><circle cx="185" cy="77" r="2.2" fill="none"/>
-          <line x1="156" y1="106" x2="186" y2="95"/><circle cx="187" cy="94" r="2.2" fill="none"/>
-          <line x1="150" y1="76" x2="168" y2="50"/><circle cx="168" cy="49" r="2" fill="none"/>
-          <line x1="162" y1="90" x2="194" y2="78"/><circle cx="195" cy="77" r="1.8" fill="none"/>
-        </g>
-        <!-- Hearts on seeds -->
-        <text x="170" y="61" font-size="7" fill="#e8933a">♥</text>
-        <text x="181" y="77" font-size="6" fill="#e8933a">♥</text>
-        <text x="183" y="94" font-size="6" fill="#e8933a">♥</text>
-        <text x="164" y="49" font-size="6" fill="#e8933a">♥</text>
-      </svg>
 
       <div class="logo-wrap">
         <img src="/logo/sks-logo-transparent.webp" alt="Sowing Kindness Society" class="logo" />
@@ -573,21 +484,6 @@ const description = 'Follow Sowing Kindness Society on social media and stay con
 
     <!-- ── Footer ── -->
     <div class="footer">
-      <!-- Small dandelion seed illustration -->
-      <svg width="80" height="40" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:.25;margin-bottom:12px">
-        <line x1="40" y1="38" x2="40" y2="20" stroke="#2d5a27" stroke-width="1.2"/>
-        <circle cx="40" cy="19" r="4" stroke="#2d5a27" stroke-width="1" fill="none"/>
-        <g stroke="#2d5a27" stroke-width=".8">
-          <line x1="42" y1="17" x2="50" y2="8"/><circle cx="50" cy="7" r="1.5" fill="none"/>
-          <line x1="44" y1="19" x2="54" y2="13"/><circle cx="55" cy="13" r="1.5" fill="none"/>
-          <line x1="38" y1="17" x2="30" y2="8"/><circle cx="30" cy="7" r="1.5" fill="none"/>
-          <line x1="36" y1="19" x2="26" y2="13"/><circle cx="25" cy="13" r="1.5" fill="none"/>
-          <line x1="40" y1="15" x2="40" y2="4"/><circle cx="40" cy="3" r="1.5" fill="none"/>
-        </g>
-        <text x="47" y="7" font-size="5" fill="#e8933a">♥</text>
-        <text x="27" y="7" font-size="5" fill="#e8933a">♥</text>
-      </svg>
-
       <div class="footer-divider">
         <span style="color:var(--orange);font-size:11px">♥</span>
       </div>
