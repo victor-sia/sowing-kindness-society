@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="使用条款 | 播种善意协会" description="播种善意协会网站使用条款。">
+
+<section class="page-header">
+  <div class="container">
+    <div class="page-header__crumbs"><span>法律</span><span class="dot"></span><span>使用条款</span></div>
+    <h1 style="font:700 clamp(32px,5vw,64px)/1.06 var(--serif);letter-spacing:-.02em;margin:0 0 14px">
+      <span style="color:var(--ink-900)">使用</span><span style="color:var(--forest-800)">条款</span>
+    </h1>
+    <p style="font:400 16px/1.6 var(--sans);color:var(--ink-700);max-width:600px;margin:0">最后更新：2026年6月</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:40px;padding-bottom:80px">
+  <div class="container" style="max-width:760px">
+
+    <div class="card card--quiet" style="padding:24px 28px;margin-bottom:40px;background:var(--sage-50)">
+      <p style="font:400 15px/1.7 var(--sans);color:var(--ink-700);margin:0">通过访问或使用播种善意协会网站 <strong>sowingkindness.org.sg</strong>，您同意受本使用条款的约束。请在使用我们的网站或参与我们的项目前仔细阅读。</p>
+    </div>
+
+    {[
+      {
+        n:1, title:'关于我们',
+        body:`<p class="article-p">播种善意协会是一家总部位于新加坡的非营利组织，致力于在儿童、家庭和社区中培育善意、同理心与正向价值观。我们的网站提供关于我们的项目、活动及年度跨中心讲故事比赛的信息。</p>`
+      },
+      {
+        n:2, title:'网站使用',
+        body:`<p class="article-p">您只可将本网站用于个人、非商业目的。您同意不得：</p>
+<ul class="article-ul">
+  <li>以违反适用法律法规的方式使用本网站</li>
+  <li>未经书面许可复制、分发或修改任何内容</li>
+  <li>尝试未经授权访问网站的任何部分或其系统</li>
+  <li>发布或传播任何违法、有害、冒犯性或误导性的内容</li>
+  <li>使用本网站发送未经请求的通信</li>
+</ul>`
+      },
+      {
+        n:3, title:'知识产权',
+        body:`<p class="article-p">本网站的所有内容——包括文字、图片、插图、标志、视频及设计——均为播种善意协会或其授权方所有，受适用知识产权法律保护。</p>
+<p class="article-p">您可分享我们网站的链接，并在注明出处的情况下非商业性地引用简短摘录。任何其他用途须事先获得我们的书面同意。</p>
+<p class="article-p">比赛提交内容（视频、照片、故事）仍归提交家庭所有。提交即代表您授予播种善意协会非独家许可，允许我们按<a href="/zh/consent/" style="color:var(--fern-600);font-weight:600">家长同意书</a>所述将内容用于比赛及推广目的。</p>`
+      },
+      {
+        n:4, title:'第三方链接',
+        body:`<p class="article-p">我们的网站可能包含指向第三方网站的链接（包括GanjingWorld、Facebook和Instagram）。这些链接仅为方便您而提供。播种善意协会不认可、控制或对任何第三方网站的内容或隐私惯例承担责任。我们建议您查阅您访问的任何外部网站的条款和隐私政策。</p>`
+      },
+      {
+        n:5, title:'免责声明',
+        body:`<p class="article-p">本网站及其内容按"现状"提供，不附带任何明示或默示的保证。播种善意协会不保证网站将不间断运行、无错误或不含病毒或其他有害组件。</p>
+<p class="article-p">我们保留随时修改、暂停或终止网站任何部分的权利，恕不另行通知。</p>`
+      },
+      {
+        n:6, title:'责任限制',
+        body:`<p class="article-p">在新加坡法律允许的最大范围内，播种善意协会对因您使用或无法使用本网站或其内容而产生的任何直接、间接、附带、后果性或惩罚性损害不承担责任。</p>`
+      },
+      {
+        n:7, title:'适用法律',
+        body:`<p class="article-p">本使用条款受新加坡共和国法律管辖并按其解释。与本条款相关的任何争议应受新加坡法院专属管辖。</p>`
+      },
+      {
+        n:8, title:'条款变更',
+        body:`<p class="article-p">我们可能随时通过更新本页面修订使用条款。最新版本将始终发布于 <strong>sowingkindness.org.sg/zh/terms/</strong>。在任何变更后继续使用网站，即表示您接受修订后的条款。</p>`
+      },
+      {
+        n:9, title:'联系我们',
+        body:`<p class="article-p">如您对本使用条款有任何疑问，请联系：</p>
+<p class="article-p"><strong>播种善意协会</strong><br/>电邮：<a href="mailto:contact@sowingkindness.org.sg" style="color:var(--fern-600);font-weight:600">contact@sowingkindness.org.sg</a></p>`
+      },
+    ].map(s => (
+      <div data-fade style="margin-bottom:40px;padding-bottom:36px;border-bottom:1px solid var(--border)">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+          <span style="width:36px;height:36px;border-radius:999px;background:var(--sage-200);color:var(--forest-800);font:700 15px var(--sans);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">{s.n}</span>
+          <h2 style="font:700 22px var(--serif);color:var(--forest-800);margin:0">{s.title}</h2>
+        </div>
+        <div style="padding-left:50px" set:html={s.body} />
+      </div>
+    ))}
+
+  </div>
+</section>
+
+</BaseLayout>

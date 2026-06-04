@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="隐私政策 | 播种善意协会" description="播种善意协会隐私政策——我们如何根据新加坡个人数据保护法收集、使用和保护您的个人数据。">
+
+<section class="page-header">
+  <div class="container">
+    <div class="page-header__crumbs"><span>法律</span><span class="dot"></span><span>隐私政策</span></div>
+    <h1 style="font:700 clamp(32px,5vw,64px)/1.06 var(--serif);letter-spacing:-.02em;margin:0 0 14px">
+      <span style="color:var(--ink-900)">隐私</span><span style="color:var(--forest-800)">政策</span>
+    </h1>
+    <p style="font:400 16px/1.6 var(--sans);color:var(--ink-700);max-width:600px;margin:0">最后更新：2026年6月</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:40px;padding-bottom:80px">
+  <div class="container" style="max-width:760px">
+
+    <div class="card card--quiet" style="padding:24px 28px;margin-bottom:40px;background:var(--sage-50)">
+      <p style="font:400 15px/1.7 var(--sans);color:var(--ink-700);margin:0">播种善意协会（"我们"）致力于保护我们的会员、参赛者、支持者及网站访客的个人数据。本隐私政策说明我们如何根据新加坡<strong>《2012年个人数据保护法》（PDPA）</strong>收集、使用、披露和保护您的个人数据。</p>
+    </div>
+
+    {[
+      {
+        n:1, title:'我们收集的数据',
+        body:`当您与我们互动时，我们可能收集以下个人数据：
+<ul class="article-ul">
+  <li><strong>联系信息</strong>——姓名、电邮地址、手机号码</li>
+  <li><strong>报名数据</strong>——孩子的姓名、年龄、就读学校或中心、故事语言、年龄组别</li>
+  <li><strong>提交内容</strong>——为比赛提交的讲故事视频及简介</li>
+  <li><strong>往来通信</strong>——通过联系表格或电邮发送的消息</li>
+  <li><strong>技术数据</strong>——IP地址、浏览器类型及访问页面（通过标准网络日志自动收集）</li>
+</ul>`
+      },
+      {
+        n:2, title:'我们如何使用您的数据',
+        body:`我们仅将您的个人数据用于收集时的目的：
+<ul class="article-ul">
+  <li>处理比赛报名及管理比赛事务</li>
+  <li>就活动、成绩及比赛最新消息与您沟通</li>
+  <li>经同意后在网站及社交媒体上发布比赛成绩、照片和视频</li>
+  <li>回应您的查询</li>
+  <li>改善我们的网站和项目</li>
+</ul>
+<p class="article-p">未经您事先同意，我们不会将您的个人数据用于上述以外的任何目的。</p>`
+      },
+      {
+        n:3, title:'个人数据的披露',
+        body:`<p class="article-p">我们不出售、出租或交换您的个人数据。我们可能在以下情况下共享您的数据：</p>
+<ul class="article-ul">
+  <li><strong>服务提供商</strong>——协助我们运营网站和服务的第三方平台（如Cloudflare、Resend、Google），受保密义务约束</li>
+  <li><strong>主管机关</strong>——法律或法规要求时</li>
+</ul>
+<p class="article-p">所有第三方提供商须安全处理您的数据，并遵守适用的数据保护法律。</p>`
+      },
+      {
+        n:4, title:'数据保留',
+        body:`<p class="article-p">我们仅在实现收集目的所必要的时间内保留个人数据，或依法律要求保留。比赛报名数据通常在比赛结束后一年内保留。公开分享的视频提交内容将保留至撤回为止。</p>`
+      },
+      {
+        n:5, title:'您的权利',
+        body:`<p class="article-p">根据新加坡PDPA，您有权：</p>
+<ul class="article-ul">
+  <li><strong>查阅</strong>——要求获取我们持有的您的个人数据副本</li>
+  <li><strong>更正</strong>——要求更正不准确或不完整的数据</li>
+  <li><strong>撤回同意</strong>——随时撤回我们收集、使用或披露您数据的同意</li>
+</ul>
+<p class="article-p">如需行使上述任何权利，请通过 <a href="mailto:contact@sowingkindness.org.sg" style="color:var(--fern-600);font-weight:600">contact@sowingkindness.org.sg</a> 联系我们。我们将在30天内回复。</p>`
+      },
+      {
+        n:6, title:'Cookie及追踪',
+        body:`<p class="article-p">我们的网站使用标准网络技术（包括Cookie）来改善您的浏览体验并收集匿名使用统计数据。我们不使用Cookie进行广告投放或跨网站追踪。您可在浏览器设置中禁用Cookie；这不会影响您使用本网站。</p>`
+      },
+      {
+        n:7, title:'安全',
+        body:`<p class="article-p">我们采取合理的技术和组织措施，保护您的个人数据免遭未经授权的访问、披露、更改或销毁。我们的网站使用HTTPS加密。然而，互联网传输方式并非完全安全，我们无法保证绝对安全。</p>`
+      },
+      {
+        n:8, title:'本政策的变更',
+        body:`<p class="article-p">我们可能不时更新本隐私政策。最新版本将始终发布于 <strong>sowingkindness.org.sg/zh/privacy/</strong>。在任何变更后继续使用我们的网站或服务，即表示您接受更新后的政策。</p>`
+      },
+      {
+        n:9, title:'联系我们',
+        body:`<p class="article-p">如您对本隐私政策或我们处理个人数据的方式有任何疑问，请联系：</p>
+<p class="article-p"><strong>播种善意协会</strong><br/>电邮：<a href="mailto:contact@sowingkindness.org.sg" style="color:var(--fern-600);font-weight:600">contact@sowingkindness.org.sg</a></p>`
+      },
+    ].map(s => (
+      <div data-fade style="margin-bottom:40px;padding-bottom:36px;border-bottom:1px solid var(--border)">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+          <span style="width:36px;height:36px;border-radius:999px;background:var(--sage-200);color:var(--forest-800);font:700 15px var(--sans);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">{s.n}</span>
+          <h2 style="font:700 22px var(--serif);color:var(--forest-800);margin:0">{s.title}</h2>
+        </div>
+        <div style="padding-left:50px" set:html={s.body} />
+      </div>
+    ))}
+
+  </div>
+</section>
+
+</BaseLayout>

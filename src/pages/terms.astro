@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Terms of Use | Sowing Kindness Society" description="Terms of use for the Sowing Kindness Society website and competition.">
+
+<section class="page-header">
+  <div class="container">
+    <div class="page-header__crumbs"><span>Legal</span><span class="dot"></span><span>Terms of Use</span></div>
+    <h1 style="font:700 clamp(32px,5vw,64px)/1.06 var(--serif);letter-spacing:-.02em;margin:0 0 14px">
+      <span style="color:var(--ink-900)">Terms </span><span style="color:var(--forest-800)">of Use</span>
+    </h1>
+    <p style="font:400 16px/1.6 var(--sans);color:var(--ink-700);max-width:600px;margin:0">Last updated: June 2026</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:40px;padding-bottom:80px">
+  <div class="container" style="max-width:760px">
+
+    <div class="card card--quiet" style="padding:24px 28px;margin-bottom:40px;background:var(--sage-50)">
+      <p style="font:400 15px/1.7 var(--sans);color:var(--ink-700);margin:0">By accessing or using the Sowing Kindness Society website at <strong>sowingkindness.org.sg</strong>, you agree to be bound by these Terms of Use. Please read them carefully before using our website or participating in our programmes.</p>
+    </div>
+
+    {[
+      {
+        n:1, title:'About Us',
+        body:`<p class="article-p">Sowing Kindness Society is a Singapore-based non-profit organisation dedicated to nurturing kindness, compassion and positive values in children, families and communities. Our website provides information about our programmes, events and the annual Inter-Centres Storytelling Competition.</p>`
+      },
+      {
+        n:2, title:'Use of This Website',
+        body:`<p class="article-p">You may use this website for personal, non-commercial purposes only. You agree not to:</p>
+<ul class="article-ul">
+  <li>Use the website in any way that violates applicable laws or regulations</li>
+  <li>Reproduce, distribute or modify any content without our written permission</li>
+  <li>Attempt to gain unauthorised access to any part of the website or its systems</li>
+  <li>Post or transmit any content that is unlawful, harmful, offensive or misleading</li>
+  <li>Use the website to send unsolicited communications</li>
+</ul>`
+      },
+      {
+        n:3, title:'Intellectual Property',
+        body:`<p class="article-p">All content on this website — including text, images, illustrations, logos, videos and design — is the property of Sowing Kindness Society or its licensors, and is protected by applicable intellectual property laws.</p>
+<p class="article-p">You may share links to our website and quote short excerpts for non-commercial purposes with attribution. Any other use requires our prior written consent.</p>
+<p class="article-p">Competition submissions (videos, photographs, stories) remain the property of the submitting family. By submitting, you grant Sowing Kindness Society a non-exclusive licence to use the content for competition and promotional purposes as described in our <a href="/consent/" style="color:var(--fern-600);font-weight:600">Parental Consent Form</a>.</p>`
+      },
+      {
+        n:4, title:'Third-Party Links',
+        body:`<p class="article-p">Our website may contain links to third-party websites (including GanjingWorld, Facebook and Instagram). These links are provided for your convenience only. Sowing Kindness Society does not endorse, control or take responsibility for the content or privacy practices of any third-party sites. We encourage you to review the terms and privacy policies of any external sites you visit.</p>`
+      },
+      {
+        n:5, title:'Disclaimer of Warranties',
+        body:`<p class="article-p">This website and its content are provided on an "as is" basis without warranties of any kind, express or implied. Sowing Kindness Society does not warrant that the website will be uninterrupted, error-free or free of viruses or other harmful components.</p>
+<p class="article-p">We reserve the right to modify, suspend or discontinue any part of the website at any time without notice.</p>`
+      },
+      {
+        n:6, title:'Limitation of Liability',
+        body:`<p class="article-p">To the fullest extent permitted by Singapore law, Sowing Kindness Society shall not be liable for any direct, indirect, incidental, consequential or punitive damages arising from your use of or inability to use this website or its content.</p>`
+      },
+      {
+        n:7, title:'Governing Law',
+        body:`<p class="article-p">These Terms of Use are governed by and construed in accordance with the laws of the Republic of Singapore. Any disputes arising in connection with these terms shall be subject to the exclusive jurisdiction of the courts of Singapore.</p>`
+      },
+      {
+        n:8, title:'Changes to These Terms',
+        body:`<p class="article-p">We may revise these Terms of Use at any time by updating this page. The most current version will always be available at <strong>sowingkindness.org.sg/terms/</strong>. Continued use of the website after any changes constitutes your acceptance of the revised terms.</p>`
+      },
+      {
+        n:9, title:'Contact Us',
+        body:`<p class="article-p">If you have any questions about these Terms of Use, please contact us at:</p>
+<p class="article-p"><strong>Sowing Kindness Society</strong><br/>Email: <a href="mailto:contact@sowingkindness.org.sg" style="color:var(--fern-600);font-weight:600">contact@sowingkindness.org.sg</a></p>`
+      },
+    ].map(s => (
+      <div data-fade style="margin-bottom:40px;padding-bottom:36px;border-bottom:1px solid var(--border)">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+          <span style="width:36px;height:36px;border-radius:999px;background:var(--sage-200);color:var(--forest-800);font:700 15px var(--sans);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0">{s.n}</span>
+          <h2 style="font:700 22px var(--serif);color:var(--forest-800);margin:0">{s.title}</h2>
+        </div>
+        <div style="padding-left:50px" set:html={s.body} />
+      </div>
+    ))}
+
+  </div>
+</section>
+
+</BaseLayout>
