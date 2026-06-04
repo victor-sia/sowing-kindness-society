@@ -1,0 +1,600 @@
+---
+import '../styles/global.css';
+
+const title = 'Connect with Sowing Kindness Society';
+const description = 'Follow Sowing Kindness Society on social media and stay connected.';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content="/logo/sks-logo.webp" />
+  <link rel="icon" type="image/png" href="/logo/sks-logomark.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito+Sans:ital,wght@0,300..900;1,300..900&display=swap" />
+  <title>{title}</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest:   #2d5a27;
+      --leaf:     #5a8a3c;
+      --orange:   #e8933a;
+      --cream:    #f7f3ec;
+      --cream2:   #ede8de;
+      --ink:      #1e3318;
+      --ink-mid:  #4a5e42;
+      --ink-soft: #7a8e72;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: var(--cream);
+      /* Paper texture via CSS noise */
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"),
+        radial-gradient(ellipse 90% 50% at 50% 0%, #e4edd8 0%, transparent 65%),
+        radial-gradient(ellipse 70% 40% at 90% 100%, #ede0cc 0%, transparent 55%);
+      font-family: 'Nunito Sans', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 0 80px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ── Decorative corner botanical SVGs ── */
+    .deco {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .deco-tl { top: 0; left: 0; }
+    .deco-br { bottom: 0; right: 0; transform: rotate(180deg); }
+
+    /* ── Page card wrapper ── */
+    .page {
+      width: 100%;
+      max-width: 440px;
+      position: relative;
+      z-index: 1;
+      padding: 0 16px;
+    }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      padding: 48px 0 36px;
+      position: relative;
+    }
+
+    /* Dandelion illustration sits behind logo */
+    .header-deco {
+      position: absolute;
+      top: -10px; left: 50%;
+      transform: translateX(-50%);
+      width: 260px;
+      opacity: 0.14;
+      pointer-events: none;
+    }
+
+    .header {
+      overflow: hidden;
+    }
+
+    .logo-wrap {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 18px;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      filter: drop-shadow(0 6px 18px rgba(45,90,39,.18));
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Soft glow ring behind logo */
+    .logo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,.9) 40%, transparent 75%);
+      z-index: 0;
+    }
+
+    .org-name {
+      font-family: 'Lora', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--forest);
+      line-height: 1.2;
+      margin-bottom: 6px;
+      letter-spacing: -.01em;
+    }
+
+    .tagline {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 14.5px;
+      color: var(--leaf);
+      margin-bottom: 14px;
+      letter-spacing: .01em;
+    }
+
+    .header-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .header-divider::before,
+    .header-divider::after {
+      content: '';
+      width: 48px;
+      height: 1.5px;
+      background: linear-gradient(90deg, transparent, var(--orange));
+    }
+    .header-divider::after {
+      background: linear-gradient(90deg, var(--orange), transparent);
+    }
+    .heart-icon { color: var(--orange); font-size: 12px; }
+
+    .bio {
+      font-size: 13.5px;
+      color: var(--ink-mid);
+      line-height: 1.65;
+      max-width: 290px;
+      margin: 0 auto;
+    }
+
+    /* ── Floating seed / heart accents ── */
+    .floats {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .seed, .fheart {
+      position: absolute;
+      opacity: 0;
+      animation: floatUp 8s ease-in-out infinite;
+    }
+    @keyframes floatUp {
+      0%   { opacity: 0; transform: translateY(0) rotate(0deg); }
+      15%  { opacity: .7; }
+      85%  { opacity: .5; }
+      100% { opacity: 0; transform: translateY(-80px) rotate(20deg); }
+    }
+
+    /* ── Links container ── */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Section label */
+    .section-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      padding: 6px 4px 2px;
+    }
+
+    /* ── Individual link button ── */
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 16px 13px 14px;
+      background: rgba(255,255,255,.82);
+      backdrop-filter: blur(6px);
+      border: 1.5px solid rgba(255,255,255,.9);
+      border-radius: 18px;
+      text-decoration: none;
+      color: inherit;
+      box-shadow:
+        0 2px 10px rgba(45,90,39,.07),
+        0 1px 3px rgba(0,0,0,.04),
+        inset 0 1px 0 rgba(255,255,255,.8);
+      transition: transform 140ms cubic-bezier(.34,1.56,.64,1), box-shadow 140ms ease, background 140ms ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.4) 0%, transparent 60%);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .link-btn:hover {
+      transform: translateY(-3px) scale(1.01);
+      box-shadow:
+        0 8px 24px rgba(45,90,39,.13),
+        0 2px 6px rgba(0,0,0,.06),
+        inset 0 1px 0 rgba(255,255,255,.9);
+      background: rgba(255,255,255,.95);
+    }
+
+    .link-btn:active {
+      transform: translateY(-1px) scale(1.005);
+      box-shadow: 0 3px 10px rgba(45,90,39,.1);
+      transition-duration: 60ms;
+    }
+
+    /* Icon wrapper */
+    .icon-wrap {
+      width: 46px;
+      height: 46px;
+      border-radius: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+
+    .icon-wrap svg { width: 26px; height: 26px; }
+
+    .link-text {
+      flex: 1;
+      min-width: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .link-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.25;
+    }
+
+    .link-url {
+      font-size: 11.5px;
+      color: var(--ink-soft);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .chevron {
+      color: var(--cream2);
+      font-size: 20px;
+      flex-shrink: 0;
+      font-weight: 400;
+      position: relative;
+      z-index: 1;
+      background: var(--forest);
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      opacity: .75;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 44px;
+      text-align: center;
+      padding-bottom: 4px;
+    }
+    .footer-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .footer-divider::before,
+    .footer-divider::after {
+      content: '';
+      width: 64px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,169,110,.6));
+    }
+    .footer-divider::after {
+      background: linear-gradient(90deg, rgba(200,169,110,.6), transparent);
+    }
+    .footer-text {
+      font-size: 12px;
+      color: var(--ink-soft);
+      letter-spacing: .02em;
+    }
+    .footer-tagline {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 11px;
+      color: var(--leaf);
+      margin-top: 4px;
+      opacity: .7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Corner botanical decoration — top left -->
+  <svg class="deco deco-tl" width="140" height="200" viewBox="0 0 140 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 195 Q20 120 65 55 Q90 20 120 5" stroke="#5a8a3c" stroke-width="1.4" fill="none" opacity=".22"/>
+    <ellipse cx="42" cy="112" rx="20" ry="8" transform="rotate(-50 42 112)" fill="#5a8a3c" opacity=".13"/>
+    <ellipse cx="22" cy="150" rx="16" ry="7" transform="rotate(-35 22 150)" fill="#2d5a27" opacity=".10"/>
+    <ellipse cx="68" cy="72" rx="15" ry="6" transform="rotate(-65 68 72)" fill="#5a8a3c" opacity=".12"/>
+    <ellipse cx="90" cy="42" rx="12" ry="5" transform="rotate(-70 90 42)" fill="#5a8a3c" opacity=".09"/>
+    <text x="108" y="28" font-size="9" fill="#e8933a" opacity=".5">♥</text>
+    <text x="126" y="52" font-size="7" fill="#e8933a" opacity=".35">♥</text>
+    <g opacity=".2" stroke="#2d5a27" stroke-width="1">
+      <line x1="100" y1="18" x2="112" y2="6"/><circle cx="112" cy="5" r="2.5" fill="none"/>
+      <line x1="118" y1="38" x2="132" y2="26"/><circle cx="132" cy="25" r="2" fill="none"/>
+      <line x1="128" y1="58" x2="138" y2="44"/><circle cx="138" cy="43" r="2" fill="none"/>
+    </g>
+  </svg>
+
+  <!-- Corner botanical decoration — bottom right -->
+  <svg class="deco deco-br" width="140" height="200" viewBox="0 0 140 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 195 Q20 120 65 55 Q90 20 120 5" stroke="#5a8a3c" stroke-width="1.4" fill="none" opacity=".18"/>
+    <ellipse cx="42" cy="112" rx="18" ry="7" transform="rotate(-50 42 112)" fill="#5a8a3c" opacity=".10"/>
+    <ellipse cx="22" cy="150" rx="14" ry="6" transform="rotate(-35 22 150)" fill="#2d5a27" opacity=".08"/>
+    <ellipse cx="68" cy="72" rx="13" ry="5" transform="rotate(-65 68 72)" fill="#5a8a3c" opacity=".09"/>
+    <text x="108" y="28" font-size="8" fill="#e8933a" opacity=".4">♥</text>
+    <text x="124" y="50" font-size="6" fill="#e8933a" opacity=".3">♥</text>
+    <g opacity=".16" stroke="#2d5a27" stroke-width="1">
+      <line x1="100" y1="18" x2="112" y2="6"/><circle cx="112" cy="5" r="2.5" fill="none"/>
+      <line x1="118" y1="38" x2="130" y2="26"/><circle cx="130" cy="25" r="2" fill="none"/>
+    </g>
+  </svg>
+
+  <div class="page">
+
+    <!-- ── Header ── -->
+    <div class="header">
+
+      <!-- Ghost dandelion behind logo -->
+      <svg class="header-deco" viewBox="0 0 260 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- stem -->
+        <path d="M130 210 Q128 165 130 110" stroke="#2d5a27" stroke-width="2" fill="none"/>
+        <!-- leaves -->
+        <path d="M130 172 Q106 158 94 144 Q116 152 130 172Z" fill="#5a8a3c"/>
+        <path d="M130 184 Q154 168 166 154 Q146 162 130 184Z" fill="#5a8a3c"/>
+        <!-- seed head -->
+        <circle cx="130" cy="98" r="22" stroke="#2d5a27" stroke-width="1.2" fill="none"/>
+        <!-- spokes (pre-drawn at 22.5° intervals) -->
+        <g stroke="#2d5a27" stroke-width=".9">
+          <!-- 0° right -->   <line x1="140" y1="98" x2="152" y2="98"/>
+          <!-- 22.5° -->      <line x1="138.4" y1="90.6" x2="149.9" y2="81.5"/>
+          <!-- 45° -->        <line x1="133.6" y1="85.4" x2="141.6" y2="74.4"/>
+          <!-- 67.5° -->      <line x1="126.4" y1="83.0" x2="128.9" y2="70.0"/>
+          <!-- 90° up -->     <line x1="130" y1="76" x2="130" y2="64"/>
+          <!-- 112.5° -->     <line x1="123.6" y1="83.0" x2="121.1" y2="70.0"/>
+          <!-- 135° -->       <line x1="118.4" y1="85.4" x2="110.4" y2="74.4"/>
+          <!-- 157.5° -->     <line x1="113.6" y1="90.6" x2="102.1" y2="81.5"/>
+          <!-- 180° left -->  <line x1="120" y1="98" x2="108" y2="98"/>
+          <!-- 202.5° -->     <line x1="113.6" y1="105.4" x2="102.1" y2="114.5"/>
+          <!-- 225° -->       <line x1="118.4" y1="110.6" x2="110.4" y2="121.6"/>
+          <!-- 247.5° -->     <line x1="123.6" y1="113.0" x2="121.1" y2="126.0"/>
+          <!-- 270° down -->  <line x1="130" y1="120" x2="130" y2="132"/>
+          <!-- 292.5° -->     <line x1="136.4" y1="113.0" x2="138.9" y2="126.0"/>
+          <!-- 315° -->       <line x1="141.6" y1="110.6" x2="149.6" y2="121.6"/>
+          <!-- 337.5° -->     <line x1="146.4" y1="105.4" x2="157.9" y2="114.5"/>
+        </g>
+        <!-- Flying seeds -->
+        <g stroke="#2d5a27" stroke-width=".9">
+          <line x1="154" y1="86" x2="174" y2="62"/><circle cx="174" cy="61" r="2.5" fill="none"/>
+          <line x1="158" y1="96" x2="184" y2="78"/><circle cx="185" cy="77" r="2.2" fill="none"/>
+          <line x1="156" y1="106" x2="186" y2="95"/><circle cx="187" cy="94" r="2.2" fill="none"/>
+          <line x1="150" y1="76" x2="168" y2="50"/><circle cx="168" cy="49" r="2" fill="none"/>
+          <line x1="162" y1="90" x2="194" y2="78"/><circle cx="195" cy="77" r="1.8" fill="none"/>
+        </g>
+        <!-- Hearts on seeds -->
+        <text x="170" y="61" font-size="7" fill="#e8933a">♥</text>
+        <text x="181" y="77" font-size="6" fill="#e8933a">♥</text>
+        <text x="183" y="94" font-size="6" fill="#e8933a">♥</text>
+        <text x="164" y="49" font-size="6" fill="#e8933a">♥</text>
+      </svg>
+
+      <div class="logo-wrap">
+        <img src="/logo/sks-logo-transparent.webp" alt="Sowing Kindness Society" class="logo" />
+      </div>
+
+      <h1 class="org-name">Sowing Kindness Society</h1>
+      <p class="tagline">Sow Kindness, Watch It Grow</p>
+
+      <div class="header-divider">
+        <span class="heart-icon">♥</span>
+      </div>
+
+      <p class="bio">Kindness stories, family activities,<br/>community programmes and updates in Singapore.</p>
+    </div>
+
+    <!-- ── Link buttons ── -->
+    <div class="links">
+
+      <!-- Website -->
+      <a href="https://www.sowingkindness.org.sg" target="_blank" rel="noopener" class="link-btn">
+        <div class="icon-wrap" style="background:linear-gradient(135deg,#e8f4e0,#d4eac8)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2d5a27" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <div class="link-text">
+          <div class="link-title">Visit Our Website</div>
+          <div class="link-url">www.sowingkindness.org.sg</div>
+        </div>
+        <div class="chevron">›</div>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://whatsapp.com/channel/xxxxx" target="_blank" rel="noopener" class="link-btn">
+        <div class="icon-wrap" style="background:linear-gradient(135deg,#dcf4e0,#c5eccc)">
+          <svg viewBox="0 0 24 24" fill="#128C7E">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+          </svg>
+        </div>
+        <div class="link-text">
+          <div class="link-title">Join Our WhatsApp Community</div>
+          <div class="link-url">whatsapp.com/channel/xxxxx</div>
+        </div>
+        <div class="chevron">›</div>
+      </a>
+
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/sowingkindness.org.sg" target="_blank" rel="noopener" class="link-btn">
+        <div class="icon-wrap" style="background:#1877F2;padding:0">
+          <svg viewBox="0 0 24 24" fill="white" style="width:46px;height:46px">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </div>
+        <div class="link-text">
+          <div class="link-title">Follow on Facebook</div>
+          <div class="link-url">facebook.com/sowingkindness.org.sg</div>
+        </div>
+        <div class="chevron">›</div>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://instagram.com/sowingkindness.org.sg" target="_blank" rel="noopener" class="link-btn">
+        <div class="icon-wrap" style="padding:0;background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%)">
+          <svg viewBox="0 0 24 24" fill="white" style="width:26px;height:26px;margin:10px">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </div>
+        <div class="link-text">
+          <div class="link-title">Follow on Instagram</div>
+          <div class="link-url">instagram.com/sowingkindness.org.sg</div>
+        </div>
+        <div class="chevron">›</div>
+      </a>
+
+      <!-- X / Twitter -->
+      <a href="https://x.com/sowingkindnessorgsg" target="_blank" rel="noopener" class="link-btn">
+        <div class="icon-wrap" style="background:#000000">
+          <svg viewBox="0 0 24 24" fill="white" style="width:22px;height:22px">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.629 5.905-5.629Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </div>
+        <div class="link-text">
+          <div class="link-title">Follow on X</div>
+          <div class="link-url">x.com/sowingkindnessorgsg</div>
+        </div>
+        <div class="chevron">›</div>
+      </a>
+
+      <!-- GanjingWorld -->
+      <a href="https://www.ganjingworld.com/@sowingkindness" target="_blank" rel="noopener" class="link-btn">
+        <div class="icon-wrap" style="background:#ffffff;border:1.5px solid #e0e8f0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width:38px;height:38px">
+            <path style="fill:#0487fb" d="M397.06,262.26l.23-65.14,50.78.03-.2,66.12c-2.79,104.84-89.38,183.47-191.71,183.52-104.47.05-189.18-80.28-192.52-184.83-3.44-107.65,81.44-198.07,191.11-196.98l61.46.04-.03,50.62-64.82.04c-74.99.05-134.08,60.85-136.89,133.95-3.1,80.91,59.25,145.52,139.71,146.46,75.45.88,140.58-55.8,142.88-133.84Z"/>
+            <path style="fill:#0487fb" d="M196.1,247.77c-2.21,18.45,2.55,35.41,14.5,48.65,11.57,12.82,27.47,18.48,45.44,18.8,31.9.57,59.07-22.64,60.2-55.3l-.15-12.26-60.8-.04-.07-50.63,111.96.02-.17,63.62c-1.48,60.97-51.63,105.37-110.9,105.46-64.83.1-116.66-52.54-110.86-118.59l50.85.28Z"/>
+            <polygon style="fill:#0487fb" points="421.74 131.15 381.39 171.51 340.91 131.32 381.37 91.05 421.74 131.15"/>
+          </svg>
+        </div>
+        <div class="link-text">
+          <div class="link-title">Follow on GanjingWorld</div>
+          <div class="link-url">ganjingworld.com/@sowingkindness</div>
+        </div>
+        <div class="chevron">›</div>
+      </a>
+
+      <!-- LinkedIn -->
+      <a href="https://linkedin.com/company/sowingkindness-org-sg" target="_blank" rel="noopener" class="link-btn">
+        <div class="icon-wrap" style="background:#0A66C2;padding:0">
+          <svg viewBox="0 0 24 24" fill="white" style="width:26px;height:26px;margin:10px">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 23.997 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </div>
+        <div class="link-text">
+          <div class="link-title">Follow on LinkedIn</div>
+          <div class="link-url">linkedin.com/company/sowingkindness-org-sg</div>
+        </div>
+        <div class="chevron">›</div>
+      </a>
+
+      <!-- Contact Us -->
+      <a href="mailto:contact@sowingkindness.sg" class="link-btn">
+        <div class="icon-wrap" style="background:linear-gradient(135deg,#fdf0e0,#f7e4c8)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c87030" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m22 7-10 7L2 7"/>
+          </svg>
+        </div>
+        <div class="link-text">
+          <div class="link-title">Contact Us</div>
+          <div class="link-url">contact@sowingkindness.sg</div>
+        </div>
+        <div class="chevron">›</div>
+      </a>
+
+      <!-- Upcoming Events -->
+      <a href="https://www.sowingkindness.org.sg/events/upcoming/" target="_blank" rel="noopener" class="link-btn">
+        <div class="icon-wrap" style="background:linear-gradient(135deg,#fdf0e0,#f7e4c8)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c87030" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+            <rect x="8" y="14" width="2" height="2" rx=".5" fill="#c87030"/>
+            <rect x="13" y="14" width="2" height="2" rx=".5" fill="#c87030"/>
+          </svg>
+        </div>
+        <div class="link-text">
+          <div class="link-title">Upcoming Events</div>
+          <div class="link-url">See what's coming next</div>
+        </div>
+        <div class="chevron">›</div>
+      </a>
+
+    </div>
+
+    <!-- ── Footer ── -->
+    <div class="footer">
+      <!-- Small dandelion seed illustration -->
+      <svg width="80" height="40" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:.25;margin-bottom:12px">
+        <line x1="40" y1="38" x2="40" y2="20" stroke="#2d5a27" stroke-width="1.2"/>
+        <circle cx="40" cy="19" r="4" stroke="#2d5a27" stroke-width="1" fill="none"/>
+        <g stroke="#2d5a27" stroke-width=".8">
+          <line x1="42" y1="17" x2="50" y2="8"/><circle cx="50" cy="7" r="1.5" fill="none"/>
+          <line x1="44" y1="19" x2="54" y2="13"/><circle cx="55" cy="13" r="1.5" fill="none"/>
+          <line x1="38" y1="17" x2="30" y2="8"/><circle cx="30" cy="7" r="1.5" fill="none"/>
+          <line x1="36" y1="19" x2="26" y2="13"/><circle cx="25" cy="13" r="1.5" fill="none"/>
+          <line x1="40" y1="15" x2="40" y2="4"/><circle cx="40" cy="3" r="1.5" fill="none"/>
+        </g>
+        <text x="47" y="7" font-size="5" fill="#e8933a">♥</text>
+        <text x="27" y="7" font-size="5" fill="#e8933a">♥</text>
+      </svg>
+
+      <div class="footer-divider">
+        <span style="color:var(--orange);font-size:11px">♥</span>
+      </div>
+      <p class="footer-text">Sowing Kindness Society Singapore</p>
+      <p class="footer-tagline">Sow Kindness, Watch It Grow</p>
+    </div>
+
+  </div>
+</body>
+</html>
