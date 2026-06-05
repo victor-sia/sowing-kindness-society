@@ -2,13 +2,22 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 const EVENTS = [
   { featured:true, tag:'比赛', date:'2026年9月20日', time:'晚11时59分——提交截止', title:'2026年讲故事比赛', body:'我们一年一度的双语讲故事比赛，面向3至6岁的儿童。用心分享一个故事——用英语或华语——以善意启发他人。', img:'/illustrations/storytellers-mic.webp',
-    gcal:'https://calendar.google.com/calendar/render?action=TEMPLATE&text=2026%E5%B9%B4%E8%AE%B2%E6%95%85%E4%BA%8B%E6%AF%94%E8%B5%9B%E2%80%94%E2%80%94%E6%8F%90%E4%BA%A4%E6%88%AA%E6%AD%A2&dates=20260920T235900/20260921T000000&details=%E8%A7%86%E9%A2%91%E6%8F%90%E4%BA%A4%E6%88%AA%E6%AD%A2%E6%97%A5%E3%80%82%E5%9C%A8+sowingkindness.org.sg%2Fzh%2Fsubmit%2F+%E6%8F%90%E4%BA%A4' },
+    gcal:'https://calendar.google.com/calendar/render?action=TEMPLATE&text=2026%E5%B9%B4%E8%AE%B2%E6%95%85%E4%BA%8B%E6%AF%94%E8%B5%9B%E2%80%94%E2%80%94%E6%8F%90%E4%BA%A4%E6%88%AA%E6%AD%A2&dates=20260920T235900/20260921T000000&details=%E8%A7%86%E9%A2%91%E6%8F%90%E4%BA%A4%E6%88%AA%E6%AD%A2%E6%97%A5%E3%80%82%E5%9C%A8+sowingkindness.org.sg%2Fzh%2Fsubmit%2F+%E6%8F%90%E4%BA%A4',
+    outlook:'https://outlook.live.com/calendar/0/deeplink/compose?subject=2026%E5%B9%B4%E8%AE%B2%E6%95%85%E4%BA%8B%E6%AF%94%E8%B5%9B%E2%80%94%E2%80%94%E6%8F%90%E4%BA%A4%E6%88%AA%E6%AD%A2&startdt=2026-09-20T23:59:00&enddt=2026-09-21T00:00:00&body=%E8%A7%86%E9%A2%91%E6%8F%90%E4%BA%A4%E6%88%AA%E6%AD%A2%E6%97%A5&location=sowingkindness.org.sg',
+    yahoo:'https://calendar.yahoo.com/?v=60&title=2026%E5%B9%B4%E8%AE%B2%E6%95%85%E4%BA%8B%E6%AF%94%E8%B5%9B%E2%80%94%E2%80%94%E6%8F%90%E4%BA%A4%E6%88%AA%E6%AD%A2&st=20260920T235900&et=20260921T000000&desc=%E8%A7%86%E9%A2%91%E6%8F%90%E4%BA%A4%E6%88%AA%E6%AD%A2%E6%97%A5',
+    ical:'/calendar/storytelling-competition-2026.ics' },
   { tag:'家庭', date:'2026年6月21日', time:'全天', location:'社区活动摊位', title:'父亲节庆典', body:'亲子艺术手工活动，孩子为最爱的爸爸和父亲形象人物创作温暖纪念品。',
-    gcal:'https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E7%88%B6%E4%BA%B2%E8%8A%82%E5%BA%86%E5%85%B8%E2%80%94%E2%80%94%E6%92%AD%E7%A7%8D%E5%96%84%E6%84%8F%E5%8D%8F%E4%BC%9A&dates=20260621/20260622&details=%E4%BA%B2%E5%AD%90%E8%89%BA%E6%9C%AF%E6%89%8B%E5%B7%A5%E6%B4%BB%E5%8A%A8&location=%E7%A4%BE%E5%8C%BA%E6%B4%BB%E5%8A%A8%E6%91%8A%E4%BD%8D' },
+    gcal:'https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E7%88%B6%E4%BA%B2%E8%8A%82%E5%BA%86%E5%85%B8%E2%80%94%E2%80%94%E6%92%AD%E7%A7%8D%E5%96%84%E6%84%8F%E5%8D%8F%E4%BC%9A&dates=20260621/20260622&details=%E4%BA%B2%E5%AD%90%E8%89%BA%E6%9C%AF%E6%89%8B%E5%B7%A5%E6%B4%BB%E5%8A%A8&location=%E7%A4%BE%E5%8C%BA%E6%B4%BB%E5%8A%A8%E6%91%8A%E4%BD%8D',
+    outlook:'https://outlook.live.com/calendar/0/deeplink/compose?subject=%E7%88%B6%E4%BA%B2%E8%8A%82%E5%BA%86%E5%85%B8%E2%80%94%E2%80%94%E6%92%AD%E7%A7%8D%E5%96%84%E6%84%8F%E5%8D%8F%E4%BC%9A&startdt=2026-06-21&enddt=2026-06-22&body=%E4%BA%B2%E5%AD%90%E8%89%BA%E6%9C%AF%E6%89%8B%E5%B7%A5%E6%B4%BB%E5%8A%A8&location=%E7%A4%BE%E5%8C%BA%E6%B4%BB%E5%8A%A8%E6%91%8A%E4%BD%8D',
+    yahoo:'https://calendar.yahoo.com/?v=60&title=%E7%88%B6%E4%BA%B2%E8%8A%82%E5%BA%86%E5%85%B8&st=20260621&et=20260622&desc=%E4%BA%B2%E5%AD%90%E8%89%BA%E6%9C%AF%E6%89%8B%E5%B7%A5%E6%B4%BB%E5%8A%A8',
+    ical:'/calendar/fathers-day-2026.ics' },
   { tag:'家庭', date:'2026年9月25日', time:'傍晚', location:'待确认', title:'中秋节', body:'全家一起制作灯笼，庆祝团圆、光明与社区温暖。',
-    gcal:'https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E4%B8%AD%E7%A7%8B%E8%8A%82%E2%80%94%E2%80%94%E6%92%AD%E7%A7%8D%E5%96%84%E6%84%8F%E5%8D%8F%E4%BC%9A&dates=20260925T190000/20260925T210000&details=%E5%85%A8%E5%AE%B6%E4%B8%80%E8%B5%B7%E5%88%B6%E4%BD%9C%E7%81%AF%E7%AC%BC' },
+    gcal:'https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E4%B8%AD%E7%A7%8B%E8%8A%82%E2%80%94%E2%80%94%E6%92%AD%E7%A7%8D%E5%96%84%E6%84%8F%E5%8D%8F%E4%BC%9A&dates=20260925T190000/20260925T210000&details=%E5%85%A8%E5%AE%B6%E4%B8%80%E8%B5%B7%E5%88%B6%E4%BD%9C%E7%81%AF%E7%AC%BC',
+    outlook:'https://outlook.live.com/calendar/0/deeplink/compose?subject=%E4%B8%AD%E7%A7%8B%E8%8A%82%E2%80%94%E2%80%94%E6%92%AD%E7%A7%8D%E5%96%84%E6%84%8F%E5%8D%8F%E4%BC%9A&startdt=2026-09-25T19:00:00&enddt=2026-09-25T21:00:00&body=%E5%85%A8%E5%AE%B6%E4%B8%80%E8%B5%B7%E5%88%B6%E4%BD%9C%E7%81%AF%E7%AC%BC&location=%E5%BE%85%E7%A1%AE%E8%AE%A4',
+    yahoo:'https://calendar.yahoo.com/?v=60&title=%E4%B8%AD%E7%A7%8B%E8%8A%82%E2%80%94%E2%80%94%E6%92%AD%E7%A7%8D%E5%96%84%E6%84%8F%E5%8D%8F%E4%BC%9A&st=20260925T190000&et=20260925T210000&desc=%E5%85%A8%E5%AE%B6%E4%B8%80%E8%B5%B7%E5%88%B6%E4%BD%9C%E7%81%AF%E7%AC%BC',
+    ical:'/calendar/mid-autumn-2026.ics' },
   { tag:'家庭', date:'2026年12月初', time:'日期待确认', title:'圣诞节活动', body:"用善意承诺填满'礼物盒'，为我们的社区圣诞树装饰纸质挂件。",
-    gcal:null },
+    gcal:null, outlook:null, yahoo:null, ical:null },
 ];
 ---
 <BaseLayout title="即将举行的活动 | 播种善意协会" description="家庭故事时光、学校项目、社区日和年度比赛——全年各种温柔的参与时刻。">
@@ -45,13 +54,68 @@ const EVENTS = [
             <div style={`font:700 ${e.featured ? 30 : 22}px/1.25 var(--serif);color:var(--ink-900);margin-bottom:10px`}>{e.title}</div>
             <div class="heart-divider" style="margin-bottom:14px"><span class="line" style="width:20px"></span><span style="color:var(--heart)">♥</span><span class="line" style="width:20px"></span></div>
             <p style={`font:400 ${e.featured ? 16 : 15}px/1.65 var(--sans);color:var(--ink-700);margin:0 0 18px`}>{e.body}</p>
-            <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+
+            <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
               <a href="/zh/submit/" class="btn btn-secondary">报名 <span class="chev">›</span></a>
-              {e.gcal
-                ? <a href={e.gcal} target="_blank" rel="noopener" class="link-arrow">加入日历 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg></a>
-                : <span style="font:500 13px var(--sans);color:var(--ink-400)">日期待确认</span>
-              }
             </div>
+
+            {e.gcal ? (
+              <div>
+                <div style="font:600 11px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-400);margin-bottom:8px">添加至日历</div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+
+                  {/* Google 日历 */}
+                  <a href={e.gcal} target="_blank" rel="noopener"
+                    style="display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:8px;border:1.5px solid #e2e8f0;background:#fff;font:600 12px var(--sans);color:var(--ink-700);text-decoration:none;transition:border-color .15s,box-shadow .15s"
+                    onmouseover="this.style.borderColor='#4285F4';this.style.boxShadow='0 2px 8px rgba(66,133,244,.15)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M6 2v2M18 2v2M3 8h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" stroke="#4285F4" stroke-width="1.8" stroke-linecap="round"/>
+                      <circle cx="8.5" cy="14.5" r="1" fill="#34A853"/>
+                      <circle cx="12" cy="14.5" r="1" fill="#EA4335"/>
+                      <circle cx="15.5" cy="14.5" r="1" fill="#FBBC05"/>
+                    </svg>
+                    Google
+                  </a>
+
+                  {/* Apple 日历 */}
+                  <a href={e.ical} download
+                    style="display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:8px;border:1.5px solid #e2e8f0;background:#fff;font:600 12px var(--sans);color:var(--ink-700);text-decoration:none;transition:border-color .15s,box-shadow .15s"
+                    onmouseover="this.style.borderColor='#555';this.style.boxShadow='0 2px 8px rgba(0,0,0,.1)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M6 2v2M18 2v2M3 8h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" stroke="#555" stroke-width="1.8" stroke-linecap="round"/>
+                      <path d="M12 13v3M10.5 14.5l1.5-1.5 1.5 1.5" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Apple
+                  </a>
+
+                  {/* Outlook */}
+                  <a href={e.outlook} target="_blank" rel="noopener"
+                    style="display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:8px;border:1.5px solid #e2e8f0;background:#fff;font:600 12px var(--sans);color:var(--ink-700);text-decoration:none;transition:border-color .15s,box-shadow .15s"
+                    onmouseover="this.style.borderColor='#0078D4';this.style.boxShadow='0 2px 8px rgba(0,120,212,.15)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M6 2v2M18 2v2M3 8h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" stroke="#0078D4" stroke-width="1.8" stroke-linecap="round"/>
+                      <rect x="8" y="12" width="8" height="5" rx="1" fill="#0078D4" opacity=".3"/>
+                      <rect x="8" y="12" width="8" height="2" rx=".5" fill="#0078D4"/>
+                    </svg>
+                    Outlook
+                  </a>
+
+                  {/* Yahoo 日历 */}
+                  <a href={e.yahoo} target="_blank" rel="noopener"
+                    style="display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:8px;border:1.5px solid #e2e8f0;background:#fff;font:600 12px var(--sans);color:var(--ink-700);text-decoration:none;transition:border-color .15s,box-shadow .15s"
+                    onmouseover="this.style.borderColor='#6001D2';this.style.boxShadow='0 2px 8px rgba(96,1,210,.15)'" onmouseout="this.style.borderColor='#e2e8f0';this.style.boxShadow='none'">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                      <path d="M6 2v2M18 2v2M3 8h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" stroke="#6001D2" stroke-width="1.8" stroke-linecap="round"/>
+                      <text x="12" y="19" font-size="7" font-weight="900" fill="#6001D2" text-anchor="middle" font-family="sans-serif">Y!</text>
+                    </svg>
+                    Yahoo
+                  </a>
+
+                </div>
+              </div>
+            ) : (
+              <span style="font:500 13px var(--sans);color:var(--ink-400)">日期待确认</span>
+            )}
           </div>
         </div>
       ))}
