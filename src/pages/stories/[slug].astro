@@ -24,7 +24,7 @@ const shareLinks = {
 <BaseLayout
   title={article.metaTitle}
   description={article.metaDescription}
-  image={article.image}
+  image={article.image.replace('.webp', '.png')}
   author={article.author}
   publishDate={article.date}
   type="article"
