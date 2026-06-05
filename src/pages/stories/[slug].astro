@@ -17,7 +17,7 @@ const pageTitle = encodeURIComponent(article.title);
 const shareLinks = {
   facebook:  `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`,
   whatsapp:  `https://api.whatsapp.com/send?text=${pageTitle}%20https%3A%2F%2Fwww.sowingkindness.org.sg%2Fstories%2F${encodeURIComponent(article.slug)}%2F`,
-  x:         `https://twitter.com/intent/tweet?text=${pageTitle}&url=${pageUrl}&via=sowingkindnessorgsg`,
+  x:         `https://twitter.com/intent/tweet?text=${pageTitle}&url=${pageUrl}`,
   linkedin:  `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`,
 };
 ---
