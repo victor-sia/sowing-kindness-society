@@ -9,7 +9,7 @@ export function getStaticPaths() {
 
 const { article } = Astro.props;
 const related = ARTICLES_ZH.filter(a => article.relatedSlugs.includes(a.slug));
-const bodyHtml = article.body.map((s: any) => renderSection(s, '/zh')).join('');
+const bodyHtml = article.body.map((s: any) => renderSection(s, '/zh', 'zh')).join('');
 const initials = article.author.split(' ').map((w: string) => w[0]).join('');
 ---
 <BaseLayout title={article.metaTitle} description={article.metaDescription}>
