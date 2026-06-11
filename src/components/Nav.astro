@@ -110,8 +110,8 @@ const storiesActive = storiesDropdown.some(d => currentPath.startsWith(d.href));
         <span class="lang-divider"></span>
         <a href={zhPath} class={`lang-btn${isZh ? ' active' : ''}`}>中文</a>
       </div>
-      <a href={`${base}/about/`} class="btn btn-outline">{T.learnMore}</a>
-      <a href={`${base}/submit/`} class="btn btn-primary">{T.register} <span class="chev">›</span></a>
+      <a href={`${base}/about/`} class="btn btn-outline" aria-label="Learn more about Sowing Kindness Society">{T.learnMore}</a>
+      <a href={`${base}/submit/`} class="btn btn-primary" aria-label="Register for the storytelling competition">{T.register} <span class="chev">›</span></a>
     </div>
 
     <!-- Mobile-only language toggle (sits left of burger) -->
@@ -159,8 +159,8 @@ const storiesActive = storiesDropdown.some(d => currentPath.startsWith(d.href));
     <a href={`${base}/contact/`} class={`nav__link${isActive(`${base}/contact/`) ? ' active' : ''}`}>{T.contact}</a>
   </nav>
   <div class="nav__drawer-cta">
-    <a href={`${base}/about/`} class="btn btn-outline">{T.learnMore}</a>
-    <a href={`${base}/submit/`} class="btn btn-primary">{T.register} <span class="chev">›</span></a>
+    <a href={`${base}/about/`} class="btn btn-outline" aria-label="Learn more about Sowing Kindness Society">{T.learnMore}</a>
+    <a href={`${base}/submit/`} class="btn btn-primary" aria-label="Register for the storytelling competition">{T.register} <span class="chev">›</span></a>
   </div>
   <div style="margin-top:32px;padding:16px 0;border-top:1px solid rgba(31,77,31,.08);font:400 13px var(--sans);color:var(--ink-500)">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
