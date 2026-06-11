@@ -15,13 +15,13 @@ const T = isZh ? {
   consent:'同意书', submit:'提交视频', events:'活动',
   upcoming:'即将举行', past:'往届活动', stories:'温情故事',
   read:'阅读', watch:'观看', contact:'联系我们',
-  learnMore:'了解更多', register:'立即报名',
+  learnMore:'关于我们', register:'立即报名',
 } : {
   home:'Home', about:'About', comp:'Competition', rules:'Official Rules',
   consent:'Consent Form', submit:'Submit a Video', events:'Events',
   upcoming:'Upcoming Events', past:'Past Events', stories:'Inspire Stories',
   read:'Read', watch:'Watch', contact:'Contact',
-  learnMore:'Learn More', register:'Register Now',
+  learnMore:'About Us', register:'Register Now',
 };
 
 const compDropdown = [
@@ -110,7 +110,7 @@ const storiesActive = storiesDropdown.some(d => currentPath.startsWith(d.href));
         <span class="lang-divider"></span>
         <a href={zhPath} class={`lang-btn${isZh ? ' active' : ''}`}>中文</a>
       </div>
-      <a href={`${base}/about/`} class="btn btn-outline" aria-label="Learn more about Sowing Kindness Society">{T.learnMore}</a>
+      <a href={`${base}/about/`} class="btn btn-outline">{T.learnMore}</a>
       <a href={`${base}/submit/`} class="btn btn-primary" aria-label="Register for the storytelling competition">{T.register} <span class="chev">›</span></a>
     </div>
 
@@ -159,7 +159,7 @@ const storiesActive = storiesDropdown.some(d => currentPath.startsWith(d.href));
     <a href={`${base}/contact/`} class={`nav__link${isActive(`${base}/contact/`) ? ' active' : ''}`}>{T.contact}</a>
   </nav>
   <div class="nav__drawer-cta">
-    <a href={`${base}/about/`} class="btn btn-outline" aria-label="Learn more about Sowing Kindness Society">{T.learnMore}</a>
+    <a href={`${base}/about/`} class="btn btn-outline">{T.learnMore}</a>
     <a href={`${base}/submit/`} class="btn btn-primary" aria-label="Register for the storytelling competition">{T.register} <span class="chev">›</span></a>
   </div>
   <div style="margin-top:32px;padding:16px 0;border-top:1px solid rgba(31,77,31,.08);font:400 13px var(--sans);color:var(--ink-500)">
