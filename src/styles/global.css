@@ -201,7 +201,7 @@ h1,h2,h3,h4{margin:0}
 .gap-28 { gap:28px }
 
 @media(max-width:1023px){
-  .grid-2col,.grid-asym,.grid-asym-r,.grid-3col,.grid-2-1,.grid-1-2,.grid-1-16,.grid-1-15,.grid-tl{
+  .grid-2col,.grid-asym,.grid-asym-r,.grid-3col,.grid-2-1,.grid-1-2,.grid-1-16,.grid-1-15,.grid-tl,.mission-grid{
     grid-template-columns:1fr!important;gap:28px!important
   }
   .footer-grid { grid-template-columns:1fr 1fr!important;gap:28px!important }
