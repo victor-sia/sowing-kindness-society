@@ -119,7 +119,7 @@ function confirmationHtml(d) {
       ${row('Child', d.childName, true)}
       ${row('Age Category', cat, false)}
       ${row('Language', d.language, true)}
-      ${row('Deadline', '20 September 2026, 11.59 PM', false)}
+      ${row('Deadline', 'TBD', false)}
     </table>
     <p style="font-size:14px;color:#6B7866">Questions? Email us at <a href="mailto:contact@sowingkindness.org.sg" style="color:#2C6B2C">contact@sowingkindness.org.sg</a></p>
     <p style="font-size:15px;margin-top:28px">With kindness,<br><strong>The Sowing Kindness Society Team</strong></p>

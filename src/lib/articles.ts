@@ -75,7 +75,7 @@ export const ARTICLES: Article[] = [
       { type: 'h2', content: 'Storytelling and Singapore\'s bilingual families' },
       { type: 'p', content: 'In a city where many children grow up hearing two or more languages, storytelling offers something rare: a space where both languages have equal dignity. A child who hears "好心有好报" — that kindness is repaid — in a Mandarin story will carry that phrase in a different part of their memory than if they encountered the same idea in English.' },
       { type: 'p', content: 'At Sowing Kindness Society, our bilingual storytelling competition exists precisely for this reason. We want children aged 3 to 6 to tell their stories in the language that feels most true to them — and to know that their story, in whatever tongue, is worth hearing.' },
-      { type: 'cta', content: 'Is your child aged 3–6? Our bilingual storytelling competition is open for submissions until 20 September 2026. It\'s free to enter, and we can\'t wait to listen.' },
+      { type: 'cta', content: 'Is your child aged 3–6? Our bilingual storytelling competition is open for submissions — it\'s free to enter, and we can\'t wait to listen.' },
     ],
   },
   {
@@ -130,7 +130,7 @@ export const ARTICLES: Article[] = [
       { type: 'h2', content: 'A note to parents' },
       { type: 'p', content: 'You don\'t have to do all five of these on the same Saturday. One is enough. The goal isn\'t to complete a list — it\'s to create a moment, together, where your child experiences kindness as something active, something chosen, something that belongs to them.' },
       { type: 'p', content: 'The best kindness education is not a programme. It\'s a parent who pauses, points, and says: "Did you see that? That was kind." Over and over, quietly, for years.' },
-      { type: 'cta', content: 'Want to go further? Our bilingual storytelling competition invites children aged 3–6 to share a story about a small act of kindness. It\'s free to enter, and submissions are open until 20 September 2026.' },
+      { type: 'cta', content: 'Want to go further? Our bilingual storytelling competition invites children aged 3–6 to share a story about a small act of kindness. It\'s free to enter — submission deadline TBD.' },
     ],
   },
   {
@@ -186,7 +186,7 @@ export const ARTICLES: Article[] = [
       { type: 'p', content: 'Raising a compassionate child is not a project with a timeline. It\'s a long game, measured in years and in the accumulation of thousands of small moments that, taken together, form something invisible but profound: a way of moving through the world that notices others, pauses before reacting, and chooses to help.' },
       { type: 'p', content: 'You don\'t always see it working. Months of noticing, naming, and modelling can feel unrewarded — and then, one day, you\'re at the playground and your child walks over to a child sitting alone and says, quietly, "Do you want to play with us?"' },
       { type: 'p', content: 'That\'s it. That\'s the whole game. The seed, planted one 30-second window at a time, finally broke through.' },
-      { type: 'cta', content: 'Sowing Kindness Society runs Singapore\'s bilingual storytelling competition for children aged 3–6. If your child has a story about a small act of kindness — one they saw, did, or wish for — we\'d love to hear it. Submissions are free and open until 20 September 2026.' },
+      { type: 'cta', content: 'Sowing Kindness Society runs Singapore\'s bilingual storytelling competition for children aged 3–6. If your child has a story about a small act of kindness — one they saw, did, or wish for — we\'d love to hear it. Submissions are free — deadline TBD.' },
     ],
   },
 ];

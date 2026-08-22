@@ -38,7 +38,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
       <div class="stat-item">
         <span class="stat-icon" style="background:var(--sage-200)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest-800)" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
-        <div><div class="stat-label" style="color:var(--forest-800)">20 Sep 2026</div><div class="stat-sub">Submission deadline</div></div>
+        <div><div class="stat-label" style="color:var(--forest-800)">TBD</div><div class="stat-sub">Submission deadline</div></div>
       </div>
       <div class="stat-item">
         <span class="stat-icon" style="background:var(--orange-100)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange-600)" stroke-width="2" stroke-linecap="round"><path d="M6 9H4.5a2.5 2.5 0 010-5H6M18 9h1.5a2.5 2.5 0 000-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0012 0V2z"/></svg></span>
@@ -146,10 +146,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
     <div class="timeline" data-stagger>
       {[
-        { status:'done',   date:'2026',                title:'Registration opens',          body:'Sign-ups open. A parent or guardian registers the child for free and completes the consent form.' },
-        { status:'active', date:'Until 20 Sep 2026',   title:'Storytelling & submissions',  body:'Children record their story at home. Home phone recordings are very welcome.' },
-        { status:'',       date:'20 September 2026',   title:'Round 1 — video deadline',   body:'Last day to upload your storytelling video. We acknowledge within 3 working days.' },
-        { status:'',       date:'8 October 2026',      title:'Finalists notified',          body:'A panel of judges reviews every video and selects the finalists.' },
+        { status:'done',   date:'TBD',   title:'Registration opens',          body:'Sign-ups open. A parent or guardian registers the child for free and completes the consent form.' },
+        { status:'active', date:'TBD',   title:'Storytelling & submissions',  body:'Children record their story at home. Home phone recordings are very welcome.' },
+        { status:'',       date:'TBD',   title:'Round 1 — video deadline',   body:'Last day to upload your storytelling video. We acknowledge within 3 working days.' },
+        { status:'',       date:'TBD',                 title:'Finalists notified',          body:'A panel of judges reviews every video and selects the finalists.' },
         { status:'',       date:'7 / 8 November 2026', title:'Round 2 — Grand Final (live)',body:'Six finalists from each group perform live on stage, 10.00 AM – 12.30 PM, Toa Payoh North (tentative).' },
       ].map(t => (
         <div class={`timeline__item ${t.status}`}>
@@ -177,7 +177,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         { q:'Is it really free to enter?', a:'Yes — registration is completely free. A parent or guardian registers the child and completes a consent form.' },
         { q:'My child is shy. Can they still take part?', a:'Absolutely. A story can be told in the quietest voice in the room. The judges listen for kindness, not confidence.' },
         { q:'Which language should my child perform in?', a:'The competition is bilingual — your child performs in either English or Chinese and is judged within that chosen language segment.' },
-        { q:'Who can take part?', a:'Children aged 3 to 6 (as at 20 September 2026) residing in Singapore. Parents or guardians may register directly on their child\'s behalf.' },
+        { q:'Who can take part?', a:'Children aged 3 to 6 (as at the submission deadline, TBD) residing in Singapore. Parents or guardians may register directly on their child\'s behalf.' },
         { q:'What should the video look like?', a:'Phone recordings in landscape are perfect. A quiet room, soft natural light, and the child clearly in frame with audible sound is all we ask.' },
         { q:'Can my child use props, drawings or puppets?', a:'Please do. We love stories told with picture books, soft toys, paper puppets, costumes and quiet songs.' },
       ].map(f => (
@@ -199,7 +199,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <h2 data-fade style="font:700 clamp(24px,4vw,52px)/1.1 var(--serif);margin:0 0 14px">
       <span style="color:var(--ink-900)">Ready to </span><span style="color:var(--forest-800)">share a </span><span style="color:var(--orange-500)">story?</span>
     </h2>
-    <p data-fade style="font:500 17px var(--sans);color:var(--ink-700);max-width:480px;margin:0 auto 28px">The submission form takes about 5 minutes. Free to enter. Deadline 20 September 2026.</p>
+    <p data-fade style="font:500 17px var(--sans);color:var(--ink-700);max-width:480px;margin:0 auto 28px">The submission form takes about 5 minutes. Free to enter. Deadline TBD.</p>
     <div data-fade style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
       <a href="/submit/" class="btn btn-primary">Submit Your Video <span class="chev">›</span></a>
       <a href="/events/upcoming/" class="btn btn-outline">See Upcoming Events</a>
