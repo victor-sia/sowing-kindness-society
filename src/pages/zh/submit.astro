@@ -146,9 +146,34 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
               <li>进入<strong>创作者中心</strong>，点击<strong>+</strong>，确认视频上传成功。</li>
               <li>选择视频，点击<strong>分享</strong>，复制链接。</li>
             </ol>
+            <!-- 步骤截图 -->
+            <div class="gjw-screenshots" aria-label="步骤截图参考">
+              <a href="/gjw/zh/step1-join-now.webp" target="_blank" rel="noopener" class="gjw-shot">
+                <img src="/gjw/zh/step1-join-now.webp" alt="点击干净世界频道页面的"立即参加"" loading="lazy" />
+                <span>第1步 · 立即参加</span>
+              </a>
+              <a href="/gjw/zh/step2-upload-video.webp" target="_blank" rel="noopener" class="gjw-shot">
+                <img src="/gjw/zh/step2-upload-video.webp" alt="从菜单中选择上传视频" loading="lazy" />
+                <span>第2步 · 上传视频</span>
+              </a>
+              <a href="/gjw/zh/step4-fill-details.webp" target="_blank" rel="noopener" class="gjw-shot">
+                <img src="/gjw/zh/step4-fill-details.webp" alt="填写标题、说明、浏览权限、类别和观众" loading="lazy" />
+                <span>第4步 · 填写资料</span>
+              </a>
+              <a href="/gjw/zh/step6-creator-studio.webp" target="_blank" rel="noopener" class="gjw-shot">
+                <img src="/gjw/zh/step6-creator-studio.webp" alt="从菜单进入创作中心" loading="lazy" />
+                <span>第6步 · 创作中心</span>
+              </a>
+            </div>
+
             <details class="gjw-faq">
               <summary>上传了错误的文件？</summary>
-              <p>前往<strong>创作者中心 → 内容</strong>，点击视频旁的三点菜单，选择<strong>删除</strong>，然后重新上传正确的文件。</p>
+              <div class="gjw-faq-inner">
+                <p>前往<strong>创作者中心 → 内容</strong>，点击视频旁的三点菜单，选择<strong>删除</strong>，然后重新上传正确的文件。</p>
+                <a href="/gjw/zh/faq-delete.webp" target="_blank" rel="noopener" class="gjw-shot gjw-shot--faq">
+                  <img src="/gjw/zh/faq-delete.webp" alt="创作者中心内容页面的三点菜单" loading="lazy" />
+                </a>
+              </div>
             </details>
           </div>
 
@@ -302,6 +327,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 .gjw-faq summary { font:600 13px var(--sans);color:var(--ink-600);cursor:pointer;list-style:none;padding-left:4px }
 .gjw-faq summary::-webkit-details-marker { display:none }
 .gjw-faq p { margin:8px 0 0;font:400 13px/1.55 var(--sans);color:var(--ink-600) }
+.gjw-faq-inner { display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-top:8px }
+.gjw-faq-inner p { margin:0 }
+
+/* 步骤截图 */
+.gjw-screenshots { display:flex;gap:10px;overflow-x:auto;padding:14px 0 4px;margin-top:14px;border-top:1px solid rgba(31,77,31,.10);scrollbar-width:thin }
+.gjw-screenshots::-webkit-scrollbar { height:4px }
+.gjw-screenshots::-webkit-scrollbar-track { background:var(--sage-100);border-radius:4px }
+.gjw-screenshots::-webkit-scrollbar-thumb { background:var(--sage-300,#b4c9b2);border-radius:4px }
+.gjw-shot { display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0;text-decoration:none }
+.gjw-shot img { width:100px;height:160px;object-fit:cover;object-position:top;border-radius:10px;border:1.5px solid rgba(31,77,31,.12);transition:opacity .15s }
+.gjw-shot:hover img { opacity:.85 }
+.gjw-shot span { font:500 11px var(--sans);color:var(--ink-500);text-align:center;white-space:nowrap }
+.gjw-shot--faq img { width:120px;height:80px;object-position:center }
 
 @media(max-width:639px){
   #submit-card { padding:28px 20px }

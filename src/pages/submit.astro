@@ -151,9 +151,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <li>Go to <strong>Creator Studio</strong>, click <strong>+</strong>, and confirm your upload succeeded.</li>
               <li>Select your video, tap <strong>Share</strong>, and copy the link.</li>
             </ol>
+            <!-- Screenshot strip -->
+            <div class="gjw-screenshots" aria-label="Step-by-step screenshots">
+              <a href="/gjw/en/step1-join-now.webp" target="_blank" rel="noopener" class="gjw-shot">
+                <img src="/gjw/en/step1-join-now.webp" alt="Tap JOIN NOW on the Gan Jing World channel page" loading="lazy" />
+                <span>Step 1 · Join Now</span>
+              </a>
+              <a href="/gjw/en/step2-upload-video.webp" target="_blank" rel="noopener" class="gjw-shot">
+                <img src="/gjw/en/step2-upload-video.webp" alt="Select Upload Video from the menu" loading="lazy" />
+                <span>Step 2 · Upload Video</span>
+              </a>
+              <a href="/gjw/en/step4-fill-details.webp" target="_blank" rel="noopener" class="gjw-shot">
+                <img src="/gjw/en/step4-fill-details.webp" alt="Fill in Caption, Description, Visibility, Category and Audience" loading="lazy" />
+                <span>Step 4 · Fill details</span>
+              </a>
+              <a href="/gjw/en/step6-creator-studio.webp" target="_blank" rel="noopener" class="gjw-shot">
+                <img src="/gjw/en/step6-creator-studio.webp" alt="Go to Creator Studio from the menu" loading="lazy" />
+                <span>Step 6 · Creator Studio</span>
+              </a>
+            </div>
+
             <details class="gjw-faq">
               <summary>Uploaded the wrong file?</summary>
-              <p>Go to <strong>Creator Studio → Content</strong>, tap the three dots next to your video, select <strong>Delete</strong>, then re-upload the correct file.</p>
+              <div class="gjw-faq-inner">
+                <p>Go to <strong>Creator Studio → Content</strong>, tap the three dots next to your video, select <strong>Delete</strong>, then re-upload the correct file.</p>
+                <a href="/gjw/en/faq-delete.webp" target="_blank" rel="noopener" class="gjw-shot gjw-shot--faq">
+                  <img src="/gjw/en/faq-delete.webp" alt="Three dots menu in Creator Studio Content tab" loading="lazy" />
+                </a>
+              </div>
             </details>
           </div>
 
@@ -319,6 +344,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 .gjw-faq summary { font:600 13px var(--sans);color:var(--ink-600);cursor:pointer;list-style:none;padding-left:4px }
 .gjw-faq summary::-webkit-details-marker { display:none }
 .gjw-faq p { margin:8px 0 0;font:400 13px/1.55 var(--sans);color:var(--ink-600) }
+.gjw-faq-inner { display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-top:8px }
+.gjw-faq-inner p { margin:0 }
+
+/* Screenshot strip */
+.gjw-screenshots { display:flex;gap:10px;overflow-x:auto;padding:14px 0 4px;margin-top:14px;border-top:1px solid rgba(31,77,31,.10);scrollbar-width:thin }
+.gjw-screenshots::-webkit-scrollbar { height:4px }
+.gjw-screenshots::-webkit-scrollbar-track { background:var(--sage-100);border-radius:4px }
+.gjw-screenshots::-webkit-scrollbar-thumb { background:var(--sage-300,#b4c9b2);border-radius:4px }
+.gjw-shot { display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0;text-decoration:none }
+.gjw-shot img { width:100px;height:160px;object-fit:cover;object-position:top;border-radius:10px;border:1.5px solid rgba(31,77,31,.12);transition:opacity .15s }
+.gjw-shot:hover img { opacity:.85 }
+.gjw-shot span { font:500 11px var(--sans);color:var(--ink-500);text-align:center;white-space:nowrap }
+.gjw-shot--faq img { width:120px;height:80px;object-position:center }
 
 @media(max-width:639px){
   #submit-card { padding:28px 20px }
