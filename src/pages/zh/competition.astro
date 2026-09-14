@@ -37,11 +37,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
       <div class="stat-item">
         <span class="stat-icon" style="background:var(--sage-200)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--forest-800)" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
-        <div><div class="stat-label" style="color:var(--forest-800)">2026年9月20日</div><div class="stat-sub">提交截止日</div></div>
+        <div><div class="stat-label" style="color:var(--forest-800)">2026年12月7日</div><div class="stat-sub">提交截止日</div></div>
       </div>
       <div class="stat-item">
         <span class="stat-icon" style="background:var(--orange-100)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange-600)" stroke-width="2" stroke-linecap="round"><path d="M6 9H4.5a2.5 2.5 0 010-5H6M18 9h1.5a2.5 2.5 0 000-5H18M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22M18 2H6v7a6 6 0 0012 0V2z"/></svg></span>
-        <div><div class="stat-label" style="color:var(--orange-600)">2026年11月</div><div class="stat-sub">总决赛</div></div>
+        <div><div class="stat-label" style="color:var(--orange-600)">2027年1月</div><div class="stat-sub">总决赛</div></div>
       </div>
     </div>
   </div>
@@ -164,11 +164,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
     <div class="timeline" data-stagger>
       {[
-        { status:'done',   date:'2026年',           title:'报名开始',       body:'报名开放。家长或监护人免费为孩子报名并填写同意书。' },
-        { status:'active', date:'至2026年9月20日',   title:'讲故事与提交作品', body:'孩子在家录制故事。欢迎使用手机录制。' },
-        { status:'',       date:'2026年9月20日',    title:'第一轮——视频截止日', body:'上传讲故事视频的最后期限。我们将在3个工作日内确认收到。' },
-        { status:'',       date:'2026年10月8日',    title:'入围选手通知',    body:'评审团审阅所有视频并选出入围选手。' },
-        { status:'',       date:'2026年11月7/8日',  title:'第二轮——总决赛（现场）', body:'每个组别六名入围选手在舞台上现场表演，上午10时至下午12时30分，大巴窑北（暂定）。' },
+        { status:'done',   date:'2026年9月9日',      title:'报名开始',       body:'报名开放。家长或监护人免费为孩子报名并填写同意书。' },
+        { status:'active', date:'至2026年12月7日',   title:'讲故事与提交作品', body:'孩子在家录制故事。欢迎使用手机录制。' },
+        { status:'',       date:'2026年12月7日',    title:'第一轮——视频截止日', body:'上传讲故事视频的最后期限。我们将在3个工作日内确认收到。' },
+        { status:'',       date:'2026年12月20日',   title:'入围选手通知',    body:'评审团审阅所有视频并选出入围选手。' },
+        { status:'',       date:'2027年1月16/17日', title:'第二轮——总决赛（现场）', body:'每个组别六名入围选手在舞台上现场表演，上午10时至下午12时30分，大巴窑北（暂定）。' },
       ].map(t => (
         <div class={`timeline__item ${t.status}`}>
           <div style={`font:600 13px var(--sans);color:${t.status==='active' ? 'var(--orange-600)' : 'var(--fern-600)'};letter-spacing:.04em;text-transform:uppercase;margin-bottom:4px`}>{t.date}</div>
@@ -195,7 +195,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         { q:'真的是免费参赛吗？', a:'是的——报名完全免费。家长或监护人为孩子报名并填写同意书即可。' },
         { q:'我的孩子比较害羞，也可以参加吗？', a:'当然可以。故事可以用房间里最安静的声音讲述。评审聆听的是善意，而不是自信。' },
         { q:'孩子应该用哪种语言表演？', a:'比赛是双语的——孩子可以用英语或华语表演，并在所选语言的组别中接受评审。' },
-        { q:'谁可以参加？', a:'在2026年9月20日时年龄为3至6岁、居住在新加坡的儿童。家长或监护人可直接代表孩子报名。' },
+        { q:'谁可以参加？', a:'在2026年12月7日时年龄为3至6岁、居住在新加坡的儿童。家长或监护人可直接代表孩子报名。' },
         { q:'视频应该是什么样子的？', a:'用手机横向录制非常完美。安静的房间、柔和的自然光、孩子清晰入镜、声音清晰可闻，这就是我们的要求。' },
         { q:'孩子可以使用道具、画作或玩偶吗？', a:'请随意。我们喜欢用绘本、毛绒玩具、纸玩偶、服装和安静歌曲讲述的故事。' },
       ].map(f => (
@@ -217,7 +217,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <h2 data-fade style="font:700 clamp(24px,4vw,52px)/1.1 var(--serif);margin:0 0 14px">
       <span style="color:var(--ink-900)">准备好</span><span style="color:var(--forest-800)">分享</span><span style="color:var(--orange-500)">故事了吗？</span>
     </h2>
-    <p data-fade style="font:500 17px var(--sans);color:var(--ink-700);max-width:480px;margin:0 auto 28px">提交表格约需5分钟。免费参赛。截止日期：2026年9月20日。</p>
+    <p data-fade style="font:500 17px var(--sans);color:var(--ink-700);max-width:480px;margin:0 auto 28px">提交表格约需5分钟。免费参赛。截止日期：2026年12月7日。</p>
     <div data-fade style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
       <a href="/zh/submit/" class="btn btn-primary">提交您的视频 <span class="chev">›</span></a>
       <a href="/zh/events/upcoming/" class="btn btn-outline">查看即将举行的活动</a>

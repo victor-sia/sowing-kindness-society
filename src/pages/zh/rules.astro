@@ -1,19 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const JUDGING = [
-  { pct:'30%', title:'内容与相关性', body:'故事与善意主题有实质关联，有清晰的开头、发展和结尾。' },
-  { pct:'30%', title:'表达与表现力', body:'声音清晰、语调、面部表情和肢体语言提升讲故事体验。' },
-  { pct:'20%', title:'创意与原创性', body:'独特的故事选择和富有想象力的道具、服装或呈现方式。' },
-  { pct:'20%', title:'台风与气场', body:'镇定、与镜头的眼神交流，以及吸引观众注意力的能力。' },
-];
-
-const TIMELINE = [
-  { done:true,   active:false, label:'报名开始',     date:'2026年6月' },
-  { done:false,  active:true,  label:'提交截止日',   date:'2026年9月20日，晚11时59分' },
-  { done:false,  active:false, label:'入围选手通知', date:'2026年10月' },
-  { done:false,  active:false, label:'总决赛',       date:'2026年11月' },
-];
 ---
 <BaseLayout title="官方规则 | 播种善意协会2026年讲故事比赛" description="2026年跨中心讲故事比赛完整官方规则。包括资格要求、组别、视频要求、评审标准及奖项。">
 
@@ -43,7 +29,7 @@ const TIMELINE = [
     <div class="card card--quiet rules-summary" style="padding:20px 28px;margin-bottom:52px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center">
       <div><div style="font:700 20px var(--serif);color:var(--forest-800)">3 – 6 岁</div><div style="font:500 12px var(--sans);color:var(--ink-500);margin-top:2px">年龄范围</div></div>
       <div><div style="font:700 20px var(--serif);color:var(--forest-800)">英语 / 中文</div><div style="font:500 12px var(--sans);color:var(--ink-500);margin-top:2px">语言</div></div>
-      <div><div style="font:700 20px var(--serif);color:var(--forest-800)">2026年9月20日</div><div style="font:500 12px var(--sans);color:var(--ink-500);margin-top:2px">截止日期</div></div>
+      <div><div style="font:700 20px var(--serif);color:var(--forest-800)">2026年12月7日</div><div style="font:500 12px var(--sans);color:var(--ink-500);margin-top:2px">截止日期</div></div>
       <div><div style="font:700 20px var(--serif);color:var(--forest-800)">免费</div><div style="font:500 12px var(--sans);color:var(--ink-500);margin-top:2px">参赛费用</div></div>
     </div>
 
@@ -65,7 +51,7 @@ const TIMELINE = [
       </div>
       <div style="padding-left:52px">
         <ul class="article-ul">
-          <li>参赛者须于2026年9月20日时年满3至6岁，且居住于新加坡。</li>
+          <li>参赛者须于2026年12月7日时年满3至6岁，且居住于新加坡。</li>
           <li>家长或监护人可直接通过网站代表孩子报名。</li>
           <li>每名儿童每年只可提交一份参赛作品。</li>
           <li>比赛向居住于新加坡的公民、永久居民及外籍人士开放。</li>
@@ -93,7 +79,7 @@ const TIMELINE = [
             <div style="font:600 15px var(--sans);color:var(--orange-700)">5分钟故事</div>
           </div>
         </div>
-        <p class="article-p">儿童的年龄以提交截止日期（2026年9月20日）为准。</p>
+        <p class="article-p">儿童的年龄以提交截止日期（2026年12月7日）为准。</p>
       </div>
     </div>
 
@@ -148,45 +134,6 @@ const TIMELINE = [
     <div data-fade style="margin-bottom:48px">
       <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
         <span class="rule-num">6</span>
-        <h2 class="rule-title">评审标准</h2>
-      </div>
-      <div style="padding-left:52px">
-        <p class="article-p">参赛作品将由独立评审团按四项标准进行评审：</p>
-        <div style="display:grid;gap:12px;margin:16px 0 20px">
-          {JUDGING.map(c => (
-            <div style="display:flex;gap:16px;align-items:flex-start;padding:16px 18px;border-radius:14px;background:var(--cream-200)">
-              <span style="font:700 18px var(--serif);color:var(--forest-800);flex-shrink:0;min-width:44px">{c.pct}</span>
-              <div>
-                <div style="font:700 15px var(--sans);color:var(--ink-900);margin-bottom:3px">{c.title}</div>
-                <p style="font:400 14px/1.55 var(--sans);color:var(--ink-700);margin:0">{c.body}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <p class="article-p">评审决定为最终决定，对评分不接受任何申诉。</p>
-      </div>
-    </div>
-
-    <div data-fade style="margin-bottom:48px">
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
-        <span class="rule-num">7</span>
-        <h2 class="rule-title">重要日期</h2>
-      </div>
-      <div style="padding-left:52px">
-        <div class="timeline" style="margin-top:8px">
-          {TIMELINE.map(t => (
-            <div class={`timeline__item${t.done ? ' done' : ''}${t.active ? ' active' : ''}`}>
-              <div style="font:700 15px var(--sans);color:var(--forest-800)">{t.label}</div>
-              <div style="font:500 13px var(--sans);color:var(--ink-500);margin-top:2px">{t.date}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-
-    <div data-fade style="margin-bottom:48px">
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
-        <span class="rule-num">8</span>
         <h2 class="rule-title">一般条款与条件</h2>
       </div>
       <div style="padding-left:52px">

@@ -1,19 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const JUDGING = [
-  { pct:'30%', title:'Content & Relevance', body:'The story relates meaningfully to the theme of kindness and has a clear beginning, middle and end.' },
-  { pct:'30%', title:'Delivery & Expression', body:'Voice clarity, tone, facial expressions and body language enhance the storytelling experience.' },
-  { pct:'20%', title:'Creativity & Originality', body:"A unique story choice and imaginative use of props, costumes or presentation." },
-  { pct:'20%', title:'Stage Presence', body:"Poise, eye contact (with camera) and the ability to hold the audience's attention." },
-];
-
-const TIMELINE = [
-  { done:false,  active:false, label:'Registration opens',  date:'TBD' },
-  { done:false,  active:true,  label:'Submission deadline', date:'TBD' },
-  { done:false,  active:false, label:'Finalists notified',  date:'TBD' },
-  { done:false,  active:false, label:'Grand Final',         date:'16/17 Jan 2027' },
-];
 ---
 <BaseLayout
   title="Official Rules | Sowing Kindness Society Storytelling Competition 2026"
@@ -70,7 +56,7 @@ const TIMELINE = [
       </div>
       <div style="padding-left:52px">
         <ul class="article-ul">
-          <li>The participant must be aged 3 to 6 years old as at the submission deadline date (TBD) and residing in Singapore.</li>
+          <li>The participant must be aged 3 to 6 years old as at the submission deadline date (7 Dec 2026) and residing in Singapore.</li>
           <li>Parents or guardians may register directly on their child's behalf via the website.</li>
           <li>Each child may submit only one entry per competition year.</li>
           <li>Entry is open to Singapore citizens, permanent residents and foreigners residing in Singapore.</li>
@@ -99,7 +85,7 @@ const TIMELINE = [
             <div style="font:600 15px var(--sans);color:var(--orange-700)">5-minute story</div>
           </div>
         </div>
-        <p class="article-p">The child's age is determined as of the submission deadline date (TBD).</p>
+        <p class="article-p">The child's age is determined as of the submission deadline date (7 Dec 2026).</p>
       </div>
     </div>
 
@@ -157,29 +143,6 @@ const TIMELINE = [
     <div data-fade style="margin-bottom:48px">
       <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
         <span class="rule-num">6</span>
-        <h2 class="rule-title">Judging Criteria</h2>
-      </div>
-      <div style="padding-left:52px">
-        <p class="article-p">Entries will be assessed by an independent panel across four criteria:</p>
-        <div style="display:grid;gap:12px;margin:16px 0 20px">
-          {JUDGING.map(c => (
-            <div style="display:flex;gap:16px;align-items:flex-start;padding:16px 18px;border-radius:14px;background:var(--cream-200)">
-              <span style="font:700 18px var(--serif);color:var(--forest-800);flex-shrink:0;min-width:44px">{c.pct}</span>
-              <div>
-                <div style="font:700 15px var(--sans);color:var(--ink-900);margin-bottom:3px">{c.title}</div>
-                <p style="font:400 14px/1.55 var(--sans);color:var(--ink-700);margin:0">{c.body}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <p class="article-p">Judges' decisions are final and no correspondence will be entered into regarding scoring.</p>
-      </div>
-    </div>
-
-    <!-- Section 7 -->
-    <div data-fade style="margin-bottom:48px">
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
-        <span class="rule-num">7</span>
         <h2 class="rule-title">Competition Rounds</h2>
       </div>
       <div style="padding-left:52px">
@@ -191,10 +154,10 @@ const TIMELINE = [
       </div>
     </div>
 
-    <!-- Section 8 -->
+    <!-- Section 7 -->
     <div data-fade style="margin-bottom:48px">
       <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
-        <span class="rule-num">8</span>
+        <span class="rule-num">7</span>
         <h2 class="rule-title">Prizes</h2>
       </div>
       <div style="padding-left:52px">
@@ -208,28 +171,10 @@ const TIMELINE = [
       </div>
     </div>
 
-    <!-- Section 9 -->
+    <!-- Section 8 -->
     <div data-fade style="margin-bottom:48px">
       <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
-        <span class="rule-num">9</span>
-        <h2 class="rule-title">Key Dates</h2>
-      </div>
-      <div style="padding-left:52px">
-        <div class="timeline" style="margin-top:8px">
-          {TIMELINE.map(t => (
-            <div class={`timeline__item${t.done ? ' done' : ''}${t.active ? ' active' : ''}`}>
-              <div style="font:700 15px var(--sans);color:var(--forest-800)">{t.label}</div>
-              <div style="font:500 13px var(--sans);color:var(--ink-500);margin-top:2px">{t.date}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-
-    <!-- Section 10 -->
-    <div data-fade style="margin-bottom:48px">
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
-        <span class="rule-num">10</span>
+        <span class="rule-num">8</span>
         <h2 class="rule-title">General Terms & Conditions</h2>
       </div>
       <div style="padding-left:52px">
