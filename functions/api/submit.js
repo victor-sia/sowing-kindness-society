@@ -119,8 +119,10 @@ function confirmationHtml(d) {
       ${row('Child', d.childName, true)}
       ${row('Age Category', cat, false)}
       ${row('Language', d.language, true)}
-      ${row('Deadline', 'TBD', false)}
+      ${row('Submission Deadline', '7 Dec 2026', false)}
+      ${d.videoLink ? row('Your Video', `<a href="${d.videoLink}" style="color:#2C6B2C">Click to view &amp; share</a>`, true) : ''}
     </table>
+    ${d.videoLink ? `<p style="font-size:14px;line-height:1.6;background:#EEF6E3;border-left:3px solid #2C6B2C;padding:12px 16px;margin:0 0 20px">You can share your video link with family and friends by clicking the link above.</p>` : ''}
     <p style="font-size:14px;color:#6B7866">Questions? Email us at <a href="mailto:contact@sowingkindness.org.sg" style="color:#2C6B2C">contact@sowingkindness.org.sg</a></p>
     <p style="font-size:15px;margin-top:28px">With kindness,<br><strong>The Sowing Kindness Society Team</strong></p>
   </div>
@@ -133,7 +135,7 @@ function confirmationHtml(d) {
 function notificationHtml(d) {
   const cat = d.ageGroup === '3-4' ? 'Category A (Age 3–4)' : 'Category B (Age 5–6)';
   const videoCell = d.videoLink
-    ? `<a href="${d.videoLink}" style="color:#2C6B2C">Click to view / download video</a><br><span style="font-size:12px;color:#999">Link expires in 7 days</span>`
+    ? `<a href="${d.videoLink}" style="color:#2C6B2C">Click to view &amp; share</a>`
     : '—';
   const sgTime = new Date().toLocaleString('en-SG', { timeZone: 'Asia/Singapore' });
   return `
