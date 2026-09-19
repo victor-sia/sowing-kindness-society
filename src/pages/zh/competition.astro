@@ -111,10 +111,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <!-- 4 prize tiers -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px;margin-bottom:20px" data-stagger>
       {[
-        { label:'冠军',                     tier:'每个组别', prize:'S$150', sub:'Popular礼券', highlight:true,  bg:'var(--orange-100)', color:'var(--orange-600)', perks:['奖杯','高级手持风扇','干净Kids 3个月免费订阅'] },
-        { label:'亚军',                     tier:'每个组别', prize:'S$100', sub:'Popular礼券', highlight:false, bg:'var(--sage-200)',   color:'var(--forest-800)', perks:['奖杯','高级手持风扇','干净Kids 3个月免费订阅'] },
-        { label:'季军',                     tier:'每个组别', prize:'S$50',  sub:'Popular礼券', highlight:false, bg:'var(--sage-200)',   color:'var(--forest-800)', perks:['奖杯','高级手持风扇','干净Kids 3个月免费订阅'] },
-        { label:'最受欢迎\n（干净世界）',   tier:'每个组别', prize:'S$50',  sub:'Popular礼券', highlight:false, bg:'var(--cream-100)', color:'var(--fern-600)',   perks:['奖杯','高级手持风扇','干净Kids 3个月免费订阅'] },
+        { label:'冠军',                     tier:'每个组别', prize:'S$150', sub:'书店礼券', highlight:true,  bg:'var(--orange-100)', color:'var(--orange-600)', perks:['奖杯','高级手持风扇','干净Kids 3个月免费订阅'] },
+        { label:'亚军',                     tier:'每个组别', prize:'S$100', sub:'书店礼券', highlight:false, bg:'var(--sage-200)',   color:'var(--forest-800)', perks:['奖杯','高级手持风扇','干净Kids 3个月免费订阅'] },
+        { label:'季军',                     tier:'每个组别', prize:'S$50',  sub:'书店礼券', highlight:false, bg:'var(--sage-200)',   color:'var(--forest-800)', perks:['奖杯','高级手持风扇','干净Kids 3个月免费订阅'] },
+        { label:'最受欢迎\n（干净世界）',   tier:'每个组别', prize:'S$50',  sub:'书店礼券', highlight:false, bg:'var(--cream-100)', color:'var(--fern-600)',   perks:['奖杯','高级手持风扇','干净Kids 3个月免费订阅'] },
       ].map(p => (
         <div class="card" style={`padding:28px 22px;text-align:center;position:relative;border:${p.highlight ? '2px solid var(--orange-600)' : 'none'}`}>
           {p.highlight && <span style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--orange-600);color:#fff;padding:6px 14px;border-radius:999px;font:700 11px var(--sans);letter-spacing:.06em;text-transform:uppercase">大奖</span>}
