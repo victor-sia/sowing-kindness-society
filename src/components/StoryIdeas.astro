@@ -1,0 +1,203 @@
+---
+import { STORY_IDEAS } from '../lib/storyIdeas';
+interface Props { lang: 'en' | 'zh'; }
+const { lang } = Astro.props;
+const isZh = lang === 'zh';
+const base = isZh ? '/zh' : '';
+const ideas = STORY_IDEAS[lang];
+const pdf = '/downloads/Storytelling_Starter_Pack_English_Chinese.pdf';
+const t = isZh ? {
+  imageAlt: '两个孩子思考故事点子，想象着一株心形小苗。',
+  crumb: '故事点子', competition: '比赛', ages: '适合3–6岁儿童',
+  heading: '从生活中的善意，开始一个故事。',
+  intro: '这些原创点子可作为引导。孩子可以讲真实经历，也可以用“我”来讲想象的故事。',
+  ownTitle: '让故事带着孩子自己的声音',
+  own: '让孩子选择自己的用词和细节。',
+  younger: '3–4岁', youngerText: '讲清楚开始、行动和结尾。',
+  older: '5–6岁', olderText: '加入感受和简单对话。',
+  propsTitle: '一起准备简单道具',
+  props: '道具由大人协助制作，使用轻便纸道具，避免细小零件。',
+  browse: '选一个故事点子', download: '下载双语故事点子', file: 'PDF · 英文及中文 · 4页',
+  listTitle: '十个小点子，十种善意',
+  listIntro: '打开一个点子，看看故事示例，再用家长引导问题和孩子聊一聊。',
+  sample: '故事示例：我做了什么', prop: '简单道具', prompt: '家长引导问题',
+  ready: '准备好分享孩子的故事了吗？',
+  next: '前往报名页面，按照页面指引准备视频，并填写视频链接。',
+  register: '前往报名与视频提交', rules: '查看比赛规则',
+} : {
+  imageAlt: 'Two children thinking up a story, imagining a heart-shaped seedling.',
+  crumb: 'Story Ideas', competition: 'Competition', ages: 'For children aged 3–6',
+  heading: 'A little kindness. A story to tell.',
+  intro: 'Use these original ideas as prompts. Children can tell a real experience or imagine a story using “I”.',
+  ownTitle: 'Let their own voice lead',
+  own: 'Let children choose their own words and details.',
+  younger: 'Ages 3–4', youngerText: 'Tell a beginning, action and ending.',
+  older: 'Ages 5–6', olderText: 'Add feelings and short dialogue.',
+  propsTitle: 'Make a simple prop together',
+  props: 'Adults help make props. Use light paper props without small loose parts.',
+  browse: 'Explore the story ideas', download: 'Download the bilingual starter pack', file: 'PDF · English & Chinese · 4 pages',
+  listTitle: 'Ten small beginnings',
+  listIntro: 'Open an idea for a sample story, then use the parent prompt to help your child make it their own.',
+  sample: 'Sample story: what I did', prop: 'Simple prop', prompt: 'Parent prompt',
+  ready: 'Ready to share their story?',
+  next: 'Follow the video guidance on the registration page, then add your video link to your entry.',
+  register: 'Go to registration & video submission', rules: 'Read the competition rules',
+};
+---
+<div class="story-ideas-page">
+  <section class="ideas-intro" aria-labelledby="ideas-title">
+    <div class="container">
+      <div class="ideas-crumb"><a href={`${base}/competition/`}>{t.competition}</a><span aria-hidden="true">/</span><span>{t.crumb}</span></div>
+      <div class="ideas-hero">
+        <div>
+          <p class="ideas-ages">{t.ages}</p>
+          <h1 id="ideas-title">{t.heading}</h1>
+          <p class="ideas-lead">{t.intro}</p>
+          <a class="btn btn-secondary" href="#story-ideas">{t.browse}</a>
+          <div class="ideas-download">
+            <a href={pdf} download>{t.download}</a>
+            <span>{t.file}</span>
+          </div>
+        </div>
+        <div class="ideas-hero-art">
+          <img src="/illustrations/story-ideas-thinking.webp" alt={t.imageAlt} width="1254" height="1254" loading="eager" fetchpriority="high" />
+        </div>
+      </div>
+      <aside class="ideas-parent-note" aria-labelledby="parent-note-title">
+        <div>
+          <h2 id="parent-note-title">{t.ownTitle}</h2>
+          <p>{t.own}</p>
+        </div>
+        <dl class="ideas-age-guide">
+          <div><dt>{t.younger}</dt><dd>{t.youngerText}</dd></div>
+          <div><dt>{t.older}</dt><dd>{t.olderText}</dd></div>
+        </dl>
+        <div>
+          <h3>{t.propsTitle}</h3>
+          <p>{t.props}</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="ideas-collection" id="story-ideas" aria-labelledby="ideas-list-title">
+    <div class="container ideas-reading-width">
+      <header class="ideas-list-header">
+        <h2 id="ideas-list-title">{t.listTitle}</h2>
+        <p>{t.listIntro}</p>
+      </header>
+      <div class="ideas-list">
+        {ideas.map((idea, i) => (
+          <details class="idea" open={i === 0} id={`idea-${i + 1}`}>
+            <summary>
+              <span class="idea-number" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <div class="idea-summary-text"><h3>{idea.title}</h3><p>{idea.action}</p></div>
+              <span class="idea-toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="idea-content">
+              <div class="idea-sample"><h4>{t.sample}</h4><p>{idea.sample}</p></div>
+              <div class="idea-support">
+                <div class="idea-prop"><h4>{t.prop}</h4><p>{idea.prop}</p></div>
+                <div class="idea-prompt"><h4>{t.prompt}</h4><p>{idea.prompt}</p></div>
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="ideas-next" aria-labelledby="ideas-next-title">
+    <div class="container ideas-reading-width">
+      <h2 id="ideas-next-title">{t.ready}</h2>
+      <p>{t.next}</p>
+      <a class="btn btn-secondary" href={`${base}/submit/`}>{t.register}</a>
+      <a class="ideas-rules" href={`${base}/rules/`}>{t.rules}</a>
+    </div>
+  </section>
+</div>
+
+<style>
+  .story-ideas-page { color:var(--ink-700); }
+  .story-ideas-page a:focus-visible,.idea summary:focus-visible { outline:3px solid var(--forest-800);outline-offset:5px;border-radius:8px; }
+  .ideas-intro { padding:34px 0 60px; }
+  .ideas-crumb { display:flex;flex-wrap:wrap;gap:12px;font-size:14px;margin-bottom:38px; }
+  .ideas-crumb a { text-decoration:underline;text-underline-offset:4px; }
+  .ideas-hero { display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:center; }
+  .ideas-hero-art { position:relative;isolation:isolate;width:100%;aspect-ratio:1;padding:12px; }
+  .ideas-hero-art::before { content:'';position:absolute;z-index:-1;inset:7% 4% 3% 8%;background:var(--sage-200);border-radius:56% 44% 55% 45% / 48% 58% 42% 52%;transform:rotate(-6deg); }
+  .ideas-hero-art img { display:block;width:100%;height:100%;object-fit:cover;border-radius:46% 54% 47% 53% / 39% 43% 57% 61%; }
+  .ideas-ages { font-size:15px;font-weight:700;color:var(--forest-800);margin:0 0 16px; }
+  h1 { font:700 clamp(36px,4.7vw,64px)/1.1 var(--serif);letter-spacing:-.025em;color:var(--forest-900);max-width:640px; }
+  .ideas-lead { font-size:18px;line-height:1.75;margin:24px 0 28px;max-width:56ch; }
+  .ideas-download { display:flex;flex-direction:column;gap:7px;margin-top:24px; }
+  .ideas-download a { color:var(--forest-800);font-weight:700;text-decoration:underline;text-underline-offset:5px;line-height:1.6; }
+  .ideas-download span { font-size:13px;color:var(--ink-500); }
+  .ideas-parent-note { display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;align-items:start;margin-top:48px;background:var(--sage-50);border:1px solid var(--sage-200);border-radius:24px;padding:32px; }
+  .ideas-parent-note h2 { font:700 23px/1.35 var(--serif);color:var(--forest-900); }
+  .ideas-parent-note p { font-size:16px;line-height:1.75;margin:12px 0 0; }
+  .ideas-parent-note h3 { font:700 16px/1.5 var(--sans);color:var(--forest-800); }
+  .ideas-age-guide { margin:0;padding:0 28px;border-inline:1px solid var(--sage-200);display:grid;gap:18px; }
+  .ideas-age-guide dt { font-weight:800;color:var(--forest-800);margin-bottom:3px; }
+  .ideas-age-guide dd { margin:0;line-height:1.6; }
+  .ideas-reading-width { max-width:1024px; }
+  .ideas-collection { background:var(--paper);padding:60px 0 72px;scroll-margin-top:110px; }
+  .ideas-list-header { margin-bottom:32px; }
+  .ideas-list-header h2,.ideas-next h2 { font:700 clamp(28px,3.3vw,42px)/1.2 var(--serif);color:var(--forest-900); }
+  .ideas-list-header p { max-width:65ch;line-height:1.7;margin:14px 0 0;font-size:17px; }
+  .ideas-list { display:grid;gap:14px; }
+  .idea { border:1px solid var(--sage-200);border-radius:18px;overflow:clip;background:var(--paper);scroll-margin-top:110px; }
+  .idea[open] { border-color:var(--sage-500); }
+  .idea summary { display:flex;align-items:center;gap:20px;padding:24px;cursor:pointer;list-style:none; }
+  .idea summary::-webkit-details-marker { display:none; }
+  .idea summary:hover { background:var(--sage-50); }
+  .idea summary:focus-visible { outline-offset:-4px; }
+  .idea-number { display:flex;align-items:center;justify-content:center;flex:0 0 44px;height:44px;border-radius:50%;background:var(--cream-100);color:var(--forest-800);font:700 18px var(--serif); }
+  .idea-summary-text { flex:1;min-width:0; }
+  .idea h3 { font:700 22px/1.4 var(--serif);color:var(--forest-900); }
+  .idea-summary-text p { margin:5px 0 0;font-size:16px;line-height:1.6; }
+  .idea-toggle { position:relative;flex:0 0 28px;height:28px;color:var(--forest-800); }
+  .idea-toggle::before,.idea-toggle::after { content:'';position:absolute;left:6px;top:13px;width:16px;height:2px;background:currentColor; }
+  .idea-toggle::after { transform:rotate(90deg); }
+  .idea[open] .idea-toggle::after { display:none; }
+  .idea-content { padding:0 24px 28px 88px; }
+  .idea h4 { font:800 14px/1.5 var(--sans);color:var(--forest-800);margin:0 0 8px; }
+  .idea-sample { padding:22px 0;border-top:1px solid var(--sage-200);max-width:68ch; }
+  .idea-sample p { font-size:18px;line-height:1.85;margin:0; }
+  .idea-support { display:grid;grid-template-columns:1fr 1fr;gap:16px; }
+  .idea-support > div { padding:20px;border-radius:12px; }
+  .idea-prop { background:var(--cream-100); }
+  .idea-prompt { background:var(--sage-50); }
+  .idea-support p { margin:0;font-size:16px;line-height:1.7; }
+  .ideas-next { padding:60px 0 72px; }
+  .ideas-next p { margin:18px 0 24px;font-size:17px;line-height:1.7;max-width:65ch; }
+  .ideas-rules { display:block;width:fit-content;margin-top:20px;text-decoration:underline;text-underline-offset:5px;color:var(--forest-800);font-weight:700; }
+  .story-ideas-page .btn { white-space:normal;text-align:center;line-height:1.5; }
+  @media(max-width:900px) {
+    .ideas-hero { grid-template-columns:1fr;gap:32px; }
+    .ideas-hero-art { max-width:560px;justify-self:center; }
+    .ideas-parent-note { grid-template-columns:1fr;gap:24px;margin-top:32px; }
+    .ideas-age-guide { padding:20px 0;border-inline:0;border-block:1px solid var(--sage-200);grid-template-columns:1fr 1fr;gap:24px; }
+  }
+  @media(max-width:639px) {
+    .ideas-intro { padding:24px 0 40px; }
+    .ideas-crumb { margin-bottom:28px; }
+    .ideas-parent-note { padding:24px; }
+    .ideas-age-guide { grid-template-columns:1fr;gap:18px; }
+    .ideas-collection { padding:40px 0 48px; }
+    .ideas-list-header p,.ideas-lead { font-size:16px; }
+    .idea summary { padding:20px 16px;gap:12px;align-items:flex-start; }
+    .idea-number { flex-basis:32px;height:32px;font-size:15px; }
+    .idea h3 { font-size:19px; }
+    .idea-toggle { flex-basis:22px; }
+    .idea-toggle::before,.idea-toggle::after { left:3px; }
+    .idea-summary-text p { font-size:15px; }
+    .idea-content { padding:0 20px 20px; }
+    .idea-support { grid-template-columns:1fr;gap:12px; }
+    .idea-sample p { font-size:17px; }
+    .ideas-next { padding:40px 0 48px; }
+  }
+  @media(prefers-reduced-motion:reduce) {
+    .story-ideas-page .btn { transition:none;transform:none; }
+  }
+</style>
