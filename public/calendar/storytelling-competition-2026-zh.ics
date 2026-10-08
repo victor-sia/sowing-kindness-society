@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Sowing Kindness Society//Events//ZH
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:storytelling-competition-2026-zh@sowingkindness.org.sg
+DTSTAMP:20261008T000000Z
+DTSTART;TZID=Asia/Singapore:20261207T235900
+DTEND;TZID=Asia/Singapore:20261208T000000
+SUMMARY:2026年讲故事比赛——提交截止日期
+DESCRIPTION:上传讲故事视频的最后一天。请前往报名页面提
+ 交。
+URL:https://sowingkindness.org.sg/zh/submit/
+LOCATION:sowingkindness.org.sg
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

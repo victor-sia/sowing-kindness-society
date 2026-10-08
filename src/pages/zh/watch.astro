@@ -3,8 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const VIDEOS = [
   { featured:true, series:'故事时光', duration:'4:18', href:'https://www.ganjingworld.com/video/1ia1t1d4ree7wM4nzoEMtbywH1tp1c', img:'https://image1-ap-japan.cloudokyo.cloud/image/v3/6a/96/b2/6a96b2af-9920-4522-ae99-a6307771ad1c/1280.webp', title:'狮子与老鼠的友谊——善意故事歌', body:'温暖动人的动画歌曲，重述这个经典故事。善意与友谊能让最小的朋友成为英雄。', tag:'故事时光' },
   { featured:false, series:'故事时光', duration:'5:42', href:'https://www.ganjingworld.com/video/1ii0isdhvq42ypAN5bs9Fs9sp1of1c', img:'https://image1-ap-japan.cloudokyo.cloud/image/v14/b2/45/af/b245af9b-1785-4520-a705-6627c1d75254/1280.webp', title:'被遗忘的秋千', body:'两个孩子注意到了一位孤独的老人——发现微小的关爱如何改变一个人的生命。', tag:'故事时光' },
-  { featured:false, series:'绘本朗读', duration:'3:55', href:'https://www.ganjingworld.com/video/1g859k3l56b7kIcVYNot1b5rg1v91c', img:'https://image4-us-west.cloudokyo.cloud/image/v1/1d/0c/64/1d0c64c1-bab7-438b-99d5-c74ea8f2842b/1280.webp', title:'小听众：当我心怀善意时', body:'关于善意是什么感觉的温柔绘本朗读。', tag:'绘本朗读' },
-  { featured:false, series:'绘本朗读', duration:'4:30', href:'https://www.ganjingworld.com/video/1icvovrk7pd6F44gZOc2jvmiO1mf1c', img:'https://image1-us-east.cloudokyo.cloud/image/v14/50/32/90/5032906e-26c4-4954-821b-285b18538e0c/1280.webp', title:'中国传统故事：善人与梅树', body:'一个关于韩善山——一位以诚信、礼义和善良著称的富人——的故事。', tag:'绘本朗读' },
+  { featured:false, series:'绘本朗读', duration:'3:55', href:'https://www.ganjingworld.com/video/1g859k3l56b7kIcVYNot1b5rg1v91c', img:'https://image4-us-west.cloudokyo.cloud/image/v1/1d/0c/64/1d0c64c1-bab7-438b-99d5-c74ea8f2842b/1280.webp', title:'小听众：当我心怀善意时', body:'温柔朗读Trace Moroney的绘本，感受善意带来的心情。', tag:'绘本朗读' },
+  { featured:false, series:'活动', duration:'', href:'https://www.ganjingworld.com/s/KGbXz4y8kV', img:'https://image1-ap-japan.cloudokyo.cloud/image/v14/3a/ef/2f/3aef2f9e-60e2-4243-8216-4ce848cb2883/672.jpg', title:'Sammy的海星', body:'2026年9月21日活动精彩片段。一起观看善意故事在舞台上生动呈现。', tag:'故事时光' },
 ];
 ---
 <BaseLayout title="观看 | 播种善意协会" description="在我们的GanjingWorld官方频道观看善意故事和绘本朗读。安全、无广告、温柔。">
@@ -56,6 +56,17 @@ const VIDEOS = [
         </a>
       ))}
     </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section section--cream" style="text-align:center;padding-top:60px;padding-bottom:60px">
+  <div class="container" style="max-width:600px;margin:0 auto">
+    <h2 data-fade style="font:700 clamp(24px,3.5vw,44px)/1.1 var(--serif);margin:0 0 12px">
+      <span style="color:var(--ink-900)">想看更多善意</span><span style="color:var(--forest-800)">故事吗？</span>
+    </h2>
+    <p data-fade style="font:400 17px/1.7 var(--sans);color:var(--ink-700);margin:0 0 24px">关注我们的GanjingWorld官方频道，每周观看新上传的绘本朗读、善意歌曲，以及适合家庭的讲故事建议。</p>
+    <a data-fade href="https://www.ganjingworld.com/@sowingkindness" target="_blank" rel="noopener" class="btn btn-secondary">在GanjingWorld关注我们 <span class="chev">›</span></a>
   </div>
 </section>
 
