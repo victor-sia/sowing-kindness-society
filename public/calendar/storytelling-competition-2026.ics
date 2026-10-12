@@ -4,10 +4,13 @@ PRODID:-//Sowing Kindness Society//Events//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-DTSTART:20260920T235900
-DTEND:20260921T000000
+DTSTAMP:20261012T000000Z
+DTSTART:20261207T155900Z
+DTEND:20261207T160000Z
+UID:storytelling-competition-2026@sowingkindness.org.sg
 SUMMARY:Storytelling Competition 2026 — Submission Deadline
-DESCRIPTION:Last day to upload your storytelling video. Submit at https://sowingkindness.org.sg/submit/
+DESCRIPTION:Last day to upload your storytelling video. Submit at https://s
+ owingkindness.org.sg/submit/
 URL:https://sowingkindness.org.sg/submit/
 LOCATION:sowingkindness.org.sg
 STATUS:CONFIRMED
