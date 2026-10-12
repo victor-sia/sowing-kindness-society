@@ -45,3 +45,6 @@ Victor requests removal of Father's Day Celebration and Mid-Autumn Festival from
 
 ## Additional authorized calendar correction — 12 October 2026
 Update the Storytelling Competition submission-deadline calendar options for Google, Apple, Outlook and Yahoo in both languages to 7 December 2026. The competition/rules/submission pages confirm the date; existing calendar entries use 23:59 through midnight. Preserve that reminder time, explicitly anchored to Singapore (UTC+8): 7 December 15:59–16:00 UTC. These are submission reminders, not finals events; do not alter finals or other competition content. Verify decoded calendar query parameters and both ICS downloads, including UTF-8 folding, CRLF and UTC values.
+
+## Authorized temporary social-link hiding — 12 October 2026
+Hide Facebook, Instagram, X and LinkedIn from the shared English/Chinese footer and the existing English Connect page. Preserve all URLs, icons and labels behind shared visibility settings for restoration; keep WhatsApp, GanjingWorld and all other links/content unchanged. No Chinese Connect route exists, so do not create one. Keep contact-page cards and story share controls outside this scoped change. Build all routes, inspect local browser layout and consoles, publish via origin/main and verify live footer/Connect links and retention of the prior event/calendar changes.
