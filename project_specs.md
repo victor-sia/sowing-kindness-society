@@ -48,3 +48,9 @@ Update the Storytelling Competition submission-deadline calendar options for Goo
 
 ## Authorized temporary social-link hiding — 12 October 2026
 Hide Facebook, Instagram, X and LinkedIn from the shared English/Chinese footer and the existing English Connect page. Preserve all URLs, icons and labels behind shared visibility settings for restoration; keep WhatsApp, GanjingWorld and all other links/content unchanged. No Chinese Connect route exists, so do not create one. Keep contact-page cards and story share controls outside this scoped change. Build all routes, inspect local browser layout and consoles, publish via origin/main and verify live footer/Connect links and retention of the prior event/calendar changes.
+
+## Authorized homepage leaf removal — 12 October 2026
+Remove the pale green curved-stem/oval-leaf SVG decoration shown in Victor's supplied screenshot from the Mission, Vision & Values homepage section in English and Chinese. The reference was materialized locally and visually inspected. Remove both repeated corner sprigs within that section only; preserve all section text, cards, images, spacing and decorations elsewhere. Build, preview both languages, publish via origin/main and verify both live sections.
+
+## Authorized temporary newsletter hiding — 12 October 2026
+Hide the complete shared-footer newsletter column in English and Chinese because the monthly subscription has not started: heading, monthly-update text, input and Subscribe button. Retain the implementation behind a showNewsletter flag and use three desktop columns when hidden. Preserve existing responsive layout rules, remaining footer links and social visibility settings; no backend or subscriber data changes. Verify both language footers render without newsletter copy or controls.
