@@ -54,3 +54,7 @@ Remove the pale green curved-stem/oval-leaf SVG decoration shown in Victor's sup
 
 ## Authorized temporary newsletter hiding — 12 October 2026
 Hide the complete shared-footer newsletter column in English and Chinese because the monthly subscription has not started: heading, monthly-update text, input and Subscribe button. Retain the implementation behind a showNewsletter flag and use three desktop columns when hidden. Preserve existing responsive layout rules, remaining footer links and social visibility settings; no backend or subscriber data changes. Verify both language footers render without newsletter copy or controls.
+
+
+## Authorized deadline consistency correction — 18 October 2026
+The user explicitly requested the live Storytelling Competition 2026 submission deadline be 7 December 2026, with matching Chinese content (2026年12月7日). Existing main competition, submission, rules, Chinese pages and calendar reminders already use this date. Replace the remaining English deadline TBD placeholders in the homepage event preview, consent statements, story template CTA and two article CTAs. Preserve all other content and dates, including January 2027 finals. Existing Astro/Tailwind stack and layouts remain unchanged. Build, check the scoped diff, preview locally, publish via origin/main and verify live bilingual competition/deadline routes.
