@@ -136,8 +136,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
               <li>进入干净世界，请点击此链接：<a href="https://www.ganjingworld.com/s/nBExQgwnW4" target="_blank" rel="noopener" class="gjw-link">干净世界</a>。</li>
               <li>点击"<strong>立即探索</strong>"。</li>
               <li>使用Google谷歌、Apple苹果或电子邮件帐户登录或注册。</li>
-              <li>手机上点击"<strong>立即参加</strong>"，或在电脑上点击"<strong>发布</strong>"。</li>
-              <li>点击"<strong>上传视频</strong>"。</li>
+              <li>手机上点击"<strong>立即参加</strong>"，或在电脑上点击"<strong>发布</strong>"。
+              <a href="/gjw/zh/step1-join-now.webp" target="_blank" rel="noopener" class="gjw-shot">
+                <img src="/gjw/zh/step1-join-now.webp" alt="点击干净世界频道页面的立即参加" loading="lazy" />
+                <span>第4步 · 立即参加</span>
+              </a>
+              </li>
+              <li>点击"<strong>上传视频</strong>"。
+              <a href="/gjw/zh/step2-upload-video.webp" target="_blank" rel="noopener" class="gjw-shot">
+                <img src="/gjw/zh/step2-upload-video.webp" alt="从菜单中选择上传视频" loading="lazy" />
+                <span>第5步 · 上传视频</span>
+              </a>
+              </li>
               <li>从手机或电脑文件夹中选择要上传的视频文件。</li>
               <li>输入视频详情：
                 <ul class="gjw-sub">
@@ -145,31 +155,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
                   <li><strong>说明：</strong>孩子的姓名和年龄。建议附上故事简介。</li>
                   <li><strong>类别：</strong>教育 &nbsp;&middot;&nbsp; <strong>游览权限：</strong>公开 &nbsp;&middot;&nbsp; <strong>观众：</strong>是，这是专门为儿童制作的</li>
                 </ul>
-              </li>
-              <li>点击"<strong>上传</strong>"。</li>
-              <li>前往"<strong>创作中心</strong>"，点击"<strong>+</strong>"号，确认视频上传成功。</li>
-              <li>检查视频是否发布成功。</li>
-              <li>选中视频，点击"<strong>分享</strong>"以复制链接。</li>
-            </ol>
-            <!-- 步骤截图 -->
-            <div class="gjw-screenshots" aria-label="步骤截图参考">
-              <a href="/gjw/zh/step1-join-now.webp" target="_blank" rel="noopener" class="gjw-shot">
-                <img src="/gjw/zh/step1-join-now.webp" alt="点击干净世界频道页面的"立即参加"" loading="lazy" />
-                <span>第4步 · 立即参加</span>
-              </a>
-              <a href="/gjw/zh/step2-upload-video.webp" target="_blank" rel="noopener" class="gjw-shot">
-                <img src="/gjw/zh/step2-upload-video.webp" alt="从菜单中选择上传视频" loading="lazy" />
-                <span>第5步 · 上传视频</span>
-              </a>
               <a href="/gjw/zh/step4-fill-details.webp" target="_blank" rel="noopener" class="gjw-shot">
                 <img src="/gjw/zh/step4-fill-details.webp" alt="填写标题、说明、游览权限、类别和观众" loading="lazy" />
                 <span>第7步 · 填写资料</span>
               </a>
+              </li>
+              <li>点击"<strong>上传</strong>"。</li>
+              <li>前往"<strong>创作中心</strong>"，点击"<strong>+</strong>"号，确认视频上传成功。
               <a href="/gjw/zh/step6-creator-studio.webp" target="_blank" rel="noopener" class="gjw-shot">
                 <img src="/gjw/zh/step6-creator-studio.webp" alt="从菜单进入创作中心" loading="lazy" />
                 <span>第9步 · 创作中心</span>
               </a>
-            </div>
+              </li>
+              <li>检查视频是否发布成功。</li>
+              <li>选中视频，点击"<strong>分享</strong>"以复制链接。</li>
+            </ol>
 
             <details class="gjw-faq">
               <summary>上传了错误的文件？</summary>
@@ -319,37 +319,36 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 .sf-sc-current svg { stroke:var(--paper,#fff) }
 .sf-sc-future  svg { stroke:rgba(44,107,44,.3) }
 
-/* 干净世界指南 */
-.gjw-guide { background:var(--cream-100);border:1.5px solid rgba(31,77,31,.12);border-radius:14px;padding:18px 20px;margin-bottom:0 }
-.gjw-guide-header { display:flex;align-items:center;gap:8px;font:600 13px var(--sans);color:var(--forest-800);margin-bottom:14px }
-.gjw-steps { margin:0;padding:0;list-style:none;counter-reset:gjw;display:flex;flex-direction:column;gap:10px;font:400 14px/1.55 var(--sans);color:var(--ink-700) }
-.gjw-steps > li { counter-increment:gjw;display:flex;align-items:flex-start;gap:10px }
-.gjw-steps > li::before { content:counter(gjw);min-width:22px;height:22px;border-radius:999px;background:var(--forest-800);color:#fff;font:700 11px/22px var(--sans);text-align:center;flex-shrink:0;margin-top:2px }
+/* Gan Jing World guide */
+.gjw-guide { background:var(--cream-100);border:1.5px solid rgba(31,77,31,.12);border-radius:14px;padding:20px;margin-bottom:0;min-width:0 }
+.gjw-guide-header { display:flex;align-items:flex-start;gap:8px;font:600 15px/1.6 var(--sans);color:var(--forest-800);margin-bottom:24px }
+.gjw-guide-header svg { flex-shrink:0;margin-top:4px }
+.gjw-steps { margin:0;padding:0;list-style:none;counter-reset:gjw;font:400 16px/1.65 var(--sans);color:var(--ink-700) }
+.gjw-steps > li { counter-increment:gjw;position:relative;padding-left:38px;overflow-wrap:anywhere }
+.gjw-steps > li + li { margin-top:22px }
+.gjw-steps > li::before { content:counter(gjw);position:absolute;left:0;top:1px;width:26px;height:26px;border-radius:50%;background:var(--forest-800);color:#fff;font:700 13px/26px var(--sans);text-align:center }
 .gjw-steps strong { color:var(--forest-800) }
-.gjw-sub { margin:6px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px;font:400 13px/1.5 var(--sans);color:var(--ink-600);list-style:disc }
-.gjw-link { color:var(--fern-600);font-weight:600;text-decoration:none }
-.gjw-link:hover { text-decoration:underline }
-.gjw-tag { font:600 12px/1 var(--sans);background:var(--sage-100);color:var(--forest-800);padding:2px 7px;border-radius:6px;letter-spacing:.02em }
-.gjw-faq { margin-top:14px;padding-top:12px;border-top:1px solid rgba(31,77,31,.10) }
-.gjw-faq summary { font:600 13px var(--sans);color:var(--ink-600);cursor:pointer;list-style:none;padding-left:4px }
-.gjw-faq summary::-webkit-details-marker { display:none }
-.gjw-faq p { margin:8px 0 0;font:400 13px/1.55 var(--sans);color:var(--ink-600) }
-.gjw-faq-inner { display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-top:8px }
-.gjw-faq-inner p { margin:0 }
-
-/* 步骤截图 */
-.gjw-screenshots { display:flex;gap:10px;overflow-x:auto;padding:14px 0 4px;margin-top:14px;border-top:1px solid rgba(31,77,31,.10);scrollbar-width:thin }
-.gjw-screenshots::-webkit-scrollbar { height:4px }
-.gjw-screenshots::-webkit-scrollbar-track { background:var(--sage-100);border-radius:4px }
-.gjw-screenshots::-webkit-scrollbar-thumb { background:var(--sage-300,#b4c9b2);border-radius:4px }
-.gjw-shot { display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0;text-decoration:none }
-.gjw-shot img { width:100px;height:160px;object-fit:cover;object-position:top;border-radius:10px;border:1.5px solid rgba(31,77,31,.12);transition:opacity .15s }
-.gjw-shot:hover img { opacity:.85 }
-.gjw-shot span { font:500 11px var(--sans);color:var(--ink-500);text-align:center;white-space:nowrap }
-.gjw-shot--faq img { width:120px;height:80px;object-position:center }
+.gjw-sub { margin:10px 0 0;padding-left:18px;font:400 15px/1.65 var(--sans);color:var(--ink-600);list-style:disc }
+.gjw-sub li + li { margin-top:8px }
+.gjw-link { color:var(--forest-800);font-weight:600;text-decoration:underline;text-underline-offset:3px }
+.gjw-tag { font-weight:600;color:var(--forest-800) }
+.gjw-faq { margin-top:28px;padding-top:18px;border-top:1px solid rgba(31,77,31,.10) }
+.gjw-faq summary { font:600 15px/1.6 var(--sans);color:var(--forest-800);cursor:pointer }
+.gjw-faq p { margin:12px 0;font:400 15px/1.65 var(--sans);color:var(--ink-600) }
+.gjw-shot { display:block;width:100%;max-width:360px;margin:16px auto 6px;text-decoration:none }
+.gjw-shot img { display:block;width:100%;height:auto;border-radius:8px;border:1px solid rgba(31,77,31,.12) }
+.gjw-shot span { display:block;margin-top:8px;font:500 13px/1.5 var(--sans);color:var(--ink-600);text-align:center }
+.gjw-shot:focus-visible { outline:3px solid var(--forest-800);outline-offset:5px }
+.gjw-shot--faq { max-width:420px }
+@media(max-width:639px){
+  .gjw-guide { padding:18px 12px }
+  .gjw-steps > li { padding-left:32px }
+  .gjw-shot { width:calc(100% + 32px);max-width:360px;margin-left:-32px }
+  .gjw-shot--faq { width:100%;margin-left:auto }
+}
 
 @media(max-width:639px){
-  #submit-card { padding:28px 20px }
+  #submit-card { padding:28px 20px !important }
   .sf-row { grid-template-columns:1fr }
 }
 </style>

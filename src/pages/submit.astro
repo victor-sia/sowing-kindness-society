@@ -140,8 +140,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <ol class="gjw-steps">
               <li>Click this link to open <a href="https://www.ganjingworld.com/s/nBExQgwnW4" target="_blank" rel="noopener" class="gjw-link">Gan Jing World</a>.</li>
               <li>Sign in or Sign Up with Google, Apple, or email.</li>
-              <li>Click <strong>Join Now</strong>.</li>
-              <li>Click <strong>Upload Video</strong>.</li>
+              <li>Click <strong>Join Now</strong>.
+              <a href="/gjw/en/step1-join-now.webp" target="_blank" rel="noopener" class="gjw-shot">
+                <img src="/gjw/en/step1-join-now.webp" alt="Tap JOIN NOW on the Gan Jing World channel page" loading="lazy" />
+                <span>Step 3 · Join Now</span>
+              </a>
+              </li>
+              <li>Click <strong>Upload Video</strong>.
+              <a href="/gjw/en/step2-upload-video.webp" target="_blank" rel="noopener" class="gjw-shot">
+                <img src="/gjw/en/step2-upload-video.webp" alt="Select Upload Video from the menu" loading="lazy" />
+                <span>Step 4 · Upload Video</span>
+              </a>
+              </li>
               <li>Select your video file from your phone or computer folder.</li>
               <li>Enter the video details:
                 <ul class="gjw-sub">
@@ -149,31 +159,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                   <li><strong>Description:</strong> child's name and age. A summary of the story is recommended.</li>
                   <li><strong>Category:</strong> Education &nbsp;&middot;&nbsp; <strong>Visibility:</strong> Public &nbsp;&middot;&nbsp; <strong>Audience:</strong> Yes, it's created for kids</li>
                 </ul>
-              </li>
-              <li>Click <strong>Upload</strong>.</li>
-              <li>Go to <strong>Creator Studio</strong> and click <strong>+</strong> to confirm your upload succeeded.</li>
-              <li>Check that your video posted successfully.</li>
-              <li>Select your video, tap <strong>Share</strong>, and copy the link.</li>
-            </ol>
-            <!-- Screenshot strip -->
-            <div class="gjw-screenshots" aria-label="Step-by-step screenshots">
-              <a href="/gjw/en/step1-join-now.webp" target="_blank" rel="noopener" class="gjw-shot">
-                <img src="/gjw/en/step1-join-now.webp" alt="Tap JOIN NOW on the Gan Jing World channel page" loading="lazy" />
-                <span>Step 3 · Join Now</span>
-              </a>
-              <a href="/gjw/en/step2-upload-video.webp" target="_blank" rel="noopener" class="gjw-shot">
-                <img src="/gjw/en/step2-upload-video.webp" alt="Select Upload Video from the menu" loading="lazy" />
-                <span>Step 4 · Upload Video</span>
-              </a>
               <a href="/gjw/en/step4-fill-details.webp" target="_blank" rel="noopener" class="gjw-shot">
                 <img src="/gjw/en/step4-fill-details.webp" alt="Fill in Caption, Description, Visibility, Category and Audience" loading="lazy" />
                 <span>Step 6 · Fill details</span>
               </a>
+              </li>
+              <li>Click <strong>Upload</strong>.</li>
+              <li>Go to <strong>Creator Studio</strong> and click <strong>+</strong> to confirm your upload succeeded.
               <a href="/gjw/en/step6-creator-studio.webp" target="_blank" rel="noopener" class="gjw-shot">
                 <img src="/gjw/en/step6-creator-studio.webp" alt="Go to Creator Studio from the menu" loading="lazy" />
                 <span>Step 8 · Creator Studio</span>
               </a>
-            </div>
+              </li>
+              <li>Check that your video posted successfully.</li>
+              <li>Select your video, tap <strong>Share</strong>, and copy the link.</li>
+            </ol>
 
             <details class="gjw-faq">
               <summary>Uploaded the wrong file?</summary>
@@ -336,36 +336,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 .sf-sc-future  svg { stroke:rgba(44,107,44,.3) }
 
 /* Gan Jing World guide */
-.gjw-guide { background:var(--cream-100);border:1.5px solid rgba(31,77,31,.12);border-radius:14px;padding:18px 20px;margin-bottom:0 }
-.gjw-guide-header { display:flex;align-items:center;gap:8px;font:600 13px var(--sans);color:var(--forest-800);margin-bottom:14px }
-.gjw-steps { margin:0;padding:0;list-style:none;counter-reset:gjw;display:flex;flex-direction:column;gap:10px;font:400 14px/1.55 var(--sans);color:var(--ink-700) }
-.gjw-steps > li { counter-increment:gjw;display:flex;align-items:flex-start;gap:10px }
-.gjw-steps > li::before { content:counter(gjw);min-width:22px;height:22px;border-radius:999px;background:var(--forest-800);color:#fff;font:700 11px/22px var(--sans);text-align:center;flex-shrink:0;margin-top:2px }
+.gjw-guide { background:var(--cream-100);border:1.5px solid rgba(31,77,31,.12);border-radius:14px;padding:20px;margin-bottom:0;min-width:0 }
+.gjw-guide-header { display:flex;align-items:flex-start;gap:8px;font:600 15px/1.6 var(--sans);color:var(--forest-800);margin-bottom:24px }
+.gjw-guide-header svg { flex-shrink:0;margin-top:4px }
+.gjw-steps { margin:0;padding:0;list-style:none;counter-reset:gjw;font:400 16px/1.65 var(--sans);color:var(--ink-700) }
+.gjw-steps > li { counter-increment:gjw;position:relative;padding-left:38px;overflow-wrap:anywhere }
+.gjw-steps > li + li { margin-top:22px }
+.gjw-steps > li::before { content:counter(gjw);position:absolute;left:0;top:1px;width:26px;height:26px;border-radius:50%;background:var(--forest-800);color:#fff;font:700 13px/26px var(--sans);text-align:center }
 .gjw-steps strong { color:var(--forest-800) }
-.gjw-sub { margin:6px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px;font:400 13px/1.5 var(--sans);color:var(--ink-600);list-style:disc }
-.gjw-link { color:var(--fern-600);font-weight:600;text-decoration:none }
-.gjw-link:hover { text-decoration:underline }
-.gjw-tag { font:600 12px/1 var(--sans);background:var(--sage-100);color:var(--forest-800);padding:2px 7px;border-radius:6px;letter-spacing:.02em }
-.gjw-faq { margin-top:14px;padding-top:12px;border-top:1px solid rgba(31,77,31,.10) }
-.gjw-faq summary { font:600 13px var(--sans);color:var(--ink-600);cursor:pointer;list-style:none;padding-left:4px }
-.gjw-faq summary::-webkit-details-marker { display:none }
-.gjw-faq p { margin:8px 0 0;font:400 13px/1.55 var(--sans);color:var(--ink-600) }
-.gjw-faq-inner { display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-top:8px }
-.gjw-faq-inner p { margin:0 }
-
-/* Screenshot strip */
-.gjw-screenshots { display:flex;gap:10px;overflow-x:auto;padding:14px 0 4px;margin-top:14px;border-top:1px solid rgba(31,77,31,.10);scrollbar-width:thin }
-.gjw-screenshots::-webkit-scrollbar { height:4px }
-.gjw-screenshots::-webkit-scrollbar-track { background:var(--sage-100);border-radius:4px }
-.gjw-screenshots::-webkit-scrollbar-thumb { background:var(--sage-300,#b4c9b2);border-radius:4px }
-.gjw-shot { display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0;text-decoration:none }
-.gjw-shot img { width:100px;height:160px;object-fit:cover;object-position:top;border-radius:10px;border:1.5px solid rgba(31,77,31,.12);transition:opacity .15s }
-.gjw-shot:hover img { opacity:.85 }
-.gjw-shot span { font:500 11px var(--sans);color:var(--ink-500);text-align:center;white-space:nowrap }
-.gjw-shot--faq img { width:120px;height:80px;object-position:center }
+.gjw-sub { margin:10px 0 0;padding-left:18px;font:400 15px/1.65 var(--sans);color:var(--ink-600);list-style:disc }
+.gjw-sub li + li { margin-top:8px }
+.gjw-link { color:var(--forest-800);font-weight:600;text-decoration:underline;text-underline-offset:3px }
+.gjw-tag { font-weight:600;color:var(--forest-800) }
+.gjw-faq { margin-top:28px;padding-top:18px;border-top:1px solid rgba(31,77,31,.10) }
+.gjw-faq summary { font:600 15px/1.6 var(--sans);color:var(--forest-800);cursor:pointer }
+.gjw-faq p { margin:12px 0;font:400 15px/1.65 var(--sans);color:var(--ink-600) }
+.gjw-shot { display:block;width:100%;max-width:360px;margin:16px auto 6px;text-decoration:none }
+.gjw-shot img { display:block;width:100%;height:auto;border-radius:8px;border:1px solid rgba(31,77,31,.12) }
+.gjw-shot span { display:block;margin-top:8px;font:500 13px/1.5 var(--sans);color:var(--ink-600);text-align:center }
+.gjw-shot:focus-visible { outline:3px solid var(--forest-800);outline-offset:5px }
+.gjw-shot--faq { max-width:420px }
+@media(max-width:639px){
+  .gjw-guide { padding:18px 12px }
+  .gjw-steps > li { padding-left:32px }
+  .gjw-shot { width:calc(100% + 32px);max-width:360px;margin-left:-32px }
+  .gjw-shot--faq { width:100%;margin-left:auto }
+}
 
 @media(max-width:639px){
-  #submit-card { padding:28px 20px }
+  #submit-card { padding:28px 20px !important }
   .sf-row { grid-template-columns:1fr }
 }
 </style>
